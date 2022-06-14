@@ -1,0 +1,2 @@
+C:\Users\user\jeongm.TIL\Web_\Flask_\venvs\flaskenv\Scripts
+activate
