@@ -1,0 +1,296 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+h4 {
+    text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("../images/tomato.jpg") no-repeat center;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+}
+
+
+.login-form {
+    position: relative;
+    z-index: 2;
+}
+.login-form h1 {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+    .login-form fieldset {
+       padding-left:100px;
+    }
+
+    .int-area {
+    width: 400px;
+    height:55px;
+    position: relative;
+}
+
+      #SEX label{
+            display: block;
+            top: 5px;
+            left: -3px;
+        }
+#SEX .SEX_mc {
+    display: block;
+    padding-left: 368px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999;
+}
+#SEX input {
+    display: block;
+}
+
+    .int-area #SEX input{
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #999;
+        font-size: 15px;
+        color: #fff;
+        outline: none;
+    }
+
+.int-area:first-child {
+    margin-top: 0;
+}
+
+.int-area input {
+    width: 100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 15px;
+    color: black;
+    outline: none;
+}
+
+.int-area label {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    font-size: 15px;
+    color: #999;
+    transition: top .5s ease;
+}
+
+.int-area label.warning {
+    color: red !important;
+    animation: warning .3s ease;
+    animation-iteration-count: 3;
+}
+
+.left_cont {
+    width: 600px;
+    height: 800px;
+    background-image: url("../images/sign_green.jpg");
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    color: white;
+}
+    .left_cont .left_c_text {
+        padding:60px 20px 0 25px;
+    }
+    .left_cont .bar {
+        background-color: white;
+        width: 550px;
+        height: 3px;
+    }
+
+
+@keyframes warning {
+    0% {transform: translateX(-8px);}
+    25% {transform: translateX(8px);}
+    50% {transform: translateX(-8px);}
+    75% {transform: translateX(8px);}
+}
+.int-area input:focus + label,
+.int-area input:valid + label {
+    top: -2px;
+    font-size: 13px;
+    color: #81C147;
+}
+
+.btn-area {
+    margin-top: 30px;
+    margin-left:100px;
+}
+
+.btn-area button {
+    width: 200px;
+    height: 50px;
+    background: #81C147;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.caption {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.caption a {
+    font-size: 15px;
+    color: #999;
+    text-decoration: none;
+}
+
+.frame {
+    width: 600px;
+    height: 800px;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    float: left;
+   
+}
+
+.frame2 {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 600px;
+    height: 800px;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    float: right;
+}
+
+.pick_fv_food{
+    width: 550px;
+    margin: 0 auto;
+}
+.pick_fv_food li{
+    float:left;
+    width:150px;
+    margin-left: 23px;
+    margin-top: 23px;
+}
+
+.circle_img{
+    width:150px;
+    height: 150px;
+    border-radius:50%;
+}
+.circle_txt{
+    text-align: center;
+}
+
+body {
+    background-color: #eefbfb;
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  
+  .policy-table {
+    color: grey;
+    text-align: center;
+  }
+  
+  .headings, .policy {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    padding: 1em;
+  }
+  
+  .heading {
+    flex-basis: 33.333%;
+    font-weight: bold;
+  }
+  
+  .policy {
+    border-radius: 2em;
+    background-color: white;
+    margin-bottom: 20px;
+    -moz-box-shadow: 0 0 3px grey;
+    -webkit-box-shadow: 0 0 3px grey;
+    box-shadow: 0 0 5px grey;
+  }
+  
+  span {
+    flex-basis: 33.333%;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #4c4c4c;
+  }
+
