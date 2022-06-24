@@ -1,3 +1,11 @@
+{%with messages = get_flashed_messages()%} <!--flash 메시지 사용하기위해 보통 html 가장 윗부분에 작성-->
+    {%if messages %}
+        <script>
+            alert("{{messages[-1]}}");
+        </script>
+    {%endif%}
+{%endwith%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +21,7 @@
 <body>
     <section class = "login-form">
         <h1><img src="../static/images/logo.png" width="330px", height="100px"></h1>
-        <form action="">
+        <form action="" method="POST">
             <div class="int-area">
                 <input type="text" name="id" id="id" autocomplete="off" required>
                 <label for="id">USER NAME</label>
