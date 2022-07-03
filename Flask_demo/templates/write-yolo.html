@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Food Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/write.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+
+    div {display: block;}
+
+</style>
+</head>
+<div id="warp">
+  <body>
+    <div class="content">
+      <form class="search-form">
+        <input type="search" value="" placeholder="Search" class="search-input">
+        <button type="submit" class="search-button">
+          <svg class="submit-button">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+          </svg>
+        </button>
+        <div class="search-option">
+          <div>
+            <input name="type" type="button" value="type-images" id="type-images" onclick="getShow()">
+            <label for="type-images">
+              <svg class="edit-pen-title">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#images"></use>
+              </svg>
+              <span>Images</span>
+            </label>
+          </div>
+      </form>
+      <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
+        <symbol id="search" viewBox="0 0 32 32">
+          <path
+            d="M 19.5 3 C 14.26514 3 10 7.2651394 10 12.5 C 10 14.749977 10.810825 16.807458 12.125 18.4375 L 3.28125 27.28125 L 4.71875 28.71875 L 13.5625 19.875 C 15.192542 21.189175 17.250023 22 19.5 22 C 24.73486 22 29 17.73486 29 12.5 C 29 7.2651394 24.73486 3 19.5 3 z M 19.5 5 C 23.65398 5 27 8.3460198 27 12.5 C 27 16.65398 23.65398 20 19.5 20 C 15.34602 20 12 16.65398 12 12.5 C 12 8.3460198 15.34602 5 19.5 5 z" />
+        </symbol>
+        <symbol id="images" viewbox="0 0 32 32">
+          <path
+            d="M 2 5 L 2 6 L 2 26 L 2 27 L 3 27 L 29 27 L 30 27 L 30 26 L 30 6 L 30 5 L 29 5 L 3 5 L 2 5 z M 4 7 L 28 7 L 28 20.90625 L 22.71875 15.59375 L 22 14.875 L 21.28125 15.59375 L 17.46875 19.40625 L 11.71875 13.59375 L 11 12.875 L 10.28125 13.59375 L 4 19.875 L 4 7 z M 24 9 C 22.895431 9 22 9.8954305 22 11 C 22 12.104569 22.895431 13 24 13 C 25.104569 13 26 12.104569 26 11 C 26 9.8954305 25.104569 9 24 9 z M 11 15.71875 L 20.1875 25 L 4 25 L 4 22.71875 L 11 15.71875 z M 22 17.71875 L 28 23.71875 L 28 25 L 23.03125 25 L 18.875 20.8125 L 22 17.71875 z" />
+        </symbol>
+      </svg>
+      </br>
+      <ul class="list-food">
+        </br>
+        <li class="list-food-item"><a href="#">크림 파스타</a></li>
+        <li class="list-food-item"><a href="#">오일 파스타</a></li>
+        <li class="list-food-item"><a href="#">로제 파스타</a></li>
+        <li class="list-food-item"><a href="#">토마토 파스타</a></li>
+        <li class="list-food-item"><a href="#">알리오 올리오</a></li>
+      </ul>
+      </br>
+    </div>
+    <div class="oxbutton">
+      <a class="button fast white">CHECK</a>
+      <a class="button fast white">CENCEL</a>
+      <!-- dribbble -->
+      <a class="dribbble" href="https://dribbble.com/shots/7441241-Button-Hover-Effects" target="_blank"><img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
+    </button>
+  </div>
+</div>
+<div id="img-box" style="display:none;border:1px solid rgba(0,0,0,.2);">
+  <div id="img-head" style="padding:5px;border-bottom:1px solid rgba(0,0,0,.2);text-align: left;">
+      <div id="img-exp" style="display:inline; vertical-align:baseline;">이미지로 검색</div>
+      <div id="img-close" class="fa-solid fa-xmark" style="display:inline-block;cursor:pointer;" onclick="getHide()"></div>
+  </div>
+  <div id="img-upload" style="padding:5px;">
+      <form method=post enctype=multipart/form-data >
+          <input type = file name = file id="inputfile">
+          <input type = submit>
+      </form>
+  </div>  
+</div>
+<!-- 이미지검색 스크립트 -->
+<script type="text/javascript">
+  function getShow(){
+      document.getElementById("img-box").style.display="";
+  }
+  function getHide(){
+      document.getElementById("img-box").style.display="none";
+  }
+  $('#inputfile').bind('change', function() {
+    let fileSize = this.files[0].size/1024/1024; // this gives in MB
+    if (fileSize > 1) {
+      $("#inputfile").val(null);
+      alert('file is too big. images more than 1MB are not allowed')
+      return
+    }
+
+    let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+    if($.inArray(ext, ['jpg','jpeg']) == -1) {
+      $("#inputfile").val(null);
+      alert('only jpeg/jpg files are allowed!');
+    }
+});
+</script>
+</body>
+</html>

@@ -1,10 +1,24 @@
+from textwrap import indent
 from flask import Flask, session, render_template, redirect, request, url_for, flash
-from models import db
+from werkzeug.utils import secure_filename
+from db_models import db
 import os
-from models import User  # models.py에 있는 User 클래스
+from db_models import User  # db_models.py에 있는 User 클래스
+
+import argparse
+import io
+import os
+from PIL import Image
+
+import torch
+
+import json
+
 
 app = Flask(__name__)
 app.secret_key = "abcdef"
+
+DETECTION_URL = "/v1/object-detection/yolov5s"
 
 @app.route('/')  # main페이지
 def index():
@@ -42,7 +56,7 @@ def signin():
         
         if data is not None: # 쿼리 데이터 존재시
             session['userid'] = userid # userid를 session에 저장
-            return redirect(url_for('Dwrite'))
+            return redirect(url_for('daywrite'))
         else:
             flash("로그인 실패.")
             return render_template('signin.html')
@@ -62,6 +76,60 @@ def recommend():
     return render_template('result.html')
 
 
+
+
+
+
+@app.route('/search', methods = ['GET','POST'])
+def search():
+    return render_template('write-yolo.html')
+
+
+@app.route("/predict", methods=["GET", "POST"])
+def predict():
+    if request.method == "POST":
+        if "file" not in request.files:
+            return redirect(request.url)
+        file = request.files["file"]
+        if not file:
+            return
+
+        img_bytes = file.read()
+        img = Image.open(io.BytesIO(img_bytes))
+        results = model(img, size=640)
+
+        # for debugging
+        #data = results.pandas().xyxy[0].to_json(orient="records")
+        #data = results.pandas().xyxy[0].to_json(orient="records")
+        #return data
+        #results = [ e["name"] for e in json.loads(data) ]
+        
+        #return results
+        
+        
+        # 이미지 bounding box img 출력 -> 주석처리할것
+        results.render()  # updates results.imgs with boxes and labels
+        for img in results.imgs:
+            img_base64 = Image.fromarray(img)
+            img_base64.save("static/image0.jpg", format="JPEG")
+        return redirect("static/image0.jpg")
+        
+
+    return render_template("write-yolo.html")
+
+
+
+@app.route('/test', methods = ['GET', 'POST']) # 업로드된 파일은 실제 최종 위치에 저장되기 전에 먼저 서버의 임시 위치에 저장됨
+def file_upload(): # 저장 작업 수행, root 폴더에 저장됨
+    if request.method == 'POST':
+        f = request.files['file'] # html 파일에서 name이 file인 친구 데려옴
+        f.save(secure_filename(f.filename))
+        return 'file uploaded sucessfully'
+    else:
+        return render_template('yolov5.html')
+
+
+
 if __name__ == '__main__':
     basedir = os.path.abspath(os.path.dirname(__file__)) # database 경로를 절대경로로 설정
     dbfile = os.path.join(basedir, 'db.dqlite') # 데이터베이스 이름과 경로
@@ -74,8 +142,28 @@ if __name__ == '__main__':
     db.app = app # Models.py에서 db를 가져와서 db.app에 app을 명시적으로 넣는다
     db.create_all() # DB생성
     
+    #parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
+    #parser.add_argument("--port", default=5000, type=int, help="port number")
+    #args = parser.parse_args()
+    
+    # yolo
+    
+    model = torch.hub.load(
+        "ultralytics/yolov5", "yolov5s", pretrained=True, force_reload=True, autoshape=True
+    )  # force_reload = recache latest code
+    model.eval()
+    
     app.run(host='127.0.0.1', port=5000, debug=True)
+    #app.run(host="0.0.0.0", port=args.port, debug=True)  # debug=True causes Restarting with stat
 
 
 
 
+
+
+
+
+
+# yolov5 모델 적용
+# https://github.com/ultralytics/yolov5/issues/36
+# https://cdnjs.com/libraries/font-awesome
