@@ -10,13 +10,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready( function() {
+          $('.pick_fv_food li:nth-child(1)').click( function() {
+            $('#circle_1').toggle( 'slow' );
+          });
+        });
+      </script>
 </head>
-
 <body>
     <div class="frame" method="get" action="form-action.html">
         <section class="login-form">
             <h1><img src="../static/images/logo.png" width="330px" , height="100px"></h1>
-            <form action="" method="POST">
+            <form action="">
                 <fieldset>
                     <div class="int-area">
                         <input type="text" name="id" id="id" autocomplete="off" required>
@@ -25,10 +31,6 @@
                     <div class="int-area">
                         <input type="password" name="password" id="password" autocomplete="off" required>
                         <label for="pw">PASSWORD</label>
-                    </div>
-                    <div class="int-area">
-                        <input type="password" name="password2" id="password2" autocomplete="off" required>
-                        <label for="pw2">RE-ENTER PASSWORD</label>
                     </div>
                     <div class="int-area">
                         <input type="text" name="user_name" id="user_name" autocomplete="off" required>
@@ -54,6 +56,17 @@
                         <input type="text" name="weight" id="weight" autocomplete="off" required>
                         <label for="weight">WEIGHT</label>
                     </div>
+                    <div class="int-area">
+                        <label for="weight">ACTIVITY</label>
+                        <br>
+                        <br>
+                        <select name='activity'>
+                            <option value='' selected>------------- Select the amount of activity -------------</option>
+                            <option value='one'>1 활동량</option>
+                            <option value='two'>2 활동량</option>
+                            <option value='three'>3 활동량</option>
+                        </select>
+                    </div>
                     <div class="btn-area">
                         <button type="submit">SIGN UP</button>
                     </div>
@@ -67,12 +80,13 @@
                 <h4>Choose your favorite food</h4>
                 <p class="bar"></p>
            </div>
-                <ul class="pick_fv_food">
+                <ul class="pick_fv_food" style="overflow: auto;">
                     <li>
+                        <p id="circle_1"></p>
                         <img class="circle_img"
                              src="../static/images/k_food.jpg"
                              alt="korean">
-                        <p class="circle_txt">k-food</p>
+                             <p class="circle_txt">k-food</p>
                     </li>
                     <li>
                         <img class="circle_img"
@@ -122,6 +136,7 @@
                              alt="china">
                         <p class="circle_txt">c-food</p>
                     </li>
+                    
                 </ul>
                 </div>
             </div>

@@ -82,7 +82,7 @@ def recommend():
 
 @app.route('/search', methods = ['GET','POST'])
 def search():
-    return render_template('write-yolo.html')
+    return render_template('write.html')
 
 
 @app.route("/predict", methods=["GET", "POST"])
@@ -120,13 +120,36 @@ def predict():
 
 
 @app.route('/test', methods = ['GET', 'POST']) # 업로드된 파일은 실제 최종 위치에 저장되기 전에 먼저 서버의 임시 위치에 저장됨
-def file_upload(): # 저장 작업 수행, root 폴더에 저장됨
-    if request.method == 'POST':
-        f = request.files['file'] # html 파일에서 name이 file인 친구 데려옴
-        f.save(secure_filename(f.filename))
-        return 'file uploaded sucessfully'
-    else:
-        return render_template('yolov5.html')
+def test(): # 저장 작업 수행, root 폴더에 저장됨
+    if request.method == "POST":
+        if "file" not in request.files:
+            return redirect(request.url)
+        file = request.files["file"]
+        if not file:
+            return
+
+        img_bytes = file.read()
+        img = Image.open(io.BytesIO(img_bytes))
+        results = model(img, size=640)
+
+        # for debugging
+        #data = results.pandas().xyxy[0].to_json(orient="records")
+        #data = results.pandas().xyxy[0].to_json(orient="records")
+        #return data
+        #results = [ e["name"] for e in json.loads(data) ]
+        
+        #return results
+        
+        
+        # 이미지 bounding box img 출력 -> 주석처리할것
+        results.render()  # updates results.imgs with boxes and labels
+        for img in results.imgs:
+            img_base64 = Image.fromarray(img)
+            img_base64.save("static/image0.jpg", format="JPEG")
+        return redirect("static/image0.jpg")
+        
+
+    return render_template("write-yolo.html")
 
 
 
