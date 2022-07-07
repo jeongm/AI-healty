@@ -58,47 +58,42 @@ table {
 }
 
 .header {
-    height: 130px;
-    text-align: center;
-    box-sizing: border-box;
-    border-bottom: 1px solid #999;
-}
-
-.header {
-    padding-left: 45px;
-    height: 130px;
-    text-align: left;
-    box-sizing: border-box;
-    border-bottom: 1px solid #999;
+  padding-left: 45px;
+  width: 2000px;
+  height: 130px;
+  text-align: left;
+  box-sizing: border-box;
+  border-bottom: 1px solid #999;
+  margin-bottom: 835px;
 }
 
 .header__logo h1 {
-    padding-top: 0px;
-    letter-spacing: 2px;
+  padding-top: 0px;
+  letter-spacing: 2px;
 }
 
 .header__logo p {
-    font: bold 12px 'arial';
-    margin-top: -1px;
-    letter-spacing: 2px;
+  font: bold 12px 'arial';
+  margin-top: -1px;
+  letter-spacing: 2px;
 }
 
 .header__gnb ul {
-    margin-top: -80px;
-    text-align: right;
-    margin-right: 50px;
+  margin-top: -80px;
+  text-align: right;
+  margin-right: 50px;
 }
 
 .header__gnb ul li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .header__gnb ul li a {
-    display: block;
-    font: bold 14px 'arial';
-    color: #999;
-    margin: 0px 16px;
-    letter-spacing: 1px;
+  display: block;
+  font: bold 14px 'arial';
+  color: #999;
+  margin: 0px 16px;
+  letter-spacing: 1px;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
@@ -115,8 +110,12 @@ body {
 }
 
 .content {
-    width: 500px;
-    height: 500px;
+  position: absolute;
+  top: 360px;
+  left: 450px;
+  float: left;
+  width: 500px;
+  height: 500px;
 }
 
 .content_up{
@@ -180,11 +179,29 @@ body {
     display: inline;
 }
 
+.list-food {
+  height: 300px;
+}
 
 .list-food-item{
     text-align: center;
 }
 
+
+.main {
+  color: white;
+  position: absolute;
+  top: 250px;
+  left: 100px;
+}
+
+.main .ftcl {
+  color: white;
+}
+
+/*--------------------
+Body
+--------------------*/
 *,
 *::before,
 *::after {
@@ -201,13 +218,15 @@ body {
   overflow: hidden;
 }
 
+/*--------------------
+App
+--------------------*/
 .search-form {
   position: relative;
-  top: 20%;
+  top: 50%;
   left: 50%;
   width: 350px;
   height: 40px;
-  margin-top: 50px;
   border-radius: 40px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   transform: translate(-50%, -50%);
@@ -231,14 +250,13 @@ body {
   appearance: none;
   outline: none;
 }
-
 .search-input::-webkit-search-cancel-button {
   appearance: none;
 }
 
 .search-button {
   position: absolute;
-  top:10px;
+  top: 10px;
   left: 15px;
   height: 20px;
   width: 20px;
@@ -258,14 +276,13 @@ body {
 .search-option {
   position: absolute;
   text-align: right;
-  top: 20px;
+  top: 10px;
   right: 15px;
 }
 .search-option div {
   position: relative;
   display: inline-block;
   margin: 0 1px;
-  text-align: center;
   cursor: pointer;
 }
 .search-option div input {
@@ -333,104 +350,105 @@ body {
 .search-option div input:checked + label span::after {
   border-top-color: #e24040;
 }
-
 .oxbutton {
-    width: 300px;  
-    margin-left: 150px;
+  width: 300px;  
+  margin-left: 100px;
+  margin-top: -150px;
 }
 
 .leftbutton{
-    margin-right: 20px;
-    border: 1px solid #5a6674;
+  margin-right: 20px;
+  border: 1px solid #5a6674;
 }
 
-  .button.fast {
-    --duration: .32s;
-  }
-  
-  .button {
-    float: left;
-    height: 50px;
-    width: 120px;
-    --background: #fff;
-    --text: #5a6674;
-    --font-size: 16px;
-    --duration: .44s;
-    --move-hover: -4px;
-    --shadow: 0 2px 8px -1px #929AA3;
-    --shadow-hover: 0 4px 20px -2px #929AA3;
-    --font-shadow: var(--font-size);
-    padding: 16px 32px;
-    font-family: "Roboto";
-    font-weight: 500;
-    line-height: var(--font-size);
-    border-radius: 24px;
-    display: block;
-    outline: none;
-    text-decoration: none;
-    font-size: var(--font-size);
-    letter-spacing: 0.5px;
-    background: var(--background);
-    color: var(--text);
-    box-shadow: var(--shadow);
-    transform: translateY(var(--y)) translateZ(0);
-    transition: transform var(--duration) ease, box-shadow var(--duration) ease;
-  }
-  
-  .button div span {
-    display: block;
-    backface-visibility: hidden;
-    font-style: normal;
-    transition: transform var(--duration) ease;
-    transform: translateY(var(--m)) translateZ(0);
-  }
+.button.fast {
+  --duration: .32s;
+}
 
-  .button div span:nth-child(1) {
-    transition-delay: 0.05s;
-  }
-  .button div span:nth-child(2) {
-    transition-delay: 0.1s;
-  }
-  .button div span:nth-child(3) {
-    transition-delay: 0.15s;
-  }
-  .button div span:nth-child(4) {
-    transition-delay: 0.2s;
-  }
-  .button div span:nth-child(5) {
-    transition-delay: 0.25s;
-  }
-  .button div span:nth-child(6) {
-    transition-delay: 0.3s;
-  }
-  .button div span:nth-child(7) {
-    transition-delay: 0.35s;
-  }
-  .button div span:nth-child(8) {
-    transition-delay: 0.4s;
-  }
-  .button div span:nth-child(9) {
-    transition-delay: 0.45s;
-  }
-  .button div span:nth-child(10) {
-    transition-delay: 0.5s;
-  }
-  .button div span:nth-child(11) {
-    transition-delay: 0.55s;
-  }
-  .button:hover {
-    --y: var(--move-hover);
-    --shadow: var(--shadow-hover);
-  }
-  .button:hover span {
-    --m: calc(var(--font-size) * -1);
-  }
-  .button.reverse {
-    --font-shadow: calc(var(--font-size) * -1);
-  }
-  .button.reverse:hover span {
-    --m: calc(var(--font-size));
-  }
+.button {
+  float: left;
+  height: 50px;
+  width: 120px;
+  --background: #fff;
+  --text: #5a6674;
+  --font-size: 16px;
+  --duration: .44s;
+  --move-hover: -4px;
+  --shadow: 0 2px 8px -1px #929AA3;
+  --shadow-hover: 0 4px 20px -2px #929AA3;
+  --font-shadow: var(--font-size);
+  padding: 16px 32px;
+  font-family: "Roboto";
+  font-weight: 500;
+  line-height: var(--font-size);
+  border-radius: 24px;
+  display: block;
+  outline: none;
+  text-decoration: none;
+  font-size: var(--font-size);
+  letter-spacing: 0.5px;
+  background: var(--background);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transform: translateY(var(--y)) translateZ(0);
+  transition: transform var(--duration) ease, box-shadow var(--duration) ease;
+}
+
+.button div span {
+  display: block;
+  backface-visibility: hidden;
+  font-style: normal;
+  transition: transform var(--duration) ease;
+  transform: translateY(var(--m)) translateZ(0);
+}
+
+.button div span:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.button div span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.button div span:nth-child(3) {
+  transition-delay: 0.15s;
+}
+.button div span:nth-child(4) {
+  transition-delay: 0.2s;
+}
+.button div span:nth-child(5) {
+  transition-delay: 0.25s;
+}
+.button div span:nth-child(6) {
+  transition-delay: 0.3s;
+}
+.button div span:nth-child(7) {
+  transition-delay: 0.35s;
+}
+.button div span:nth-child(8) {
+  transition-delay: 0.4s;
+}
+.button div span:nth-child(9) {
+  transition-delay: 0.45s;
+}
+.button div span:nth-child(10) {
+  transition-delay: 0.5s;
+}
+.button div span:nth-child(11) {
+  transition-delay: 0.55s;
+}
+.button:hover {
+  --y: var(--move-hover);
+  --shadow: var(--shadow-hover);
+}
+.button:hover span {
+  --m: calc(var(--font-size) * -1);
+}
+.button.reverse {
+  --font-shadow: calc(var(--font-size) * -1);
+}
+.button.reverse:hover span {
+  --m: calc(var(--font-size));
+}
+
   
   html {
     box-sizing: border-box;
@@ -502,10 +520,11 @@ body {
   }
  
   .right_content{
+    position: absolute;
+    top: -43px;
+    left: 500px;
     width: 500px;
     height: 400px;
-    float: left;
-    margin-left: 500px;
   }
 
 }

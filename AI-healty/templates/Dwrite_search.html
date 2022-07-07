@@ -89,8 +89,8 @@
                     </ul>
                   </br>
                   <div class="oxbutton">
-                    <a class="button fast white">CHECK</a>
-                    <a class="button fast white">CENCEL</a>
+                    <a class="button fast white" style="cursor:pointer">CHECK</a>
+                    <a class="button fast white" style="cursor:pointer">CENCEL</a>
                     <!-- dribbble -->
                     <a class="dribbble" href="https://dribbble.com/shots/7441241-Button-Hover-Effects" target="_blank"><img
                         src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
@@ -123,6 +123,13 @@
             </footer>
         </div>
 </div>
+</div>
+<script>
+  $('.search-input').focus(function(){
+    $(this).parent().addClass('focus');
+  }).blur(function(){
+    $(this).parent().removeClass('focus');
+  })
+  </script>
 </body>
-
 </html>
