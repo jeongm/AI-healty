@@ -6,6 +6,7 @@ from db_models import db
 import os
 from db_models import User  # db_models.py에 있는 User 클래스
 
+
 #import argparse
 import io
 import os
@@ -82,7 +83,7 @@ def recommend():
 
 
 
-@app.route('/search-yolo', methods = ['GET','POST'])
+@app.route('/search', methods = ['GET','POST'])
 def search():
     if request.method == "POST":
         if "file" not in request.files:
