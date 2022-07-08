@@ -1,24 +1,26 @@
 from textwrap import indent
 from flask import Flask, session, render_template, redirect, request, url_for, flash
+from flask_login import LoginManager
 from werkzeug.utils import secure_filename
 from db_models import db
 import os
 from db_models import User  # db_models.py에 있는 User 클래스
 
-import argparse
+#import argparse
 import io
 import os
 from PIL import Image
 
 import torch
 
-import json
-
 
 app = Flask(__name__)
 app.secret_key = "abcdef"
 
-DETECTION_URL = "/v1/object-detection/yolov5s"
+#login_manager = LoginManager()
+#login_manager.init_app(app)
+
+#DETECTION_URL = "/v1/object-detection/yolov5s"
 
 @app.route('/')  # main페이지
 def index():
@@ -42,7 +44,7 @@ def join():
         user.weight = request.form.get('weight')
         db.session.add(user)
         db.session.commit()
-        flash("회원가입이 완료되었습니다.") # 왜 안됨???????
+        flash("회원가입이 완료되었습니다.")
         return redirect(url_for('index')) 
 
 @app.route('/signin', methods=['GET', 'POST']) # 로그인 - 원래 join이었는데 파일이름 임의로 바꿨음 헷갈려서
@@ -80,10 +82,50 @@ def recommend():
 
 
 
-@app.route('/search', methods = ['GET','POST'])
+@app.route('/search-yolo', methods = ['GET','POST'])
 def search():
-    return render_template('write-yolo.html')
+    if request.method == "POST":
+        if "file" not in request.files:
+            return redirect(request.url)
+        file = request.files["file"]
+        if not file:
+            return
 
+        img_bytes = file.read()
+        img = Image.open(io.BytesIO(img_bytes))
+        results = model(img, size=640)
+
+        #dataframe으로 가져옴
+        data = results.pandas().xyxy[0]["name"]
+        
+        return render_template('search-yolo.html',data = data)
+
+    return render_template("search-yolo.html")
+
+
+
+
+
+
+@app.route('/write', methods = ['GET', 'POST']) # 업로드된 파일은 실제 최종 위치에 저장되기 전에 먼저 서버의 임시 위치에 저장됨
+def write(): # 저장 작업 수행, root 폴더에 저장됨
+    if request.method == "POST":
+        if "file" not in request.files:
+            return redirect(request.url)
+        file = request.files["file"]
+        if not file:
+            return
+
+        img_bytes = file.read()
+        img = Image.open(io.BytesIO(img_bytes))
+        results = model(img, size=640)
+
+        #dataframe으로 가져옴
+        data = results.pandas().xyxy[0]["name"]
+        
+        return render_template('write-yolo.html',data = data)
+
+    return render_template("write-yolo.html")
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
@@ -97,15 +139,8 @@ def predict():
         img_bytes = file.read()
         img = Image.open(io.BytesIO(img_bytes))
         results = model(img, size=640)
-
-        # for debugging
-        #data = results.pandas().xyxy[0].to_json(orient="records")
-        #data = results.pandas().xyxy[0].to_json(orient="records")
-        #return data
-        #results = [ e["name"] for e in json.loads(data) ]
         
         #return results
-        
         
         # 이미지 bounding box img 출력 -> 주석처리할것
         results.render()  # updates results.imgs with boxes and labels
@@ -113,20 +148,8 @@ def predict():
             img_base64 = Image.fromarray(img)
             img_base64.save("static/image0.jpg", format="JPEG")
         return redirect("static/image0.jpg")
-        
 
     return render_template("write-yolo.html")
-
-
-
-@app.route('/test', methods = ['GET', 'POST']) # 업로드된 파일은 실제 최종 위치에 저장되기 전에 먼저 서버의 임시 위치에 저장됨
-def file_upload(): # 저장 작업 수행, root 폴더에 저장됨
-    if request.method == 'POST':
-        f = request.files['file'] # html 파일에서 name이 file인 친구 데려옴
-        f.save(secure_filename(f.filename))
-        return 'file uploaded sucessfully'
-    else:
-        return render_template('yolov5.html')
 
 
 
@@ -147,9 +170,14 @@ if __name__ == '__main__':
     #args = parser.parse_args()
     
     # yolo
-    
+    '''
     model = torch.hub.load(
         "ultralytics/yolov5", "yolov5s", pretrained=True, force_reload=True, autoshape=True
+    )  # force_reload = recache latest code
+    model.eval()
+    '''
+    model = torch.hub.load(
+        'yolov5', 'custom', path='best.pt', source='local', force_reload=True, autoshape=True
     )  # force_reload = recache latest code
     model.eval()
     
@@ -165,5 +193,6 @@ if __name__ == '__main__':
 
 
 # yolov5 모델 적용
+# https://github.com/ultralytics/yolov5/issues/36
 # https://github.com/ultralytics/yolov5/issues/36
 # https://cdnjs.com/libraries/font-awesome

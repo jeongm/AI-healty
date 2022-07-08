@@ -34,7 +34,7 @@
 .header__gnb ul {
     margin-top: -80px;
     text-align: right;
-    margin-right: 50px;
+    margin-right: 60px;
 }
 
 .header__gnb ul li {
@@ -45,12 +45,7 @@
     display: block;
     font: bold 14px 'arial';
     color: #999;
-    margin: 0px 16px;
     letter-spacing: 1px;
-}
-
-.h6 {
-    margin: auto 0;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
@@ -202,14 +197,31 @@ nav .start-contact, a:nth-child(7):hover~.animation{
     transform: rotate(45deg); 
 }
 
-
-
 .content_up{
     position: relative;
     overflow: hidden;   
-    width: 1920px;                                                               
-    height: 700px;
+    width: 1900px;                                                               
+    height: 1500px;
     background-size: cover;
+}
+
+.day {
+    text-align: center;
+    font-size: large;
+}
+
+.meal {
+    text-align: center;
+    font-size: large;
+}
+
+.morning {
+    padding-top: 70px;
+    padding-bottom: 80px;
+}
+
+.lunch {
+    padding-bottom: 80px;
 }
 
 .footer-basic {

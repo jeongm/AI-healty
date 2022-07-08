@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <div id="warp">
+
     <body>
-        <header class="header"> 
+        <header class="header">
             <div class="header__logo">
                 <a href="#">
                     <h1><img src="../static/images/logo.png" width="450px" , height="130px"></h1>
@@ -20,34 +21,51 @@
             </div>
             <div class="header__gnb">
                 <ul>
-                    <li><a href="{{ url_for('recommend') }}">RECOMMEND</a></li>
                     <li><a href="{{ url_for('daywrite') }}">WRITE</a></li>
-                    <li><a href="#">RECORD</a></li>
-                    <li><a href="{{ url_for('signout') }}">SIGN OUT</a></li>
                     <li><a href="{{ url_for('search') }}">SEARCH</a></li>
-                    <li><a href="#"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+                    <li><a href="{{ url_for('signout') }}">SIGN OUT</a></li>
+                    <li><a href="#" style="width:70px"><img src="../static/images/user.png" width="35px" ,
+                                height="35px"></a></li>
                 </ul>
             </div>
         </header>
         <div class="content_up">
+            <div class="day">
+                <br>
+                <br>
+                <h5>Saturday, 11 June 2022</h5>
+            </div>
             <div class="menu_bar">
-                <div class="left-arrow">
-                    <span></span>
-                </div>
                 <nav>
-                    <a href="#">SU</a>
-                    <a href="#">MO</a>
-                    <a href="#">TU</a>
-                    <a href="#">WE</a>
-                    <a href="#">TH</a>
-                    <a href="#">FR</a>
-                    <a href="#">SA</a>
+                    <a href="Dwirte_SU.html">SU</a>
+                    <a href="Dwirte_MO.html">MO</a>
+                    <a href="Dwirte_TU.html">TU</a>
+                    <a href="Dwirte_WE.html">WE</a>
+                    <a href="Dwirte_TH.html">TH</a>
+                    <a href="Dwirte_FR.html">FR</a>
+                    <a href="Dwirte_SA.html">SA</a>
                     <div class="animation start-home"></div>
                 </nav>
-                <div class="right-arrow">
-                    <span></span>
+            </div>
+            <div class="meal">
+                <div class="morning">
+                    <br>
+                    <h4>MORNING</h4>
+                    <br>
+                    <img src="../static/images/meal.PNG" width="700px" , height="250px">
                 </div>
-            <h6>Saturday, 11 June 2022</h6>
+                <div class="lunch">
+                    <br>
+                    <h4>LUNCH</h4>
+                    <br>
+                    <img src="../static/images/meal.PNG" width="700px" , height="250px">
+                </div>
+                <div class="dinner">
+                    <br>
+                    <h4>DINNER</h4>
+                    <br>
+                    <img src="../static/images/meal.PNG" width="700px" , height="250px">
+                </div>
             </div>
         </div>
         <div class="footer-basic">

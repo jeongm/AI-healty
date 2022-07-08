@@ -27,12 +27,10 @@
         </div>
         <div class="header__gnb">
             <ul>
-                <li><a href="#">RECOMMEND</a></li><!-- 여기부터-->
-                <li><a href="#">WRITE</a></li>
-                <li><a href="#">RECORD</a></li><!--여기까지 지워도 될 듯 -->
+                <li><a href="{{ url_for('search') }}">SEARCH</a></li>
                 <li><a href="{{ url_for('signin') }}">SIGN IN</a></li>
-                <li><a href="#">SEARCH</a></li>
-                <li><a href="#"><img src="../static/images/user.png" width="35px", height="35px"></a></li>
+           
+         
             </ul>   
         </div>
     </header>
