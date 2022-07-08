@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request
-from flask_migrate import Migrate 
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, session, render_template, redirect, request, url_for
+from flaskext.mysql import MySQL
 
 import config
 
+mysql = MySQL()
 app = Flask(__name__)
 
-db = SQLAlchemy()
-migrate = Migrate(app, db)
+
+
 
 @app.route('/')
 def main_user():
