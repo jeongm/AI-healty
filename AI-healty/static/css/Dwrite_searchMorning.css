@@ -204,15 +204,11 @@ nav .start-contact, a:nth-child(7):hover~.animation{
 
 .morning {
     padding-top: 70px;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
 }
 
 .lunch {
-    margin-bottom: 70px;
-}
-
-.dinner {
-  margin-bottom: 70px;
+    padding-bottom: 80px;
 }
 
 .footer-basic {

@@ -363,6 +363,7 @@ App
 
 .button.fast {
   --duration: .32s;
+  text-align: center;
 }
 
 .button {
