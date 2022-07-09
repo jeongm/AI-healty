@@ -170,7 +170,7 @@ nav .start-contact, a:nth-child(7):hover~.animation{
 .left-arrow span::after {
     position: absolute;
     top: 20px;
-    left: 580px;
+    left: 570px;
     display: inline-block;
     content: '';
     width: 15px; 
@@ -187,7 +187,7 @@ nav .start-contact, a:nth-child(7):hover~.animation{
 .right-arrow span::after {
     position: absolute;
     top: -30px;
-    left: 1325px;
+    left: 1320px;
     display: inline-block;
     content: '';
     width: 15px; 

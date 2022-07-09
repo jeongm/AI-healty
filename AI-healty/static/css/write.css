@@ -522,10 +522,61 @@ App
  
   .right_content{
     position: absolute;
-    top: -43px;
+    top: -20px;
     left: 500px;
     width: 500px;
     height: 400px;
   }
+
+  fieldset{
+    text-align: center;
+  }
+
+  .btn1{
+    float: left;
+    width:500px;
+    height:50px;
+    margin-top: 30px;
+    margin-left:120px;
+    }
+    .button3{ 
+    color:black;
+    padding:10px 30px;
+    border:1.5px solid gray;
+    outline:none;
+    font-size:15px;
+    font-weight:400;
+    transition:all .1s linear;
+    border-radius: 100px;
+    background: white;
+    margin-right: 30px;
+    }
+    .button3:active{
+    box-shadow:none;
+    -moz-transform:translate3d(-6px,6px,0);
+    -ms-transform:translate3d(-6px,6px,0);
+    -webkit-transform:translate3d(-6px,6px,0);
+    transform:translate3d(-6px,6px,0)
+    }
+    .button4{
+      color:black;
+      padding:10px 30px;
+      border:1.5px solid gray;
+      outline:none;
+      font-size:15px;
+      font-weight:400;
+      transition:all .1s linear;
+      border-radius: 100px;
+      background: white;
+      margin-right: 30px;
+    }
+    .button4:active{
+    box-shadow:none;
+    -moz-transform:translate3d(-6px,6px,0);
+    -ms-transform:translate3d(-6px,6px,0);
+    -webkit-transform:translate3d(-6px,6px,0);
+    transform:translate3d(-6px,6px,0)
+    }
+    
 
 }

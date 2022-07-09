@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Food Table</title>
@@ -9,22 +10,67 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<script>
+  $('.search-input').focus(function () {
+    $(this).parent().addClass('focus');
+  }).blur(function () {
+    $(this).parent().removeClass('focus');
+  })
+</script>
+
+<!-- 이미지검색 스크립트 -->
+<script type="text/javascript">
+  function getShow() {
+    document.getElementById("img-box").style.display = "";
+  }
+  function getHide() {
+    document.getElementById("img-box").style.display = "none";
+  }
+  $('#inputfile').bind('change', function () {
+    let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
+    if (fileSize > 1) {
+      $("#inputfile").val(null);
+      alert('file is too big. images more than 1MB are not allowed')
+      return
+    }
+
+    let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+    if ($.inArray(ext, ['jpg', 'jpeg']) == -1) {
+      $("#inputfile").val(null);
+      alert('only jpeg/jpg files are allowed!');
+    }
+  });
+</script>
+<SCRIPT language="javaScript">
+  function check_onclick() {
+    for (var i = 0; i < document.frm1.length; i++) {
+      document.frm1.elements[i].checked = true;
+    }
+  }
+
+  function clear_onclick() {
+    for (var i = 0; i < document.frm1.length; i++) {
+      document.frm1.elements[i].checked = false;
+    }
+  }
+</SCRIPT>
+
 <body>
   <header class="header">
     <div class="header__logo">
-        <a href="#">
-            <h1><img src="../static/images/logo.png" width="450px", height="130px"></h1>
-        </a>
+      <a href="#">
+        <h1><img src="../static/images/logo.png" width="450px" , height="130px"></h1>
+      </a>
     </div>
     <div class="header__gnb">
-        <ul>
-            <li><a href="#">WRITE</a></li>
-            <li><a href="#">SEARCH</a></li>
-            <li><a href="#">SIGN OUT</a></li>
-            <li><a href="#"><img src="../static/images/user.png" width="35px", height="35px"></a></li>
-        </ul>   
+      <ul>
+        <li><a href="#">WRITE</a></li>
+        <li><a href="#">SEARCH</a></li>
+        <li><a href="#">SIGN OUT</a></li>
+        <li><a href="#"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+      </ul>
     </div>
-</header>
+  </header>
   <div class="content">
     <div class="search-div">
       <form class="search-form">
@@ -36,7 +82,7 @@
         </button>
         <div class="search-option">
           <div>
-            <input name="type" type="radio" value="type-images" id="type-images">
+            <input name="type" type="button" value="type-images" id="type-images" onclick="getShow()">
             <label for="type-images">
               <svg class="edit-pen-title">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#images"></use>
@@ -57,22 +103,36 @@
           d="M 2 5 L 2 6 L 2 26 L 2 27 L 3 27 L 29 27 L 30 27 L 30 26 L 30 6 L 30 5 L 29 5 L 3 5 L 2 5 z M 4 7 L 28 7 L 28 20.90625 L 22.71875 15.59375 L 22 14.875 L 21.28125 15.59375 L 17.46875 19.40625 L 11.71875 13.59375 L 11 12.875 L 10.28125 13.59375 L 4 19.875 L 4 7 z M 24 9 C 22.895431 9 22 9.8954305 22 11 C 22 12.104569 22.895431 13 24 13 C 25.104569 13 26 12.104569 26 11 C 26 9.8954305 25.104569 9 24 9 z M 11 15.71875 L 20.1875 25 L 4 25 L 4 22.71875 L 11 15.71875 z M 22 17.71875 L 28 23.71875 L 28 25 L 23.03125 25 L 18.875 20.8125 L 22 17.71875 z" />
       </symbol>
     </svg>
-    <ul class="list-food">
-      </br>
-      <li class="list-food-item"><input type="checkbox"> 크림 파스타</a></li>
-      <li class="list-food-item"><input type="checkbox"> 오일 파스타</a></li>
-      <li class="list-food-item"><input type="checkbox"> 로제 파스타</a></li>
-      <li class="list-food-item"><input type="checkbox"> 토마토 파스타</a></li>
-      <li class="list-food-item"><input type="checkbox"> 알리오 올리오</a></li>
-    </ul>
+    <div id="img-box" class="img-box"
+      style="display:none; width: 400px; background-color:white; margin: 0 auto; border:1px solid rgba(0,0,0,.2);z-index: 10; position:relative;">
+      <div id="img-head" style="padding:5px; border-bottom:1px solid rgba(0,0,0,.2);text-align: left;">
+        <div id="img-exp" style="display:inline-block;">이미지로 검색</div>
+        <div id="img-close" class="fa-solid fa-xmark" style="float:right;padding:5px 5px 5px -10px;cursor:pointer;"
+          onclick="getHide()">X</div>
+      </div>
+      <div id="img-upload" style="padding:5px;">
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file id="inputfile">
+          <input type=submit value="search" style="float:right;">
+        </form>
+      </div>
+    </div>
     </br>
-    <div class="oxbutton">
-      <a class="button fast white" style="cursor:pointer">CHECK</a>
-      <a class="button fast white" style="cursor:pointer">CENCEL</a>
-      <!-- dribbble -->
-      <a class="dribbble" href="https://dribbble.com/shots/7441241-Button-Hover-Effects" target="_blank"><img
-          src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
-          alt=""></a>
+    <div>
+      <form name=frm1>
+        <fieldset>
+        <input type='checkbox' name=chck1 value="chck1"> 크림 파스타<br>
+        <input type='checkbox' name=chck2 value="chck2"> 로제 파스타<br>
+        <input type='checkbox' name=chck3 value="chck3"> 오일 파스타<br>
+        <input type='checkbox' name=chck4 value="chck4"> 토마토 파스타<br>
+        <input type='checkbox' name=chck4 value="chck5"> 알리오 올리오<br>
+      </fieldset>
+        <div class="btn1">
+          <input class="button3" type="button" value="SUBMIT">
+          <input class="button4" type="button" value='CANCEL' onclick=clear_onclick()>
+        </div>
+     
+      </form>
     </div>
     <div class="right_content">
       <div class="policy-container">
@@ -104,13 +164,8 @@
         </div>
       </div>
     </div>
+
   </div>
-  <script>
-    $('.search-input').focus(function(){
-      $(this).parent().addClass('focus');
-    }).blur(function(){
-      $(this).parent().removeClass('focus');
-    })
-    </script>
 </body>
+
 </html>

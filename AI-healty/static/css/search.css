@@ -20,6 +20,11 @@ body {
 /*--------------------
 App
 --------------------*/
+
+#img-close {
+border: 1px solid red;
+}
+
 .search-form {
   position: relative;
   top: 50%;
