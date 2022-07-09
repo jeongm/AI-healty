@@ -201,7 +201,7 @@ nav .start-contact, a:nth-child(7):hover~.animation{
     position: relative;
     overflow: hidden;   
     width: 1900px;                                                               
-    height: 1500px;
+    height: 2850px;
     background-size: cover;
 }
 
@@ -217,11 +217,11 @@ nav .start-contact, a:nth-child(7):hover~.animation{
 
 .morning {
     padding-top: 70px;
-    padding-bottom: 80px;
+    padding-bottom: 70px;
 }
 
 .lunch {
-    padding-bottom: 80px;
+    padding-bottom: 70px;
 }
 
 .footer-basic {
@@ -271,6 +271,56 @@ nav .start-contact, a:nth-child(7):hover~.animation{
 .main .ftcl {
     color: white;
 }
+
+.card-columns {
+    width:1500px;
+    margin:0 auto;
+    margin-left: 200px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.policy-table {
+    color: grey;
+    text-align: center;
+  }
+  
+  .headings, .policy {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    padding: 1em;
+  }
+  
+  .heading {
+    flex-basis: 33.333%;
+    font-weight: bold;
+  }
+  
+  .policy {
+    border-radius: 2em;
+    background-color: white;
+    margin-bottom: 20px;
+    -moz-box-shadow: 0 0 3px grey;
+    -webkit-box-shadow: 0 0 3px grey;
+    box-shadow: 0 0 5px grey;
+  }
+  
+  span {
+    flex-basis: 33.333%;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #4c4c4c;
+  }
+
 
 
 
