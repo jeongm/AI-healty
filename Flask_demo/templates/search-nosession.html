@@ -59,16 +59,14 @@
 <body>
   <header class="header">
     <div class="header__logo">
-      <a href="{{url_for('daywrite')}}">
+      <a href="{{url_for('index')}}">
         <h1><img src="../static/images/logo.png" width="450px" , height="130px"></h1>
       </a>
     </div>
     <div class="header__gnb">
       <ul>
-        <li><a href="{{url_for('daywrite')}}">WRITE</a></li>
-        <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
         <li><a href="{{url_for('search')}}">SEARCH</a></li>
-        <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
+        <li><a href="{{url_for('signin')}}">SIGN IN</a></li>
         <li><a href="#"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
       </ul>
     </div>

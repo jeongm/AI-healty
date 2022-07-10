@@ -72,6 +72,7 @@ def signout():
 @app.route('/daywrite') # 식단기록, Daywright, 로그인하면 일로와야함
 def daywrite():
     return render_template('Dwrite-copy.html')
+    #return render_template('Dwrite-copy.html')
 
 @app.route('/recommend') # 식단추천페이지
 def recommend():
@@ -105,25 +106,27 @@ def write(): # 저장 작업 수행, root 폴더에 저장됨
 
 @app.route('/search', methods = ['GET','POST'])
 def search():
-    return render_template("search-copy.html")
+    if "userid" in session:
+        return render_template("search-copy.html")
+    else:
+        return render_template("search-nosession.html")
 
-
-@app.route('/search-txt', methods = ['GET','POST'])
+@app.route('/searchtxt', methods = ['GET','POST'])
 def searchtxt():
     if request.method == "POST":
         data = request.form["text-search"]
         food = Nutrition.query.filter_by(foodname=data).all()
-        return render_template('search-copy.html',food = food, se=data)
+        if not food:
+            return render_template('search-copy.html',data = 'none')
+        return render_template('search-copy.html',food = food)
     return render_template("search-copy.html")
 
-
-
-@app.route('/foodinfo', methods = ['GET','POST'])
-def foodinfo():
+@app.route('/searchimg', methods = ['GET','POST'])
+def searchimg():
     if request.method == "POST":
         data = request.form['chck']
         food = Nutrition.query.filter_by(foodname=data).all()
-        return render_template('search-copy.html',food = food, se=data)
+        return render_template('search-copy.html',food = food)
     return render_template("search-copy.html")
 
 @app.route("/predict", methods=['GET','POST'])
