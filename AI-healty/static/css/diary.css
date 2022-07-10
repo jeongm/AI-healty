@@ -71,6 +71,7 @@ time, mark, audio, video {
   letter-spacing: 1px;
 }
 
+
 label {
   display: block;
   font: 1rem 'Fira Sans', sans-serif;
@@ -149,7 +150,7 @@ body {
 
 .content_up{
   position: relative;
-  width: 1920px;                                                               
+  width: 1900px;                                                               
   height: 700px;
   background-size: cover;
 }
@@ -166,7 +167,40 @@ body {
 
 .morning {
   padding-top: 50px;
-  padding-bottom: 200px;
+}
+
+.left-arrow span {
+  position: relative;
+}
+
+.left-arrow span::after {
+  position: absolute;
+  top: 370px;
+  left: -780px;
+  display: inline-block;
+  content: '';
+  width: 15px; 
+  height: 15px;
+  border-top: 3px solid #999;
+  border-right: 3px solid #999;
+  transform: rotate(225deg); 
+}
+
+.right-arrow span {
+  position: relative;
+}
+
+.right-arrow span::after {
+  position: absolute;
+  top: -350px;
+  left: 760px;
+  display: inline-block;
+  content: '';
+  width: 15px; 
+  height: 15px;
+  border-top: 3px solid #999;
+  border-right: 3px solid #999;
+  transform: rotate(45deg); 
 }
 
 .footer-basic {
@@ -226,19 +260,9 @@ Body
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
-  margin: 0;
-  background: #DEDEDE;
-  color: #5a6674;
-  font-size: 13px;
-  font-family: "Roboto", sans-serif;
-  overflow: hidden;
-}
-
 .datebox {
-  margin-left: 900px;
-  margin-top: 40px;
+  margin-left: 895px;
+  margin-top: 70px;
 }
 
 .mealtime {
@@ -575,6 +599,55 @@ App
     transform:translate3d(-6px,6px,0)
     }
 
+    .card-columns {
+      width:1500px;
+      margin:0 auto;
+      margin-left: 200px;
+  }
+  
+  .card-title {
+    text-align: center;
+  }
+  
+  .policy-table {
+      color: grey;
+      text-align: center;
+    }
+    
+    .headings, .policy {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      margin-bottom: 1em;
+      padding: 1em;
+    }
+    
+    .heading {
+      flex-basis: 33.333%;
+      font-weight: bold;
+    }
+    
+    .policy {
+      border-radius: 2em;
+      background-color: white;
+      margin-bottom: 20px;
+      -moz-box-shadow: 0 0 3px grey;
+      -webkit-box-shadow: 0 0 3px grey;
+      box-shadow: 0 0 5px grey;
+    }
+    
+    span {
+      flex-basis: 33.333%;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #4c4c4c;
+    }
+  
 
  
   
