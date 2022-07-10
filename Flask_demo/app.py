@@ -1,10 +1,10 @@
-from textwrap import indent
+# -*- coding: utf-8 -*-
 from flask import Flask, session, render_template, redirect, request, url_for, flash
 from flask_login import LoginManager
 from werkzeug.utils import secure_filename
 from db_models import db
 import os
-from db_models import User  # db_models.py에 있는 User 클래스
+from db_models import User, Nutrition  # db_models.py에 있는 User 클래스
 
 
 #import argparse
@@ -18,20 +18,19 @@ import torch
 app = Flask(__name__)
 app.secret_key = "abcdef"
 
+cls_dic = {'0': '와플', '1': '케이크', '2': '핫도그', '3': '시리얼바', '4': '바나나', '5': '사과', '6': '수박', '7': '아보카도', '8': '오렌지', '9': '참외', '10': '파인애플', '11': '포도', '12': '키위', '13': '고구마', '14': '시리얼', '15': '팝콘', '16': '두부', '17': '방울토마토', '18': '상추', '19': '오이', '20': '파프리카', '21': '풋고추', '22': '조미김', '23': '삶은달걀', '24': '닭가슴살', '25': '훈제오리', '26': '훈제치킨', '27': '모듬회', '28': '생선회', '29': '전복', '30': '새우', '31': '베이컨', '32': '소시지', '33': '햄', '34': '소시지', '35': '소시지', '36': '밥', '37': '비빔밥', '38': '알밥', '39': '육회비빔밥', '40': '김치볶음밥', '41': '달걀볶음밥', '42': '볶음밥', '43': '새우볶음밥', '44': '카레라이스', '45': '햄볶음밥', '46': '김밥', '47': '주먹밥', '48': '초밥', '49': '연어롤', '50': '장어초밥', '51': '초밥', '52': '순대국밥', '53': '오므라이스', '54': '리조또', '55': '피자', '56': '피자', '57': '피자', '58': '피자', '59': '피자', '60': '피자', '61': '샌드위치', '62': '샌드위치', '63': '샌드위치', '64': '샌드위치', '65': '국수', '66': '비빔국수', '67': '쌀국수', '68': '냉면', '69': '비빔냉면', '70': '라면', '71': '컵라면', '72': '까르보나라', '73': '봉골레파스타', '74': '스파게티', '75': '크림파스타', '76': '파스타', '77': '우동', '78': '나가사끼짬뽕', '79': '라멘', '80': '짜장면', '81': '짬뽕', '82': '만두', '83': '떡만두국,고기만두', '84': '만두', '85': '만두', '86': '미소장국', '87': '갈비탕', '88': '삼계탕', '89': '어묵국', '90': '해장국', '91': '미역국', '92': '김치찌개', '93': '된장찌개', '94': '어묵국', '95': '추어탕', '96': '해물탕', '97': '부대찌개', '98': '순두부찌개', '99': '아귀찜', '100': '갈비찜', '101': '닭찜(찜닭)', '102': '돼지갈비찜', '103': '보쌈', '104': '순대', '105': '순살찜닭', '106': '달걀찜', '107': '고구마', '108': '고등어구이', '109': '고등어구이', '110': '새우구이', '111': '생선구이', '112': '연어구이', '113': '장어구이', '114': '갈비구이', '115': '닭가슴살', '116': '돼지고기고추장불고기', '117': '삼겹살', '118': '스테이크', '119': '오리구이', '120': '치킨스테이크', '121': '함박스테이크', '122': '고구마', '123': '타코야키', '124': '떡갈비', '125': '달걀말이', '126': '달걀후라이', '127': '부침개', '128': '스크램블드에그', '129': '파전', '130': '떡볶이', '131': '잡채', '132': '감자채볶음', '133': '쭈꾸미볶음', '134': '닭갈비', '135': '제육볶음', '136': '쇠고기볶음', '137': '족발', '138': '새우튀김', '139': '닭강정', '140': '순살치킨', '141': '양념치킨', '142': '왕돈가스', '143': '치킨', '144': '치킨너겟', '145': '치킨', '146': '파닭', '147': '핫윙', '148': '후라이드치킨', '149': '후라이드치킨,날개', '150': '후라이드치킨,다리', '151': '감자튀김', '152': '회오리감자', '153': '치즈스틱', '154': '모듬튀김', '155': '치즈볼', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '157': '무김치', '158': '육회', '159': '참치통조림'}
 #login_manager = LoginManager()
 #login_manager.init_app(app)
 
-#DETECTION_URL = "/v1/object-detection/yolov5s"
-
 @app.route('/')  # main페이지
 def index():
-    return render_template('index2.html')
+    return render_template('index2-copy.html')
 
 # GET => 페이지가 나오도록 요청. POST = 버튼을 눌렀을 때 데이터를 가지고오는 요청, 요청정보를 확인하기 위해 request 모듈 사용
 @app.route('/join',methods = ['GET','POST']) # 회원가입 - 원래 sign이었음, insert 해야 함
 def join():
     if request.method == 'GET':
-        return render_template('join.html')
+        return render_template('join-copy.html')
     else : # form 데이터 가져옴, POST, post는 http요청 메시지에서 body에 데이터를 담아 보냄
         # db전송
         user = User()
@@ -72,41 +71,11 @@ def signout():
 
 @app.route('/daywrite') # 식단기록, Daywright, 로그인하면 일로와야함
 def daywrite():
-    return render_template('Dwrite.html')
+    return render_template('Dwrite-copy.html')
 
 @app.route('/recommend') # 식단추천페이지
 def recommend():
-    return render_template('result.html')
-
-
-
-
-
-
-@app.route('/search', methods = ['GET','POST'])
-def search():
-    if request.method == "POST":
-        if "file" not in request.files:
-            return redirect(request.url)
-        file = request.files["file"]
-        if not file:
-            return
-
-        img_bytes = file.read()
-        img = Image.open(io.BytesIO(img_bytes))
-        results = model(img, size=640)
-
-        #dataframe으로 가져옴
-        data = results.pandas().xyxy[0]["name"]
-        
-        return render_template('search-yolo.html',data = data)
-
-    return render_template("search-yolo.html")
-
-
-
-
-
+    return render_template('recommend.html')
 
 @app.route('/write', methods = ['GET', 'POST']) # 업로드된 파일은 실제 최종 위치에 저장되기 전에 먼저 서버의 임시 위치에 저장됨
 def write(): # 저장 작업 수행, root 폴더에 저장됨
@@ -123,12 +92,41 @@ def write(): # 저장 작업 수행, root 폴더에 저장됨
 
         #dataframe으로 가져옴
         data = results.pandas().xyxy[0]["name"]
+        data_list = data.tolist()
+        data_value = []
+        for key, value in cls_dic.items():
+            if key in data_list:
+                data_value.append(value)
         
         return render_template('write-yolo.html',data = data)
 
     return render_template("write-yolo.html")
 
-@app.route("/predict", methods=["GET", "POST"])
+
+@app.route('/search', methods = ['GET','POST'])
+def search():
+    return render_template("search-copy.html")
+
+
+@app.route('/search-txt', methods = ['GET','POST'])
+def searchtxt():
+    if request.method == "POST":
+        data = request.form["text-search"]
+        food = Nutrition.query.filter_by(foodname=data).all()
+        return render_template('search-copy.html',food = food, se=data)
+    return render_template("search-copy.html")
+
+
+
+@app.route('/foodinfo', methods = ['GET','POST'])
+def foodinfo():
+    if request.method == "POST":
+        data = request.form['chck']
+        food = Nutrition.query.filter_by(foodname=data).all()
+        return render_template('search-copy.html',food = food, se=data)
+    return render_template("search-copy.html")
+
+@app.route("/predict", methods=['GET','POST'])
 def predict():
     if request.method == "POST":
         if "file" not in request.files:
@@ -137,20 +135,22 @@ def predict():
         if not file:
             return
 
-        img_bytes = file.read()
+        img_bytes = file.read() # yolo detction
         img = Image.open(io.BytesIO(img_bytes))
         results = model(img, size=640)
-        
-        #return results
-        
-        # 이미지 bounding box img 출력 -> 주석처리할것
-        results.render()  # updates results.imgs with boxes and labels
-        for img in results.imgs:
-            img_base64 = Image.fromarray(img)
-            img_base64.save("static/image0.jpg", format="JPEG")
-        return redirect("static/image0.jpg")
 
-    return render_template("write-yolo.html")
+        #dataframe으로 가져옴
+        data = results.pandas().xyxy[0]["name"]
+        data_list = data.tolist()
+        data_value = []
+        for key, value in cls_dic.items():
+            if key in data_list:
+                data_value.append(value)
+        if not data_value:
+            return render_template('search-copy.html',data = 'none')
+        return render_template('search-copy.html',data = data_value)
+
+    return render_template("search-copy.html")
 
 
 
@@ -178,7 +178,7 @@ if __name__ == '__main__':
     model.eval()
     '''
     model = torch.hub.load(
-        'yolov5', 'custom', path='best.pt', source='local', force_reload=True, autoshape=True
+        'yolov5', 'custom', path='exp850epoch.pt', source='local', force_reload=True, autoshape=True
     )  # force_reload = recache latest code
     model.eval()
     
@@ -197,3 +197,5 @@ if __name__ == '__main__':
 # https://github.com/ultralytics/yolov5/issues/36
 # https://github.com/ultralytics/yolov5/issues/36
 # https://cdnjs.com/libraries/font-awesome
+# query 관련
+# https://sejin0134.tistory.com/54

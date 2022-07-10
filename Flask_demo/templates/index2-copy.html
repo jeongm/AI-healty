@@ -1,0 +1,63 @@
+{%with messages = get_flashed_messages()%} <!--flash 메시지 사용하기위해 보통 html 가장 윗부분에 작성-->
+    {%if messages %}
+        <script>
+            alert("{{messages[-1]}}");
+        </script>
+    {%endif%}
+{%endwith%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Food Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/index2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<div id = "warp">
+<body>
+    <header class="header">
+        <div class="header__logo">
+            <a href="#">
+                <h1><img src="../static/images/logo.png" width="450px", height="130px"></h1>
+            </a>
+        </div>
+        <div class="header__gnb">
+            <ul>
+                <li><a href="{{ url_for('search') }}">SEARCH</a></li>
+                <li><a href="{{ url_for('signin') }}">SIGN IN</a></li>
+           
+         
+            </ul>   
+        </div>
+    </header>
+        <div class = "content_up">
+            <img src="../static/images/tomato.jpg">
+            <div class = "main">
+                <div class = "hero">
+                    <h2 class = "ftcl">DESIGN YOUR FOOD</h2>
+                    <p class = "ftcl">Subscribe Easy Youtube Channel to watch more videos,<br>press the bell icon to get latest updates.</p> 
+                </div>
+                <button class="w-btn-outline w-btn-green-outline" type="button" onclick="location.href='{{ url_for('join')}}'">
+                가입하기
+                </button>
+        </div>
+    </div>
+    <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Company Name © 2022</p>
+        </footer>
+    </div>
+</div>    
+</body>
+</html>
