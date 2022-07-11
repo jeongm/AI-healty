@@ -68,7 +68,7 @@ def signout():
 # 만들어야 하는 부분
 @app.route('/diary') # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
 def diary(): # db 불러오자
-    return render_template('Dwrite-copy.html')
+    return render_template('diary_morning.html')
     #return render_template('Dwrite-copy.html')
 
 # 안만듦
@@ -99,7 +99,7 @@ def write(): # 저장 작업 수행, root 폴더에 저장됨
 
 @app.route('/recommend') # 식단추천페이지- 경민
 def recommend():
-    return render_template('recommend.html')
+    return render_template('result.html')
 
 
 @app.route('/search', methods = ['GET','POST']) # search 기본페이지
