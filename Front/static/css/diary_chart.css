@@ -114,44 +114,10 @@ body {
   background: #2c3e50;
 }
 
-.left-arrow span {
-  position: relative;
-}
-
-.left-arrow span::after {
-  position: absolute;
-  top: 20px;
-  left: 570px;
-  display: inline-block;
-  content: '';
-  width: 15px; 
-  height: 15px;
-  border-top: 3px solid #999;
-  border-right: 3px solid #999;
-  transform: rotate(225deg); 
-}
-
-.right-arrow span {
-  position: relative;
-}
-
-.right-arrow span::after {
-  position: absolute;
-  top: -30px;
-  left: 1320px;
-  display: inline-block;
-  content: '';
-  width: 15px; 
-  height: 15px;
-  border-top: 3px solid #999;
-  border-right: 3px solid #999;
-  transform: rotate(45deg); 
-}
-
 .content_up{
   position: relative;
   width: 1900px;                                                               
-  height: 700px;
+  height: 1000px;
   background-size: cover;
 }
 
@@ -175,8 +141,8 @@ body {
 
 .left-arrow span::after {
   position: absolute;
-  top: 370px;
-  left: -780px;
+  top: 360px;
+  left: -200px;
   display: inline-block;
   content: '';
   width: 15px; 
@@ -192,8 +158,8 @@ body {
 
 .right-arrow span::after {
   position: absolute;
-  top: -350px;
-  left: 760px;
+  top: -335px;
+  left: 290px;
   display: inline-block;
   content: '';
   width: 15px; 
@@ -203,8 +169,46 @@ body {
   transform: rotate(45deg); 
 }
 
+.radar{
+  width: 350px;
+  height: 350px;
+  margin-left: 130px;
+}
+
+.radar_text {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.up_content{
+  width: 600px;
+  height: 400px;
+  border: 1px solid rgba(179,181,198,1);
+  border-radius: 2em;
+}
+
+.down_content{
+  width: 600px;
+  height: 400px;
+  float: left;
+  margin-top: 30px;
+}
+
+.left_content {
+  margin-left: 300px;
+  margin-top: 50px;
+  width:700px;
+  float:left
+}
+
+.right_content {
+  width:900px;
+  height: 800px;
+  float:right;
+}
+
 .footer-basic {
-  padding:50px 0;
+  padding: 50px 0;
   background-color:#ffffff;
   color:#4b4c4d;
 }
@@ -261,12 +265,12 @@ Body
 }
 
 .datebox {
-  margin-left: 895px;
+  margin-left: 930px;
   margin-top: 70px;
 }
 
 .mealtime {
-  margin-left: -10px;
+  margin-left: 70px;
   margin-bottom: 30px;
 }
 
@@ -600,9 +604,8 @@ App
     }
 
     .card-columns {
-      width:1500px;
-      margin:0 auto;
-      margin-left: 200px;
+      width:400px;
+      padding-left: 200px;
   }
   
   .card-title {
@@ -631,6 +634,8 @@ App
     }
     
     .policy {
+      height: 55px;
+      font-size: medium;
       border-radius: 2em;
       background-color: white;
       margin-bottom: 20px;
