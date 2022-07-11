@@ -239,11 +239,12 @@ body::before {
     width:150px;
     margin-left: 23px;
     margin-top: 23px;
+    
 }
 .pick_fv_food li a{
     display: block;
 }
-#circle_1{
+#check_img{
     display: none;
     position: absolute;
     width: 150px;
