@@ -230,15 +230,15 @@ body::before {
 
 .pick_fv_food{
     position: relative;
-    width: 590px;
+    width: 600px;
     margin: 0 auto;
-    height: 640px;
+    height: 620px;
     overflow: auto;
 }
 .pick_fv_food li{
     position: relative;
     float:left;
-    width:150px;
+    width:155px;
     margin-left: 30px;
     margin-top: 10px;
 }
@@ -248,6 +248,8 @@ body::before {
 
 .pick_fv_food form li p{
     text-align: center;
+    margin-left: 30px;
+    margin-top: 5px;
 }
 
 /* Customize the label (the container) */
@@ -256,11 +258,8 @@ body::before {
     position: relative;
     cursor: pointer;
     font-size: 17px;
-    width:120px;
+    width:160px;
     text-align: center;
-    margin: 0 auto;
-    margin-left:30px;
-    margin-top:10px;
   }
   /* Hide the browser's default checkbox */
   .circle_txt input {
@@ -274,8 +273,8 @@ body::before {
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 157px;
+    left: 35px;
     height: 20px;
     width: 20px;
     background-color: white;
