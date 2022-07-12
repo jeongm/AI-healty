@@ -15,19 +15,20 @@
 <body>
   <header class="header">
     <div class="header__logo">
-      <a href="{{url_for('diary')}}">
+      <a href="{{url_for('index')}}">
         <h1><img src="../static/images/logo.png" width="450px" , height="130px"></h1>
       </a>
     </div>
     <div class="header__gnb">
       <ul>
-        <li><a href="{{url_for('diary')}}">DIARY</a></li>
-        <li><a href="{{url_for('write')}}">WRITE</a></li>
-        <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
-        <li><a href="{{url_for('search')}}">SEARCH</a></li>
-        <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
-        <li><a href="#"><img src="../static/images/user.png" width="35px", height="35px"></a></li>
-    </ul>   
+        <ul>
+          <li><a href="{{url_for('diary')}}">DIARY</a></li>
+          <li><a href="{{url_for('write')}}">WRITE</a></li>
+          <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
+          <li><a href="{{url_for('search')}}">SEARCH</a></li>
+          <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
+          <li><a href="#" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+        </ul>
     </div>
   </header>
   <div id="warp">
@@ -228,7 +229,7 @@
   <div class="footer-basic">
     <footer>
       <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Home</a></li>
+        <li class="list-inline-item"><a href="{{url_for('index')}}">Home</a></li>
         <li class="list-inline-item"><a href="#">Services</a></li>
         <li class="list-inline-item"><a href="#">About</a></li>
         <li class="list-inline-item"><a href="#">Terms</a></li>
