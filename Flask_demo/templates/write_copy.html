@@ -102,9 +102,9 @@
         <br>
         <br>
         <div class="search-div">
-          <form class="search-form">
-            <input type="search" value="" placeholder="Search" class="search-input">
-            <button type="submit" class="search-button">
+          <form class="search-form" action="{{url_for('searchtxt')}}" method="post">
+            <input type="search" value="" placeholder="Search" class="search-input" name=text-search>
+            <button type="submit" class="search-button" >
               <svg class="submit-button">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
               </svg>
@@ -148,14 +148,21 @@
         </div>
         </br>
         <div>
-          <form name=frm1>
+          <form name=frm1 action="{{url_for('searchimg')}}" method="post">
             <fieldset>
-              <input type='checkbox' name=chck1 value="chck1"> 크림 파스타<br>
-              <input type='checkbox' name=chck2 value="chck2"> 로제 파스타<br>
-              <input type='checkbox' name=chck3 value="chck3"> 오일 파스타<br>
-              <input type='checkbox' name=chck4 value="chck4"> 토마토 파스타<br>
-              <input type='checkbox' name=chck4 value="chck5"> 알리오 올리오<br>
-            </fieldset>
+              {% if food != "" %}
+                {% for food in food %}
+                  <p>{{food.foodname}}</p>
+                {% endfor %}
+              {% endif %}
+              {% if data == 'none' %}
+                <p>검색 결과가 없습니다</p>
+              {% else %}
+                {% for name in data %}
+                  <input type='radio' name=chck value={{name}}>{{name}}<br>
+                {% endfor %}
+              {% endif %}
+          </fieldset>
             <div class="btn1">
               <input class="button3" type="button" value="SUBMIT">
               <input class="button4" type="button" value='CANCEL' onclick=clear_onclick()>

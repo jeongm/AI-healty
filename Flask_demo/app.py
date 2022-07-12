@@ -160,7 +160,7 @@ def predict():
 
 if __name__ == '__main__':
     basedir = os.path.abspath(os.path.dirname(__file__)) # database 경로를 절대경로로 설정
-    dbfile = os.path.join(basedir, 'db.dqlite') # 데이터베이스 이름과 경로
+    dbfile = os.path.join(basedir, 'test3.db') # 데이터베이스 이름과 경로
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + dbfile
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True # 사용자에게 원하는 정보를 전달완료했을 떄가 TEARDOWN, 그 순간마다 COMMIT을 하도록 함=db반영
     # 여러가지 쌓아져있던 동작들을 Commit을 해주어야 데이터베이스에 반영됨. 이러한 단위들을 트렌젝션 이라고 함
@@ -181,11 +181,12 @@ if __name__ == '__main__':
     )  # force_reload = recache latest code
     model.eval()
     '''
+    '''
     model = torch.hub.load(
         'yolov5', 'custom', path='exp8best.pt', source='local', force_reload=True, autoshape=True
     )  # force_reload = recache latest code
     model.eval()
-    
+    '''
     app.run(host='127.0.0.1', port=5000, debug=True)
     #app.run(host="0.0.0.0", port=args.port, debug=True)  # debug=True causes Restarting with stat
 
