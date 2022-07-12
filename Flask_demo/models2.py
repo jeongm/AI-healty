@@ -9,11 +9,9 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, backref
 
 
-engine = create_engine('sqlite:///:memory:', echo=True)
-Base = declarative_base()
-#db = SQLAlchemy(Base) # SQLALchemy를 사용해 데이터베이스 저장
+db = SQLAlchemy()
 
-class User(Base) : # user 테이블
+class User(db.Model) : # user 테이블
     __tablename__ = 'user' # table 이름
     user_seq = Column(Integer, primary_key=True)
     userid = Column(String(200), unique=True, nullable=True) # id는 email형식으로 받자
@@ -24,6 +22,7 @@ class User(Base) : # user 테이블
     sex = Column(String(2), nullable = False)
     height = Column(Float(150), nullable = False)
     weight = Column(Float(150),  nullable = False)
+    acti = Column(Integer,  nullable = False)
     field1 = Column(Float(150),  nullable = False)
     field2 = Column(Float(150),  nullable = False)
     field3 = Column(Float(150),  nullable = False)
@@ -45,7 +44,7 @@ class User(Base) : # user 테이블
     rate_user = relationship("AttainmentRate", order_by="AttainmentRate.user_id", backref="user")
 
     
-class Nutrition(Base) : # 음식 정보 테이블
+class Nutrition(db.Model) : # 음식 정보 테이블
     __tablename__ = 'nutrition' # table 이름
     food_seq = Column(Integer, primary_key=True) # food index와 같음
     foodname = Column(String(200), unique=True, nullable=True)
@@ -63,12 +62,17 @@ class Nutrition(Base) : # 음식 정보 테이블
     menu_Table = relationship("Menu", order_by="Menu.food_id", backref="menu_nut")
     
     
-class DietTable(Base) : # 음식 조합 테이블
+class DietTable(db.Model) : # 음식 조합 테이블
     __tablename__ = 'dietTable' # table 이름
     diet_seq = Column(Integer, primary_key=True)# food index와 같음
     food_index1 = Column(Integer, ForeignKey('nutrition.food_seq')) # 음식 정보 테이블의 인덱스와 관계설정 / 외래키
     food_index2 = Column(Integer, ForeignKey('nutrition.food_seq'))
     food_index3 = Column(Integer, ForeignKey('nutrition.food_seq'))
+    kcal = Column(Float(150), unique=True, nullable = False)
+    protein = Column(Float(150), nullable = False)
+    fat = Column(Float(150), nullable = False)
+    carbohydrate = Column(Float(150), nullable = False)
+    sodium = Column(Float(150),  nullable = False)
     field1 = Column(Float(150),  nullable = False)
     field2 = Column(Float(150),  nullable = False)
     field3 = Column(Float(150),  nullable = False)
@@ -91,7 +95,7 @@ class DietTable(Base) : # 음식 조합 테이블
     food_3 = relationship("Nutrition", backref=backref('diet_Table3', order_by=food_index3))
 
 
-class Menu(Base) : # 식단 정보 테이블
+class Menu(db.Model) : # 식단 정보 테이블
     __tablename__ = 'menu' # table 이름
     menu_seq = Column(Integer, primary_key=True) 
     user_id = Column(String(200), ForeignKey('user.userid'))
@@ -102,7 +106,7 @@ class Menu(Base) : # 식단 정보 테이블
     menu_nut = relationship("Nutrition", backref=backref('menu_Table', order_by=food_id))
 
     
-class AttainmentRate(Base) : # 달성률 테이블
+class AttainmentRate(db.Model) : # 달성률 테이블
     __tablename__ = 'rate' # table 이름
     rate_seq = Column(Integer, primary_key=True) 
     user_id = Column(String(200), ForeignKey('user.userid'))
