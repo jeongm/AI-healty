@@ -184,6 +184,40 @@ nav .start-contact, a:nth-child(7):hover~.animation{
     left: 600px;
 }
 
+.left-arrow span {
+  position: relative;
+}
+
+.left-arrow span::after {
+  position: absolute;
+  top: 20px;
+  left: 570px;
+  display: inline-block;
+  content: '';
+  width: 15px; 
+  height: 15px;
+  border-top: 3px solid #999;
+  border-right: 3px solid #999;
+  transform: rotate(225deg); 
+}
+
+.right-arrow span {
+  position: relative;
+}
+
+.right-arrow span::after {
+  position: absolute;
+  top: -30px;
+  left: 1320px;
+  display: inline-block;
+  content: '';
+  width: 15px; 
+  height: 15px;
+  border-top: 3px solid #999;
+  border-right: 3px solid #999;
+  transform: rotate(45deg); 
+}
+
 
 .content_up{
   position: relative;
