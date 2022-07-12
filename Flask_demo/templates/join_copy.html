@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Food Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/join.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+        let id = $('#id');
+        let pw = $('#pw');
+        let btn = $('#btn');
+    
+        $(btn).on('click', function () {
+            if ($(id).val() == "") {
+                $(id).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning');
+                }, 1500);
+            }
+            else if ($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning');
+                }, 1500);
+            }
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+                /*웹페이지 열었을 때*/
+                $(".circle_img").show();
+                $("#check_img").hide();
+     
+                /*img1을 클릭했을 때 img2를 보여줌*/
+                $(".circle_img").click(function(){
+                    $(".circle_img").hide();
+                    $("#check_img").show();
+                });
+     
+                /*img2를 클릭했을 때 img1을 보여줌*/
+                $("#check_img").click(function(){
+                    $("#img1").show();
+                    $("#img2").hide();
+                });
+            });
+    </script>
+</head>
+<body>
+    <div class="frame" method="get" action="form-action.html">
+        <section class="login-form">
+            <h1><img src="../static/images/logo.png" width="330px" , height="100px"></h1>
+            <form action="" method="POST">
+                <fieldset>
+                    <div class="int-area">
+                        <input type="text" name="id" id="id" autocomplete="off" required>
+                        <label for="id">ID</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="password" name="password" id="password" autocomplete="off" required>
+                        <label for="pw">PASSWORD</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="text" name="user_name" id="user_name" autocomplete="off" required>
+                        <label for="user_name">USER NAME</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="text" name="phone_num" id="phone_num" autocomplete="off" required>
+                        <label for="phone_num">PHONE NUMBER</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="text" name="age" id="age" autocomplete="off" required>
+                        <label for="age">AGE</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="text" name="SEX1" id="SEX1" autocomplete="off" required>
+                        <label for="height">SEX(M or F)</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="text" name="height" id="height" autocomplete="off" required>
+                        <label for="height">HEIGHT</label>
+                    </div>
+                    <div class="int-area">
+                        <input type="text" name="weight" id="weight" autocomplete="off" required>
+                        <label for="weight">WEIGHT</label>
+                    </div>
+                    <div class="int-area">
+                        <label for="weight">ACTIVITY</label>
+                        <br>
+                        <br>
+                        <select name='activity'>
+                            <option value='' selected>------------- Select the amount of activity -------------</option>
+                            <option value='one'>1 활동량</option>
+                            <option value='two'>2 활동량</option>
+                            <option value='three'>3 활동량</option>
+                        </select>
+                    </div>
+                    <div class="btn-area">
+                        <button type="submit">SIGN UP</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+    <div class="frame2" method="get" action="form-action.html">
+        <div class="left_cont">
+            <div class="left_c_text">
+                <h4>Choose your favorite food</h4>
+                <p class="bar"></p>
+           </div>
+                <ul class="pick_fv_food" style="overflow: auto;">
+                    <li>
+                        <p id="circle_1"></p>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="korean">
+                             <p class="circle_txt">k-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="japan">
+                        <p class="circle_txt">j-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="china">
+                        <p class="circle_txt">c-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="korean">
+                        <p class="circle_txt">k-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="japan">
+                        <p class="circle_txt">j-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="china">
+                        <p class="circle_txt">c-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="korean">
+                        <p class="circle_txt">k-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="japan">
+                        <p class="circle_txt">j-food</p>
+                    </li>
+                    <li>
+                        <img class="circle_img"
+                             src="../static/images/k_food.jpg"
+                             alt="china">
+                        <p class="circle_txt">c-food</p>
+                    </li>
+                    
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

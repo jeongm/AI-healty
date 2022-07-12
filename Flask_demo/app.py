@@ -20,13 +20,15 @@ cls_dic = {'0': '와플', '1': '케이크', '2': '핫도그', '3': '시리얼바
 
 @app.route('/')  # main페이지 -logout 상태
 def index():
-    return render_template('index2-copy.html')
+    if "userid" in session: # 로그인 여부 확인
+        return redirect(url_for('recommend'))
+    return render_template('index2_copy.html')
 
 # GET => 페이지가 나오도록 요청. POST = 버튼을 눌렀을 때 데이터를 가지고오는 요청, 요청정보를 확인하기 위해 request 모듈 사용
 @app.route('/join',methods = ['GET','POST']) # 회원가입 - 미완
 def join():
     if request.method == 'GET':
-        return render_template('join-copy.html')
+        return render_template('join_copy.html')
     else : # form 데이터 가져옴, POST, post는 http요청 메시지에서 body에 데이터를 담아 보냄
         # db전송
         user = User()
@@ -65,10 +67,10 @@ def signout():
     session.clear()
     return redirect(url_for('index'))
 
-# 만들어야 하는 부분
+# 만들어야 하는 부분 - 경민, 현정
 @app.route('/diary') # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
 def diary(): # db 불러오자
-    return render_template('diary_morning.html')
+    return render_template('diary.html')
     #return render_template('Dwrite-copy.html')
 
 # 안만듦
@@ -93,20 +95,22 @@ def write(): # 저장 작업 수행, root 폴더에 저장됨
             if key in data_list:
                 data_value.append(value)
         
-        return render_template('write.html',data = data)
+        return render_template('write_copy.html',data = data)
 
-    return render_template("write.html")
+    return render_template("write_copy.html")
 
 @app.route('/recommend') # 식단추천페이지- 경민
 def recommend():
-    return render_template('result.html')
+    return render_template('recommend.html')
 
 
 @app.route('/search', methods = ['GET','POST']) # search 기본페이지
 def search():
     if "userid" in session: # 로그인 여부 확인
-        return render_template("search-copy.html",se=session['userid'])
-    return render_template("search-copy.html",se='')
+        #return render_template("test.html",se=session['userid'])
+        return render_template("search_copy.html",se=session['userid'])
+    #return render_template("test.html",se="")
+    return render_template("search_copy.html",se="")
 
 @app.route('/searchtxt', methods = ['GET','POST']) # 글로 검색
 def searchtxt():
@@ -114,17 +118,17 @@ def searchtxt():
         data = request.form["text-search"]
         food = Nutrition.query.filter_by(foodname=data).all()
         if not food:
-            return render_template('search-copy.html',data = 'none')
-        return render_template('search-copy.html',food = food)
-    return render_template("search-copy.html")
+            return render_template('search_copy.html',data = 'none')
+        return render_template('search_copy.html',food = food)
+    return render_template("search_copy.html")
 
 @app.route('/searchimg', methods = ['GET','POST']) # 이미지 검색
 def searchimg():
     if request.method == "POST":
         data = request.form['chck']
         food = Nutrition.query.filter_by(foodname=data).all()
-        return render_template('search-copy.html',food = food)
-    return render_template("search-copy.html")
+        return render_template('search_copy.html',food = food)
+    return render_template("search_copy.html")
 
 @app.route("/predict", methods=['GET','POST']) # 이미지 detection
 def predict():
@@ -147,10 +151,10 @@ def predict():
             if key in data_list:
                 data_value.append(value)
         if not data_value:
-            return render_template('search-copy.html',data = 'none')
-        return render_template('search-copy.html',data = data_value)
+            return render_template('search_copy.html',data = 'none')
+        return render_template('search_copy.html',data = data_value)
 
-    return render_template("search-copy.html")
+    return render_template("search_copy.html")
 
 
 
@@ -178,7 +182,7 @@ if __name__ == '__main__':
     model.eval()
     '''
     model = torch.hub.load(
-        'yolov5', 'custom', path='exp850epoch.pt', source='local', force_reload=True, autoshape=True
+        'yolov5', 'custom', path='exp8best.pt', source='local', force_reload=True, autoshape=True
     )  # force_reload = recache latest code
     model.eval()
     
