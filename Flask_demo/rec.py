@@ -29,7 +29,7 @@ def getNut(uRDI):
     return result
 
 def getMenu(uRDI, user_id):
-    con = sqlite3.connect("C:/Users/User/Untitled Folder 1/test3.db")
+    con = sqlite3.connect("C:\\Users\\user\\AI-healty\\Flask_demo\\test3.db")
     df = pd.read_sql("SELECT * FROM dietTable WHERE kcal BETWEEN "+str(uRDI*0.98)+" AND "+str(uRDI*1.02),con, index_col='diet_seq')
     user_W =  pd.read_sql("SELECT * FROM user WHERE userid="+ user_id,con, index_col='user_seq')
     for i in range(15):

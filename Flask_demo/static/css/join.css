@@ -213,7 +213,6 @@ body::before {
     width: 600px;
     height: 800px;
     background-color: white;
-    position: relative;
     border-radius: 15px;
     border: none;
     float: left;
@@ -225,7 +224,6 @@ body::before {
     width: 600px;
     height: 800px;
     background-color: white;
-    position: relative;
     border-radius: 15px;
     border: none;
     float: right;
@@ -235,7 +233,6 @@ body::before {
     width: 550px;
     margin: 0 auto;
     height: 600px;
-    overflow-y: auto;
 }
 .pick_fv_food li{
     float:left;

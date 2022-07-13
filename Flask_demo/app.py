@@ -24,13 +24,15 @@ cls_dic = {'0': '와플', '1': '케이크', '2': '핫도그', '3': '시리얼바
 
 @app.route('/')  # main페이지 -logout 상태
 def index():
-    return render_template('index2-copy.html')
+    if "userid" in session: # 로그인 여부 확인
+        return redirect(url_for('diary'))
+    return render_template('index2_copy.html')
 
 # GET => 페이지가 나오도록 요청. POST = 버튼을 눌렀을 때 데이터를 가지고오는 요청, 요청정보를 확인하기 위해 request 모듈 사용
 @app.route('/join',methods = ['GET','POST']) # 회원가입 - 미완
 def join():
     if request.method == 'GET':
-        return render_template('join-copy.html')
+        return render_template('join_copy.html')
     else : # form 데이터 가져옴, POST, post는 http요청 메시지에서 body에 데이터를 담아 보냄
         # db전송
         user = User()
@@ -69,37 +71,25 @@ def signout():
     session.clear()
     return redirect(url_for('index'))
 
-# 만들어야 하는 부분
+# 만들어야 하는 부분 - 경민
 @app.route('/diary') # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
 def diary(): # db 불러오자
-    return render_template('diary_morning.html')
-    #return render_template('Dwrite-copy.html')
+    return render_template('diary.html')
+
 
 # 안만듦
 @app.route('/write', methods = ['GET', 'POST']) 
 def write(): # 저장 작업 수행, root 폴더에 저장됨
     if request.method == "POST":
-        if "file" not in request.files:
-            return redirect(request.url)
-        file = request.files["file"]
-        if not file:
-            return
-
-        img_bytes = file.read()
-        img = Image.open(io.BytesIO(img_bytes))
-        results = model(img, size=640)
-
-        #dataframe으로 가져옴
-        data = results.pandas().xyxy[0]["name"]
-        data_list = data.tolist()
-        data_value = []
-        for key, value in cls_dic.items():
-            if key in data_list:
-                data_value.append(value)
-        
-        return render_template('write.html',data = data)
-
-    return render_template("write.html")
+        key_dict = request.form
+        data_key = list(key_dict.keys())[0]
+        if data_key == "text-search":
+            data = request.form["text-search"]
+        elif data_key == "chck":
+            data = request.form['chck']
+        food = Nutrition.query.filter_by(foodname=data).first()
+        return render_template("write_copy.html", food = food)
+    return render_template("write_copy.html")
 
 @app.route('/recommend', methods = ['GET','POST']) # 식단추천페이지- 경민
 def recommend():
@@ -116,28 +106,40 @@ def recommend():
 
 
 @app.route('/search', methods = ['GET','POST']) # search 기본페이지
-def search():
+def search_info():
     if "userid" in session: # 로그인 여부 확인
-        return render_template("search-copy.html",se=session['userid'])
-    return render_template("search-copy.html",se='')
+        se = session['userid']
+    else :
+        se = None
+    if request.method == "POST":
+        key_dict = request.form
+        data_key = list(key_dict.keys())[0]
+        if data_key == "text-search":
+            data = request.form["text-search"]
+        elif data_key == "chck":
+            data = request.form['chck']
+        food = Nutrition.query.filter_by(foodname=data).first()
+        return render_template("search_copy.html",se=se, food = food)
+    return render_template("search_copy.html",se= se)
+    
 
-@app.route('/searchtxt', methods = ['GET','POST']) # 글로 검색
+'''
+#@app.route('/searchtxt', methods = ['GET','POST']) # 글로 검색
 def searchtxt():
     if request.method == "POST":
         data = request.form["text-search"]
-        food = Nutrition.query.filter_by(foodname=data).all()
-        if not food:
-            return render_template('search-copy.html',data = 'none')
-        return render_template('search-copy.html',food = food)
-    return render_template("search-copy.html")
+        food = Nutrition.query.filter_by(foodname=data).first()
+        if food != "":
+            return food
 
-@app.route('/searchimg', methods = ['GET','POST']) # 이미지 검색
+#@app.route('/searchimg', methods = ['GET','POST']) # 이미지 검색
 def searchimg():
     if request.method == "POST":
         data = request.form['chck']
-        food = Nutrition.query.filter_by(foodname=data).all()
-        return render_template('search-copy.html',food = food)
-    return render_template("search-copy.html")
+        food = Nutrition.query.filter_by(foodname=data).first()
+        if food != "":
+            return food
+'''
 
 @app.route("/predict", methods=['GET','POST']) # 이미지 detection
 def predict():
@@ -160,11 +162,10 @@ def predict():
             if key in data_list:
                 data_value.append(value)
         if not data_value:
-            return render_template('search-copy.html',data = 'none')
-        return render_template('search-copy.html',data = data_value)
+            return render_template('search_copy.html',predict_data = "")
+        return render_template('search_copy.html',predict_data = data_value)
 
-    return render_template("search-copy.html")
-
+    return render_template("search_copy.html")
 
 
 if __name__ == '__main__':
@@ -190,10 +191,10 @@ if __name__ == '__main__':
     )  # force_reload = recache latest code
     model.eval()
     '''
-    # model = torch.hub.load(
-    #     'yolov5', 'custom', path='exp850epoch.pt', source='local', force_reload=True, autoshape=True
-    # )  # force_reload = recache latest code
-    # model.eval()
+    model = torch.hub.load(
+        'yolov5', 'custom', path='exp8_56epoch.pt', source='local', force_reload=True, autoshape=True
+    )  # force_reload = recache latest code
+    model.eval()
     
     app.run(host='127.0.0.1', port=5000, debug=True)
     #app.run(host="0.0.0.0", port=args.port, debug=True)  # debug=True causes Restarting with stat

@@ -34,7 +34,7 @@ time, mark, audio, video {
 }
 
 .header {
-  width: 1690px;
+  padding-left: 45px;
   height: 130px;
   text-align: left;
   box-sizing: border-box;
@@ -42,7 +42,7 @@ time, mark, audio, video {
 }
 
 .header__logo h1 {
-  margin-left: -1150px;
+  margin-left: -1400px;
   padding-top: 0px;
   letter-spacing: 2px;
 }
@@ -56,7 +56,7 @@ time, mark, audio, video {
 .header__gnb ul {
   margin-top: -80px;
   text-align: right;
-  margin-right:33px;
+  margin-right: 35px;
 }
 
 .header__gnb ul li {
@@ -150,7 +150,7 @@ body {
 
 .content_up{
   position: relative;
-  width: 1300px;                                                               
+  width: 1900px;                                                               
   height: 700px;
   background-size: cover;
 }
@@ -204,7 +204,6 @@ body {
 }
 
 .footer-basic {
-  margin-left: 450px;
   padding:50px 0;
   background-color:#ffffff;
   color:#4b4c4d;
@@ -262,12 +261,12 @@ Body
 }
 
 .datebox {
-  margin-left: 805px;
+  margin-left: 895px;
   margin-top: 70px;
 }
 
 .mealtime {
-  margin-left: 420px;
+  margin-left: -10px;
   margin-bottom: 30px;
 }
 
@@ -601,9 +600,9 @@ App
     }
 
     .card-columns {
-      width:1450px;
+      width:1500px;
       margin:0 auto;
-      margin-left: 140px;
+      margin-left: 200px;
   }
   
   .card-title {

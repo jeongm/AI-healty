@@ -65,14 +65,14 @@
     </div>
     <div class="header__gnb">
       <ul>
-        {% if se|length %}
+        {% if se %}
           <li><a href="{{url_for('diary')}}">DIARY</a></li>
           <li><a href="{{url_for('write')}}">WRITE</a></li>
           <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
-          <li><a href="{{url_for('search')}}">SEARCH</a></li>
+          <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
           <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
         {% else %}
-          <li><a href="{{url_for('search')}}">SEARCH</a></li>
+          <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
           <li><a href="{{url_for('signin')}}">SIGN IN</a></li>
         {% endif %}
         <li><a href="#"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
@@ -81,7 +81,7 @@
   </header>
   <div class="content">
     <div class="search-div">
-      <form class="search-form" action="{{url_for('searchtxt')}}" method="post">
+      <form class="search-form" action="{{url_for('search_info')}}" method="post">
         <input type="search" value="" placeholder="Search" class="search-input" name=text-search>
         <button type="submit" class="search-button" >
           <svg class="submit-button">
@@ -127,19 +127,18 @@
     </div>
     </br>
     <div>
-      <form name=frm1 action="{{url_for('searchimg')}}" method="post">
+      <form name=frm1 action="{{url_for('search_info')}}" method="post">
         <fieldset>
-          {% if food != "" %}
-            {% for food in food %}
-              <p>{{food.foodname}}</p>
-            {% endfor %}
+          {% if food %}
+            <p>{{food.foodname}}</p>
           {% endif %}
-          {% if data == 'none' %}
-            <p>검색 결과가 없습니다</p>
-          {% else %}
-            {% for name in data %}
+          {% if predict_data %}
+            {% for name in predict_data %}
               <input type='radio' name=chck value={{name}}>{{name}}<br>
             {% endfor %}
+          {% endif %}
+          {%if not food and not predict_data%}
+            <p>검색 결과가 없습니다</p>
           {% endif %}
       </fieldset>
         <div class="btn1">
@@ -154,28 +153,28 @@
         <div class="policy-table">
           <div class="policy-container">
             <div class="policy-table">
-              {% for food in food %}
-              <div class="policy">
-                <span>권장 칼로리</span>
-                <span>{{food.kcal}}</span>
-              </div>
-              <div class="policy">
-                <span>탄수화물</span>
-                <span>{{food.carbohydrate}}</span>
-              </div>
-              <div class="policy">
-                <span>단백질</span>
-                <span>{{food.protein}}</span>
-              </div>
-              <div class="policy">
-                <span>지방</span>
-                <span>{{food.fat}}</span>
-              </div>
-              <div class="policy">
-                <span>나트륨</span>
-                <span>{{food.sodium}}</span>
-              </div>
-              {% endfor %}
+              {% if food %}
+                <div class="policy">
+                  <span>권장 칼로리</span>
+                  <span>{{food.kcal}} (kcal)</span>
+                </div>
+                <div class="policy">
+                  <span>탄수화물</span>
+                  <span>{{food.carbohydrate}} (kcal)</span>
+                </div>
+                <div class="policy">
+                  <span>단백질</span>
+                  <span>{{food.protein}} (g)</span>
+                </div>
+                <div class="policy">
+                  <span>지방</span>
+                  <span>{{food.fat}} (g)</span>
+                </div>
+                <div class="policy">
+                  <span>나트륨</span>
+                  <span>{{food.sodium}} (mg)</span>
+                </div>
+              {% endif %}
             </div>
           </div>
         </div>
