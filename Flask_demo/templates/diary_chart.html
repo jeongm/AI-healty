@@ -80,25 +80,33 @@
     <script>
       document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
     </script>
-    <div class="meal">
-      <div class="morning">
-        <div class="mealtime">
-          <a href="write_end_morning.html" style="color: #81C147;">
-            <h2 class="texth1" style="cursor:pointer;">Morning</h2>
-          </a>
-          <a href="write_end_lunch.html">
-            <h2 class="texth2" style="cursor:pointer;">Lunch</h2>
-          </a>
-          <a href="write_end_dinner.html">
-            <h2 class="texth3" style="cursor:pointer;">Dinner</h2>
-          </a>
-        </div>
-        <script>
-          var text = document.querySelector('.texth1');
-          text.onclick = function () {
-            text.style.color = '#81c147';
-          }
-        </script>
+   <div class="meal">
+    <div class="morning">
+      <div class="mealtime">
+          <input name="name" id="id1" type="radio" value="1" ><label for="id1" class="texth1">&nbsp;Morning</label>
+          <input name="name" id="id2" type="radio" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
+          <input name="name" id="id3" type="radio" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
+      </div>
+      <script>
+        var text = document.querySelector('.texth1');
+        var text2 = document.querySelector('.texth2');
+        var text3 = document.querySelector('.texth3');
+        text.onclick = function () {
+          text.style.color = '#81c147';
+          text2.style.color = 'black';
+          text3.style.color = 'black';
+        }
+        text2.onclick = function () {
+          text.style.color = 'black';
+          text2.style.color = '#81c147';
+          text3.style.color = 'black';
+        }
+        text3.onclick = function () {
+          text.style.color = 'black';
+          text2.style.color = 'black';
+          text3.style.color = '#81c147';
+        }
+      </script>
         <br>
         <br>
       </div>

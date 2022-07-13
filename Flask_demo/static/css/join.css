@@ -66,7 +66,6 @@ body {
 
 body::before {
     content: "";
-    position: absolute;
     z-index: 1;
     top: 0;
     right: 0;
@@ -230,36 +229,99 @@ body::before {
 }
 
 .pick_fv_food{
-    width: 550px;
+    position: relative;
+    width: 600px;
     margin: 0 auto;
-    height: 600px;
+    height: 620px;
+    overflow: auto;
 }
 .pick_fv_food li{
+    position: relative;
     float:left;
-    width:150px;
-    margin-left: 23px;
-    margin-top: 23px;
-    
+    width:155px;
+    margin-left: 30px;
+    margin-top: 10px;
 }
 .pick_fv_food li a{
     display: block;
 }
-#check_img{
-    display: none;
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background-image: url("../images/check.png");
-    border-radius: 50%;
-    opacity: 0.7;
+
+.pick_fv_food form li p{
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 5px;
 }
+
+/* Customize the label (the container) */
+.circle_txt {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 17px;
+    width:160px;
+    text-align: center;
+  }
+  /* Hide the browser's default checkbox */
+  .circle_txt input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+   
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 157px;
+    left: 35px;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+  }
+   
+  /* On mouse-over, add a grey background color */
+  .circle_txt:hover input ~ .checkmark {
+    background-color: white;
+  }
+   
+  /* When the checkbox is checked, add a "red" background */
+  .circle_txt input:checked ~ .checkmark {
+    background-color: green;
+  }
+   
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+   
+  /* Show the checkmark when checked */
+  .circle_txt input:checked ~ .checkmark:after {
+    display: block;
+  }
+   
+  /* Style the checkmark/indicator */
+  .circle_txt .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  } 
+
+   
+
 .circle_img{
+    display: inline;
     width:150px;
     height: 150px;
     border-radius:50%;
-}
-.circle_txt{
-    text-align: center;
 }
 
 body {

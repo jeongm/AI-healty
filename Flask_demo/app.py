@@ -87,7 +87,11 @@ def write(): # 저장 작업 수행, root 폴더에 저장됨
             data = request.form["text-search"]
         elif data_key == "chck":
             data = request.form['chck']
+        else :
+            predict_data = predict()
+            return render_template("write_copy.html", predict_data = predict_data)
         food = Nutrition.query.filter_by(foodname=data).first()
+        
         return render_template("write_copy.html", food = food)
     return render_template("write_copy.html")
 
@@ -114,11 +118,16 @@ def search_info():
     if request.method == "POST":
         key_dict = request.form
         data_key = list(key_dict.keys())[0]
+            
         if data_key == "text-search":
             data = request.form["text-search"]
         elif data_key == "chck":
             data = request.form['chck']
+        else :
+            predict_data = predict()
+            return render_template("search_copy.html", predict_data = predict_data)
         food = Nutrition.query.filter_by(foodname=data).first()
+        
         return render_template("search_copy.html",se=se, food = food)
     return render_template("search_copy.html",se= se)
     
@@ -162,8 +171,8 @@ def predict():
             if key in data_list:
                 data_value.append(value)
         if not data_value:
-            return render_template('search_copy.html',predict_data = "")
-        return render_template('search_copy.html',predict_data = data_value)
+            return ""
+        return data_value
 
     return render_template("search_copy.html")
 
@@ -191,6 +200,7 @@ if __name__ == '__main__':
     )  # force_reload = recache latest code
     model.eval()
     '''
+    
     model = torch.hub.load(
         'yolov5', 'custom', path='exp8_56epoch.pt', source='local', force_reload=True, autoshape=True
     )  # force_reload = recache latest code

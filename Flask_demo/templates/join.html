@@ -13,7 +13,7 @@
         let id = $('#id');
         let pw = $('#pw');
         let btn = $('#btn');
-    
+
         $(btn).on('click', function () {
             if ($(id).val() == "") {
                 $(id).next('label').addClass('warning');
@@ -29,26 +29,7 @@
             }
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function(){
-                /*웹페이지 열었을 때*/
-                $(".circle_img").show();
-                $("#check_img").hide();
-     
-                /*img1을 클릭했을 때 img2를 보여줌*/
-                $(".circle_img").click(function(){
-                    $(".circle_img").hide();
-                    $("#check_img").show();
-                });
-     
-                /*img2를 클릭했을 때 img1을 보여줌*/
-                $("#check_img").click(function(){
-                    $("#img1").show();
-                    $("#img2").hide();
-                });
-            });
-    </script>
+
 <body>
     <div class="frame" method="get" action="form-action.html">
         <section class="login-form">
@@ -96,6 +77,8 @@
                             <option value='one'>1 활동량</option>
                             <option value='two'>2 활동량</option>
                             <option value='three'>3 활동량</option>
+                            <option value='four'>4 활동량</option>
+                            <option value='five'>5 활동량</option>
                         </select>
                     </div>
                     <div class="btn-area">
@@ -106,54 +89,75 @@
         </section>
     </div>
     <div class="frame2" method="get" action="form-action.html">
-        <div class="left_cont">x
+        <div class="left_cont">
             <div class="left_c_text">
                 <h4>Choose your favorite food</h4>
                 <p class="bar"></p>
             </div>
             <ul class="pick_fv_food">
-                <li>
-                    <img id="check_img" class="check_img" src="../static/images/check.png" alt="korean">
-                    <img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="korean">
-                    <p class="circle_txt">k-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="japan">
-                    <p class="circle_txt">j-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="china">
-                    <p class="circle_txt">c-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="korean">
-                    <p class="circle_txt">k-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="japan">
-                    <p class="circle_txt">j-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="china">
-                    <p class="circle_txt">c-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="korean">
-                    <p class="circle_txt">k-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="japan">
-                    <p class="circle_txt">j-food</p>
-                </li>
-                <li>
-                    <img class="circle_img" src="../static/images/k_food.jpg" alt="china">
-                    <p class="circle_txt">c-food</p>
-                </li>
-
+                <form>
+                    <fieldset>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="korean">
+                            <p>
+                                <input type="checkbox" id="circle_txt">k-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="japan">
+                            <p>
+                                <input type="checkbox" id="circle_txt">j-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="china">
+                            <p>
+                                <input type="checkbox" id="circle_txt">c-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="korean">
+                            <p>
+                                <input type="checkbox" id="circle_txt">k-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="japan">
+                            <p>
+                                <input type="checkbox" id="circle_txt">j-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="china">
+                            <p>
+                                <input type="checkbox" id="circle_txt">c-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="korean">
+                            <p>
+                                <input type="checkbox" id="circle_txt">k-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="japan">
+                            <p>
+                                <input type="checkbox" id="circle_txt">j-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                        <li>
+                            <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/k_food.jpg" alt="china">
+                            <p>
+                                <input type="checkbox" id="circle_txt">c-food<span class="checkmark"></span></label>
+                            </p>
+                        </li>
+                    </fieldset>
+                </form>
             </ul>
         </div>
     </div>
     </div>
     </div>
 </body>
+
 </html>
