@@ -165,8 +165,8 @@ body {
 }
 
 .morning {
-  padding-top: 50px;
-  padding-bottom: 200px;
+  padding-top: 40px;
+  margin-bottom: 150px;
 }
 
 .footer-basic {
@@ -242,38 +242,25 @@ body {
 }
 
 .mealtime {
-  margin-left: -10px;
-  margin-bottom: 30px;
+  display: inline;
+  margin-bottom: 300px;
+  margin-left:-30px;
 }
 
-.mealtime h2 {
-	display: inline;
+.texth1, .texth2, .texth3{
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.mealtime a {
-  text-decoration: none; /* 링크의 밑줄 제거 */
-  text-decoration-line: none;
-  color: black;
+.texth1, .texth2{
+  margin-right: 50px;
 }
-
-.mealtime a:hover {
-  text-decoration: none; /* 링크의 밑줄 제거 */
-  text-decoration-line: none;
-  color: #81C147; /* 링크의 색상 제거 */
-}
-
-.texth1{
-  margin-right:70px;
-}
-
-.texth2{
-  margin-right:70px;
-}
-
 
 /*--------------------
 App
 --------------------*/
+
 .search-form {
   position: relative;
   top: 50%;
@@ -285,6 +272,7 @@ App
   transform: translate(-50%, -50%);
   background: #fff;
   transition: all 0.3s ease;
+  margin-top:60px;
 }
 .search-form.focus {
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
