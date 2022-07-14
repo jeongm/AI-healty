@@ -70,6 +70,10 @@ def signout():
     session.clear()
     return redirect(url_for('index'))
 
+@app.route('/mypage', methods=['GET']) # 회원정보
+def mypage():
+    return render_template("mypage.html")
+
 # 만들어야 하는 부분 - 경민
 @app.route('/diary') # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
 def diary(): # db 불러오자
