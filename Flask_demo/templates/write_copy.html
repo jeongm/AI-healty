@@ -1,3 +1,11 @@
+{%with messages = get_flashed_messages()%} <!--flash 메시지 사용하기위해 보통 html 가장 윗부분에 작성-->
+    {%if messages %}
+        <script>
+            alert("{{messages[-1]}}");
+        </script>
+    {%endif%}
+{%endwith%}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,123 +87,121 @@
     </div>
   </header>
   <div class="content_up">
-    <form class="datebox">
-      <input type='date' id='currentDate' />
-    </form>
-    <script>
-      document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
-    </script>
-    <div class="meal">
-      <div class="morning">
-        <div class="mealtime">
-            <input name="name" id="id1" type="radio" class = "radiobtn" value="1" ><label for="id1" class="texth1">&nbsp;Morning</label>
-            <input name="name" id="id2" type="radio" class = "radiobtn" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
-            <input name="name" id="id3" type="radio" class = "radiobtn" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
-        </div>
-        <script>
-          var text = document.querySelector('.texth1');
-          var text2 = document.querySelector('.texth2');
-          var text3 = document.querySelector('.texth3');
-          text.onclick = function () {
-            text.style.color = '#81c147';
-            text2.style.color = 'black';
-            text3.style.color = 'black';
-          }
-          text2.onclick = function () {
-            text.style.color = 'black';
-            text2.style.color = '#81c147';
-            text3.style.color = 'black';
-          }
-          text3.onclick = function () {
-            text.style.color = 'black';
-            text2.style.color = 'black';
-            text3.style.color = '#81c147';
-          }
-        </script>
-        <br>
-        <br>
-        <div class="search-div">
-          <form class="search-form" action="{{url_for('write')}}" method="post">
-            <input type="search" value="" placeholder="Search" class="search-input" name=text-search>
-            <button type="submit" class="search-button">
-              <svg class="submit-button">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
-              </svg>
-            </button>
-            <div class="search-option">
-              <div>
-                <input name="type" type="button" value="type-images" id="type-images" onclick="getShow()">
-                <label for="type-images">
-                  <svg class="edit-pen-title">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#images"></use>
-                  </svg>
-                  <span>Images</span>
-                </label>
+    <form action ="{{url_for('write')}}" method=post enctype=multipart/form-data>  
+      <div class="datebox">
+        <input type='date' id='currentDate' name=date/>
+      </div>
+      <script>
+        document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+      </script>
+      <div class="meal">
+        <div class="morning">
+          <div class="mealtime">
+            <input name="name" id="id1" type="radio" class = "radiobtn" name = "mealtime" value="1" ><label for="id1" class="texth1">&nbsp;Morning</label>
+            <input name="name" id="id2" type="radio" class = "radiobtn" name = "mealtime" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
+            <input name="name" id="id3" type="radio" class = "radiobtn" name = "mealtime" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
+          </div>
+          <script>
+            var text = document.querySelector('.texth1');
+            var text2 = document.querySelector('.texth2');
+            var text3 = document.querySelector('.texth3');
+            text.onclick = function () {
+              text.style.color = '#81c147';
+              text2.style.color = 'black';
+              text3.style.color = 'black';
+            }
+            text2.onclick = function () {
+              text.style.color = 'black';
+              text2.style.color = '#81c147';
+              text3.style.color = 'black';
+            }
+            text3.onclick = function () {
+              text.style.color = 'black';
+              text2.style.color = 'black';
+              text3.style.color = '#81c147';
+            }
+          </script>
+          <br>
+          <br>
+          <div class="search-div">
+            <div class="search-form">
+              <input type="search" placeholder="Search" class="search-input" name=text-search>
+              <button type="submit" class="search-button" name="write" value="write">
+                <svg class="submit-button">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                </svg>
+              </button>
+              <div class="search-option">
+                <div>
+                  <input name="type" type="button" value="type-images" id="type-images" onclick="getShow()">
+                  <label for="type-images">
+                    <svg class="edit-pen-title">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#images"></use>
+                    </svg>
+                    <span>Images</span>
+                  </label>
+                </div>
               </div>
             </div>
-          </form>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
-          <symbol id="search" viewBox="0 0 32 32">
-            <path
-              d="M 19.5 3 C 14.26514 3 10 7.2651394 10 12.5 C 10 14.749977 10.810825 16.807458 12.125 18.4375 L 3.28125 27.28125 L 4.71875 28.71875 L 13.5625 19.875 C 15.192542 21.189175 17.250023 22 19.5 22 C 24.73486 22 29 17.73486 29 12.5 C 29 7.2651394 24.73486 3 19.5 3 z M 19.5 5 C 23.65398 5 27 8.3460198 27 12.5 C 27 16.65398 23.65398 20 19.5 20 C 15.34602 20 12 16.65398 12 12.5 C 12 8.3460198 15.34602 5 19.5 5 z" />
-          </symbol>
-          <symbol id="images" viewbox="0 0 32 32">
-            <path
-              d="M 2 5 L 2 6 L 2 26 L 2 27 L 3 27 L 29 27 L 30 27 L 30 26 L 30 6 L 30 5 L 29 5 L 3 5 L 2 5 z M 4 7 L 28 7 L 28 20.90625 L 22.71875 15.59375 L 22 14.875 L 21.28125 15.59375 L 17.46875 19.40625 L 11.71875 13.59375 L 11 12.875 L 10.28125 13.59375 L 4 19.875 L 4 7 z M 24 9 C 22.895431 9 22 9.8954305 22 11 C 22 12.104569 22.895431 13 24 13 C 25.104569 13 26 12.104569 26 11 C 26 9.8954305 25.104569 9 24 9 z M 11 15.71875 L 20.1875 25 L 4 25 L 4 22.71875 L 11 15.71875 z M 22 17.71875 L 28 23.71875 L 28 25 L 23.03125 25 L 18.875 20.8125 L 22 17.71875 z" />
-          </symbol>
-        </svg>
-        <div id="img-box" class="img-box"
-          style="display:none; width: 400px; background-color:white; margin: 0 auto; border:1px solid rgba(0,0,0,.2);z-index: 10; position:relative;">
-          <div id="img-head" style="padding:5px; border-bottom:1px solid rgba(0,0,0,.2);text-align: left;">
-            <div id="img-exp" style="display:inline-block;">이미지로 검색</div>
-            <div id="img-close" class="fa-solid fa-x" style="float:right;padding:5px;cursor:pointer;"
-              onclick="getHide()"></div>
           </div>
-          <div id="img-upload" style="padding:5px;">
-            <form action ="{{url_for('write')}}" method=post enctype=multipart/form-data>
-              <input type=file name=file id="inputfile">
-              <input type=submit name =file value="search" style="float:right;">
-            </form>
-          </div>
-        </div>
-        </br>
-        <div>
-          <form name=frm1 action="{{url_for('write')}}" method="post">
-            <fieldset>
-              {% if food %}
-                <p>{{food.foodname}}</p>
-              {% endif %}
-              {% if predict_data %}
-                {% for name in predict_data %}
-                  <input type='checkbox' name=chck value={{name}}>  {{name}}<br>
-                {% endfor %}
-              {% endif %}
-              {%if not food and not predict_data%}
-                <p>검색 결과가 없습니다</p>
-              {% endif %}
-          </fieldset>
-            <div class="btn1">
-              <input class="button3" type="submit" value="SUBMIT">
-              <input class="button4" type="button" value='CANCEL' onclick=clear_onclick()>
+          <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
+            <symbol id="search" viewBox="0 0 32 32">
+              <path
+                d="M 19.5 3 C 14.26514 3 10 7.2651394 10 12.5 C 10 14.749977 10.810825 16.807458 12.125 18.4375 L 3.28125 27.28125 L 4.71875 28.71875 L 13.5625 19.875 C 15.192542 21.189175 17.250023 22 19.5 22 C 24.73486 22 29 17.73486 29 12.5 C 29 7.2651394 24.73486 3 19.5 3 z M 19.5 5 C 23.65398 5 27 8.3460198 27 12.5 C 27 16.65398 23.65398 20 19.5 20 C 15.34602 20 12 16.65398 12 12.5 C 12 8.3460198 15.34602 5 19.5 5 z" />
+            </symbol>
+            <symbol id="images" viewbox="0 0 32 32">
+              <path
+                d="M 2 5 L 2 6 L 2 26 L 2 27 L 3 27 L 29 27 L 30 27 L 30 26 L 30 6 L 30 5 L 29 5 L 3 5 L 2 5 z M 4 7 L 28 7 L 28 20.90625 L 22.71875 15.59375 L 22 14.875 L 21.28125 15.59375 L 17.46875 19.40625 L 11.71875 13.59375 L 11 12.875 L 10.28125 13.59375 L 4 19.875 L 4 7 z M 24 9 C 22.895431 9 22 9.8954305 22 11 C 22 12.104569 22.895431 13 24 13 C 25.104569 13 26 12.104569 26 11 C 26 9.8954305 25.104569 9 24 9 z M 11 15.71875 L 20.1875 25 L 4 25 L 4 22.71875 L 11 15.71875 z M 22 17.71875 L 28 23.71875 L 28 25 L 23.03125 25 L 18.875 20.8125 L 22 17.71875 z" />
+            </symbol>
+          </svg>
+          <div id="img-box" class="img-box"
+            style="display:none; width: 400px; background-color:white; margin: 0 auto; border:1px solid rgba(0,0,0,.2);z-index: 10; position:relative;">
+            <div id="img-head" style="padding:5px; border-bottom:1px solid rgba(0,0,0,.2);text-align: left;">
+              <div id="img-exp" style="display:inline-block;">이미지로 검색</div>
+              <div id="img-close" class="fa-solid fa-x" style="float:right;padding:5px;cursor:pointer;"
+                onclick="getHide()"></div>
             </div>
-          </form>
-        </div>
+            <div id="img-upload" style="padding:5px;">
+              <input type=file name=file id="inputfile">
+              <input type=submit name =write value=search style="float:right;">
+            </div>
+          </div>
+          </br>
+          <div>
+              <fieldset>
+                {% if food %}
+                  <input name=foodname value = {{food.foodname}} style="display: none;"> {{food.foodname}}<br>
+                {% endif %}
+                {% if predict_data %}
+                  {% for name in predict_data %}
+                    <input type='checkbox' name=chck value={{name}}>  {{name}}<br>
+                  {% endfor %}
+                {% endif %}
+                {%if not food and not predict_data%}
+                  <p>검색 결과가 없습니다</p>
+                {% endif %}
+            </fieldset>
+              <div class="btn1">
+                <input class="button3" type="submit" name="write" value="writedb" value="기록하기">
+                <input class="button4" type="button" value='CANCEL' onclick=clear_onclick()>
+              </div>
+          </div>
 
+        </div>
+        <div class="footer-basic">
+          <footer>
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="{{url_for('index')}}">Home</a></li>
+              <li class="list-inline-item"><a href="#">Services</a></li>
+              <li class="list-inline-item"><a href="#">About</a></li>
+              <li class="list-inline-item"><a href="#">Terms</a></li>
+              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Company Name © 2022</p>
+          </footer>
+        </div>
       </div>
-      <div class="footer-basic">
-        <footer>
-          <ul class="list-inline">
-            <li class="list-inline-item"><a href="{{url_for('index')}}">Home</a></li>
-            <li class="list-inline-item"><a href="#">Services</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-          </ul>
-          <p class="copyright">Company Name © 2022</p>
-        </footer>
-      </div>
-    </div>
+    </form>
   </div>
 </body>
 

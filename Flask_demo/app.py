@@ -6,8 +6,7 @@ from db_models import db
 import os
 from db_models import User, Nutrition, DietTable, Menu, AttainmentRate # db_models.py에 있는 User 클래스
 import rec 
-import pandas as pd
-import sqlite3
+from datetime import date
 
 #import argparse
 import io
@@ -81,19 +80,49 @@ def diary(): # db 불러오자
 @app.route('/write', methods = ['GET', 'POST']) 
 def write(): # 저장 작업 수행, root 폴더에 저장됨
     if request.method == "POST":
-        key_dict = request.form
-        data_key = list(key_dict.keys())[0]
-        if data_key == "text-search":
-            data = request.form["text-search"]
-        elif data_key == "chck":
-            data = request.form['chck']
-        else :
-            predict_data = predict()
-            return render_template("write_copy.html", predict_data = predict_data)
-        food = Nutrition.query.filter_by(foodname=data).first()
+        m_dict = request.form
+        data_key = list(m_dict.keys())
+        action = request.form['write']
         
-        return render_template("write_copy.html", food = food)
+        if action == "writedb":
+            dict = m_dict.to_dict(flat=False)
+            writedate = date.fromisoformat(m_dict['date/'])
+            if 'name' not in dict:
+                flash('아침, 점심, 저녁을 선택해주세요')
+                return render_template("write_copy.html")
+            if 'chck' in dict :
+                menu_list = dict['chck']
+            elif 'foodname' in dict:
+                menu_list = dict['foodname']
+            
+            sql_data=[]
+            for foodname in menu_list:
+                menu = Menu()
+                menu_id = Nutrition.query.filter_by(foodname=foodname).first()
+                menu.user_id = session['userid']
+                menu.food_id = menu_id.food_seq
+                menu.date = writedate
+                menu.meal_time = m_dict['name']
+                sql_data.append(menu)
+                db.session.add(menu)
+            db.session.commit()   
+            flash("저장되었습니다.")
+            
+        else: 
+            if action == "search":
+                predict_data = predict()
+                return render_template("write_copy.html", predict_data = predict_data)
+            if "text-search" in data_key and m_dict['text-search'] != '':
+                data = request.form["text-search"]
+            elif "chck" in data_key:
+                data = request.form['chck']
+            food = Nutrition.query.filter_by(foodname=data).first()
+            return render_template("write_copy.html", food = food)
     return render_template("write_copy.html")
+
+
+
+
 
 @app.route('/recommend', methods = ['GET','POST']) # 식단추천페이지- 경민
 def recommend():
@@ -131,24 +160,6 @@ def search_info():
         return render_template("search_copy.html",se=se, food = food)
     return render_template("search_copy.html",se= se)
     
-
-'''
-#@app.route('/searchtxt', methods = ['GET','POST']) # 글로 검색
-def searchtxt():
-    if request.method == "POST":
-        data = request.form["text-search"]
-        food = Nutrition.query.filter_by(foodname=data).first()
-        if food != "":
-            return food
-
-#@app.route('/searchimg', methods = ['GET','POST']) # 이미지 검색
-def searchimg():
-    if request.method == "POST":
-        data = request.form['chck']
-        food = Nutrition.query.filter_by(foodname=data).first()
-        if food != "":
-            return food
-'''
 
 @app.route("/predict", methods=['GET','POST']) # 이미지 detection
 def predict():
