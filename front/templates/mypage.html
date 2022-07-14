@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Food Table</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/join.css">
+    <link rel="stylesheet" href="../static/css/mypage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -37,52 +37,55 @@
             <form action="">
                 <fieldset>
                     <div class="int-area">
-                        <input type="text" name="id" id="id" autocomplete="off" required>
-                        <label for="id">ID</label>
+                        <label for="id" id="id1">ID</label>
+                    </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="id2" id="id2" style="color:black;">cat</label>
                     </div>
                     <div class="int-area">
-                        <input type="password" name="password" id="password" autocomplete="off" required>
                         <label for="pw">PASSWORD</label>
                     </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="pw2" id="pw2" style="color:black">cat123</label>
+                    </div>
                     <div class="int-area">
-                        <input type="text" name="user_name" id="user_name" autocomplete="off" required>
                         <label for="user_name">USER NAME</label>
                     </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="user_name2" id="user_name2" style="color:black">김애용</label>
+                    </div>
                     <div class="int-area">
-                        <input type="text" name="phone_num" id="phone_num" autocomplete="off" required>
                         <label for="phone_num">PHONE NUMBER</label>
                     </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="phone_num2" id="phone_num2" style="color:black">010-1234-5678</label>
+                    </div>
                     <div class="int-area">
-                        <input type="text" name="age" id="age" autocomplete="off" required>
                         <label for="age">AGE</label>
                     </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="age2" style="color:black">3</label>
+                    </div>
                     <div class="int-area">
-                        <input type="text" name="SEX1" id="SEX1" autocomplete="off" required>
                         <label for="height">SEX(M or F)</label>
                     </div>
-                    <div class="int-area">
-                        <input type="text" name="height" id="height" autocomplete="off" required>
-                        <label for="height">HEIGHT</label>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="height2" style="color:black">M</label>
                     </div>
                     <div class="int-area">
-                        <input type="text" name="weight" id="weight" autocomplete="off" required>
                         <label for="weight">WEIGHT</label>
                     </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="weight2" style="color:black">6</label>
+                    </div>
                     <div class="int-area">
-                        <label for="weight">ACTIVITY</label>
-                        <br>
-                        <br>
-                        <select name='activity'>
-                            <option value='' selected>------------- Select the amount of activity -------------</option>
-                            <option value='one'>1 활동량</option>
-                            <option value='two'>2 활동량</option>
-                            <option value='three'>3 활동량</option>
-                            <option value='four'>4 활동량</option>
-                            <option value='five'>5 활동량</option>
-                        </select>
+                        <label for="activity">ACTIVITY</label>
+                    </div>
+                    <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
+                        <label for="activity2" style="color:black;">안 움직임</label>
                     </div>
                     <div class="btn-area">
-                        <button type="submit">SIGN UP</button>
+                        <button type="submit">Check</button>
                     </div>
                 </fieldset>
             </form>
@@ -91,7 +94,7 @@
     <div class="frame2" method="get" action="form-action.html">
         <div class="left_cont">
             <div class="left_c_text">
-                <h4>Choose your favorite food</h4>
+                <h4>Your favorite food list</h4>
                 <p class="bar"></p>
             </div>
             <ul class="pick_fv_food">
@@ -100,199 +103,199 @@
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/고추장아찌.jpeg" alt="고추장아찌">
                             <p>
-                                <input type="checkbox" id="circle_txt">고추장아찌<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">고추장아찌</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/곱창순대볶음.jpg" alt="곱창순대볶음">
                             <p>
-                                <input type="checkbox" id="circle_txt">곱창순대볶음<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">곱창순대볶음</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/냉이된장국.png" alt="냉이된장국">
                             <p>
-                                <input type="checkbox" id="circle_txt">냉이된장국<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">냉이된장국</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/돼지고기메추리알장조림.jpg" alt="돼지고기메추리알장조림">
                             <p>
-                                <input type="checkbox" id="circle_txt">돼지메추리알<br>장조림<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">돼지메추리알<br>장조림</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/마파두부.jpg" alt="마파두부">
                             <p>
-                                <input type="checkbox" id="circle_txt">마파두부<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">마파두부</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/막국수.jpg" alt="막국수">
                             <p>
-                                <input type="checkbox" id="circle_txt">막국수<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">막국수</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/매운갈비찜.PNG" alt="매운갈비찜">
                             <p>
-                                <input type="checkbox" id="circle_txt">매운갈비찜<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">매운갈비찜</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/무생채.jpg" alt="무생채">
                             <p>
-                                <input type="checkbox" id="circle_txt">무생채<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">무생채</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/물회.jpg" alt="물회">
                             <p>
-                                <input type="checkbox" id="circle_txt">물회<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">물회</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/소곱창전골.jpg" alt="소곱창전골">
                             <p>
-                                <input type="checkbox" id="circle_txt">소곱창전골<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">소곱창전골</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/소시지튀김.jpg" alt="소시지튀김">
                             <p>
-                                <input type="checkbox" id="circle_txt">소시지튀김<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">소시지튀김</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/쇠고기버섯죽.jpg" alt="쇠고기버섯죽">
                             <p>
-                                <input type="checkbox" id="circle_txt">쇠고기버섯죽<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">쇠고기버섯죽</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/쇠고기장조림.jpg" alt="쇠고기장조림">
                             <p>
-                                <input type="checkbox" id="circle_txt">쇠고기장조림<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">쇠고기장조림</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/쇠고기죽.jpg" alt="쇠고기죽">
                             <p>
-                                <input type="checkbox" id="circle_txt">쇠고기죽<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">쇠고기죽</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/순대국밥.jpeg" alt="순대국밥">
                             <p>
-                                <input type="checkbox" id="circle_txt">순대국밥<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">순대국밥</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/시금치나물.jpg" alt="시금치나물">
                             <p>
-                                <input type="checkbox" id="circle_txt">시금치나물<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">시금치나물</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/아귀찜.png" alt="아귀찜">
                             <p>
-                                <input type="checkbox" id="circle_txt">아귀찜<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">아귀찜</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/안심스테이크.jpg" alt="안심스테이크">
                             <p>
-                                <input type="checkbox" id="circle_txt">안심스테이크<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">안심스테이크</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/야채전.jpg" alt="야채전">
                             <p>
-                                <input type="checkbox" id="circle_txt">야채전<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">야채전</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/연어롤.jpg" alt="연어롤">
                             <p>
-                                <input type="checkbox" id="circle_txt">연어롤<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">연어롤</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/열무김치.jpg" alt="열무김치">
                             <p>
-                                <input type="checkbox" id="circle_txt">열무김치<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">열무김치</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/오징어물회.jpg" alt="오징어물회">
                             <p>
-                                <input type="checkbox" id="circle_txt">오징어물회<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">오징어물회</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/육회.jpg" alt="육회">
                             <p>
-                                <input type="checkbox" id="circle_txt">육회<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">육회</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/쟁반국수.jpg" alt="쟁반국수">
                             <p>
-                                <input type="checkbox" id="circle_txt">쟁반국수<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">쟁반국수</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/조기구이.jpg" alt="조기구이">
                             <p>
-                                <input type="checkbox" id="circle_txt">조기구이<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">조기구이</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/총각김치.jpg" alt="총각김치">
                             <p>
-                                <input type="checkbox" id="circle_txt">총각김치<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">총각김치</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/치킨너겟.jpg" alt="치킨너겟">
                             <p>
-                                <input type="checkbox" id="circle_txt">치킨너겟<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">치킨너겟</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/치킨데리야끼.png" alt="치킨데리야끼">
                             <p>
-                                <input type="checkbox" id="circle_txt">치킨데리야끼<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">치킨데리야끼</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/콩나물된장찌개.PNG" alt="콩나물된장찌개">
                             <p>
-                                <input type="checkbox" id="circle_txt">콩나물된장찌개<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">콩나물된장찌개</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/콩나물무침.png" alt="콩나물무침">
                             <p>
-                                <input type="checkbox" id="circle_txt">콩나물무침<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">콩나물무침</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/해물찜.jpg" alt="해물찜">
                             <p>
-                                <input type="checkbox" id="circle_txt">해물찜<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">해물찜</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/호박전.jpg" alt="호박전">
                             <p>
-                                <input type="checkbox" id="circle_txt">호박전<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">호박전</label>
                             </p>
                         </li>
                         <li>
                             <label class="circle_txt"><img id="circle_img" class="circle_img" src="../static/images/황태해장국.png" alt="황태해장국">
                             <p>
-                                <input type="checkbox" id="circle_txt">황태해장국<span class="checkmark"></span></label>
+                                <input type="checkbox" id="circle_txt">황태해장국</label>
                             </p>
                         </li>
                     </fieldset>
