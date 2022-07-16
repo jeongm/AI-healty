@@ -43,6 +43,9 @@ def join():
         user.sex = request.form.get('SEX1')
         user.height = request.form.get('height')
         user.weight = request.form.get('weight')
+        user.acti = request.form.get('activity')
+        field = request.form.getlist('circle_txt') # 음식값을 한글로 가져오고 싶으면 value를 한글로주면 됨
+        
         db.session.add(user)
         db.session.commit()
         flash("회원가입이 완료되었습니다.")
@@ -80,21 +83,20 @@ def diary(): # db 불러오자
     return render_template('diary.html')
 
 
-# 안만듦
 @app.route('/write', methods = ['GET', 'POST']) 
-def write(): # 저장 작업 수행, root 폴더에 저장됨
+def write(): # db식단 기록
     if request.method == "POST":
         m_dict = request.form
         data_key = list(m_dict.keys())
         action = request.form['write']
         
-        if action == "writedb":
+        if action == "SUBMIT":
             dict = m_dict.to_dict(flat=False)
             writedate = date.fromisoformat(m_dict['date/'])
             if 'name' not in dict:
                 flash('아침, 점심, 저녁을 선택해주세요')
                 return render_template("write_copy.html")
-            if 'chck' in dict :
+            if 'chck' in dict : # 메뉴만 따로 기록
                 menu_list = dict['chck']
             elif 'foodname' in dict:
                 menu_list = dict['foodname']
@@ -182,7 +184,7 @@ def predict():
         data = results.pandas().xyxy[0]["name"]
         data_list = data.tolist()
         data_value = []
-        for key, value in cls_dic.items():
+        for key, value in cls_dic.items(): # 한글매칭
             if key in data_list:
                 data_value.append(value)
         if not data_value:
