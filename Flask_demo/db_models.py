@@ -5,21 +5,6 @@ from datetime import datetime
 # from sqlalchemy import ForeignKey
 db = SQLAlchemy() # SQLALchemy를 사용해 데이터베이스 저장
 
-'''
-class Question(db.Model) :
-    id = db.Column(db.Integer, primary_key = True)
-    subject = db.Column(db.String(200), nullable = False)
-    content = db.Column(db.Text(), nullable = False)
-    create_date = db.Column(db.DateTime(), nullable = False)
-
-class Answer(db.Model) :
-    id = db.Column(db.Integer, primary_key = True)
-    question_id = db.Column(db.Integer, db.ForeignKey('question.id', ondelete = 'cascade'))
-    question = db.relationship('Question', backref=db.backref('answer_set', ))
-    # question = db.relationship('Question', backref=db.backref('answer_set', casecade='all, delete-orphan'))
-    content = db.Column(db.Text(), nullable = False)
-    create_date = db.Column(db.DateTime(), nullable = False)
-'''
 class User(db.Model) :
     __table_name__ = 'user' # table 이름
     user_seq = db.Column(db.Integer, primary_key=True)

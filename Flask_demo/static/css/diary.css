@@ -114,40 +114,6 @@ body {
   background: #2c3e50;
 }
 
-.left-arrow span {
-  position: relative;
-}
-
-.left-arrow span::after {
-  position: absolute;
-  top: 20px;
-  left: 570px;
-  display: inline-block;
-  content: '';
-  width: 15px; 
-  height: 15px;
-  border-top: 3px solid #999;
-  border-right: 3px solid #999;
-  transform: rotate(225deg); 
-}
-
-.right-arrow span {
-  position: relative;
-}
-
-.right-arrow span::after {
-  position: absolute;
-  top: -30px;
-  left: 1320px;
-  display: inline-block;
-  content: '';
-  width: 15px; 
-  height: 15px;
-  border-top: 3px solid #999;
-  border-right: 3px solid #999;
-  transform: rotate(45deg); 
-}
-
 .content_up{
   position: relative;
   width: 1900px;                                                               
@@ -175,8 +141,8 @@ body {
 
 .left-arrow span::after {
   position: absolute;
-  top: 370px;
-  left: -780px;
+  top: 410px;
+  left: -750px;
   display: inline-block;
   content: '';
   width: 15px; 
@@ -261,37 +227,24 @@ Body
 }
 
 .datebox {
-  margin-left: 895px;
+  margin-left: 910px;
   margin-top: 70px;
 }
 
 .mealtime {
-  margin-left: -10px;
-  margin-bottom: 30px;
+  display: inline;
+  margin-bottom: 300px;
+ 
 }
 
-.mealtime h2 {
-	display: inline;
+.texth1, .texth2, .texth3{
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.mealtime a {
-  text-decoration: none; /* 링크의 밑줄 제거 */
-  text-decoration-line: none;
-  color: black;
-}
-
-.mealtime a:hover {
-  text-decoration: none; /* 링크의 밑줄 제거 */
-  text-decoration-line: none;
-  color: #81C147; /* 링크의 색상 제거 */
-}
-
-.texth1{
-  margin-right:70px;
-}
-
-.texth2{
-  margin-right:70px;
+.texth1, .texth2{
+  margin-right: 100px;
 }
 
 
@@ -602,7 +555,8 @@ App
     .card-columns {
       width:1500px;
       margin:0 auto;
-      margin-left: 200px;
+      margin-left: 220px;
+      margin-top:60px;
   }
   
   .card-title {

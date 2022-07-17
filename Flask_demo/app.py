@@ -20,6 +20,7 @@ app = Flask(__name__)
 app.secret_key = "abcdef"
 
 cls_dic = {'0': '와플', '1': '케이크', '2': '핫도그', '3': '시리얼바', '4': '바나나', '5': '사과', '6': '수박', '7': '아보카도', '8': '오렌지', '9': '참외', '10': '파인애플', '11': '포도', '12': '키위', '13': '고구마', '14': '시리얼', '15': '팝콘', '16': '두부', '17': '방울토마토', '18': '상추', '19': '오이', '20': '파프리카', '21': '풋고추', '22': '조미김', '23': '삶은달걀', '24': '닭가슴살', '25': '훈제오리', '26': '훈제치킨', '27': '모듬회', '28': '생선회', '29': '전복', '30': '새우', '31': '베이컨', '32': '소시지', '33': '햄', '34': '소시지', '35': '소시지', '36': '밥', '37': '비빔밥', '38': '알밥', '39': '육회비빔밥', '40': '김치볶음밥', '41': '달걀볶음밥', '42': '볶음밥', '43': '새우볶음밥', '44': '카레라이스', '45': '햄볶음밥', '46': '김밥', '47': '주먹밥', '48': '초밥', '49': '연어롤', '50': '장어초밥', '51': '초밥', '52': '순대국밥', '53': '오므라이스', '54': '리조또', '55': '피자', '56': '피자', '57': '피자', '58': '피자', '59': '피자', '60': '피자', '61': '샌드위치', '62': '샌드위치', '63': '샌드위치', '64': '샌드위치', '65': '국수', '66': '비빔국수', '67': '쌀국수', '68': '냉면', '69': '비빔냉면', '70': '라면', '71': '컵라면', '72': '까르보나라', '73': '봉골레파스타', '74': '스파게티', '75': '크림파스타', '76': '파스타', '77': '우동', '78': '나가사끼짬뽕', '79': '라멘', '80': '짜장면', '81': '짬뽕', '82': '만두', '83': '떡만두국,고기만두', '84': '만두', '85': '만두', '86': '미소장국', '87': '갈비탕', '88': '삼계탕', '89': '어묵국', '90': '해장국', '91': '미역국', '92': '김치찌개', '93': '된장찌개', '94': '어묵국', '95': '추어탕', '96': '해물탕', '97': '부대찌개', '98': '순두부찌개', '99': '아귀찜', '100': '갈비찜', '101': '닭찜(찜닭)', '102': '돼지갈비찜', '103': '보쌈', '104': '순대', '105': '순살찜닭', '106': '달걀찜', '107': '고구마', '108': '고등어구이', '109': '고등어구이', '110': '새우구이', '111': '생선구이', '112': '연어구이', '113': '장어구이', '114': '갈비구이', '115': '닭가슴살', '116': '돼지고기고추장불고기', '117': '삼겹살', '118': '스테이크', '119': '오리구이', '120': '치킨스테이크', '121': '함박스테이크', '122': '고구마', '123': '타코야키', '124': '떡갈비', '125': '달걀말이', '126': '달걀후라이', '127': '부침개', '128': '스크램블드에그', '129': '파전', '130': '떡볶이', '131': '잡채', '132': '감자채볶음', '133': '쭈꾸미볶음', '134': '닭갈비', '135': '제육볶음', '136': '쇠고기볶음', '137': '족발', '138': '새우튀김', '139': '닭강정', '140': '순살치킨', '141': '양념치킨', '142': '왕돈가스', '143': '치킨', '144': '치킨너겟', '145': '치킨', '146': '파닭', '147': '핫윙', '148': '후라이드치킨', '149': '후라이드치킨,날개', '150': '후라이드치킨,다리', '151': '감자튀김', '152': '회오리감자', '153': '치즈스틱', '154': '모듬튀김', '155': '치즈볼', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '156': '샐러드', '157': '무김치', '158': '육회', '159': '참치통조림'}
+checkbox_dic = {'0':'15', '1':'8','2':'1','3':'10','4':'8','5':'5','6':'12','7':'6','8':'6','9':'3','10':'13','11':'11','12':'10','13':'11','14':'7','15':'4','16':'12','17':'0','18':'9','19':'7','20':'14','21':'6','22':'2','23':'5','24':'0','25':'14','26':'13','27':'0','28':'3','29':'6','30':'12','31':'9','32':'1'}
 
 @app.route('/')  # main페이지 -logout 상태
 def index():
@@ -46,6 +47,26 @@ def join():
         user.acti = request.form.get('activity')
         field = request.form.getlist('circle_txt') # 음식값을 한글로 가져오고 싶으면 value를 한글로주면 됨
         
+        field_list = [1.0]*16
+        for i in field:
+            field_list[int(checkbox_dic[i])] = field_list[int(checkbox_dic[i])] * 1.3
+        user.field1 = field_list[0]
+        user.field2 = field_list[1]
+        user.field3 = field_list[2]
+        user.field4 = field_list[3]
+        user.field5 = field_list[4]
+        user.field6 = field_list[5]
+        user.field7 = field_list[6]
+        user.field8 = field_list[7]
+        user.field9 = field_list[8]
+        user.field10 = field_list[9]
+        user.field11 = field_list[10]
+        user.field12 = field_list[11]
+        user.field13 = field_list[12]
+        user.field14 = field_list[13]
+        user.field15 = field_list[14]
+        user.field16 = field_list[15]
+
         db.session.add(user)
         db.session.commit()
         flash("회원가입이 완료되었습니다.")
@@ -78,9 +99,28 @@ def mypage():
     return render_template("mypage.html")
 
 # 만들어야 하는 부분 - 경민
-@app.route('/diary') # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
+@app.route('/diary', methods = ['GET', 'POST']) # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
 def diary(): # db 불러오자
-    return render_template('diary.html')
+    if request.method == "POST":
+        
+        m_dict = request.form
+        data_key = list(m_dict.keys())
+        action = request.form["current"]
+
+        if action == "확인":
+            diarydate = date.fromisoformat(m_dict['date'])
+            Mealtime = m_dict['name']
+            menu = rec.getMealtime(session['userid'], diarydate, m_dict['name'])
+
+            data = User.query.filter_by(userid=session['userid']).first()
+            uRDI = rec.getRDI(data.age, data.height, data.weight, data.sex, data.acti)
+            nut = rec.getNut(uRDI)
+            rate = rec.getRate(session['userid'], nut, uRDI, diarydate)
+
+
+            return render_template('diary_chart.html', day = diarydate, Meal=Mealtime, rate=rate, nut=nut, menu= menu)
+        
+    return render_template('diary_copy.html')
 
 
 @app.route('/write', methods = ['GET', 'POST']) 
@@ -140,8 +180,11 @@ def recommend():
     menu1 = Nutrition.query.filter_by(food_seq=menu_list[0]).first()
     menu2 = Nutrition.query.filter_by(food_seq=menu_list[1]).first()
     menu3 = Nutrition.query.filter_by(food_seq=menu_list[2]).first()
+    
+    t_rate = rec.getTotalRate(session['userid'], nut, uRDI)
+    rate = rec.getRate(session['userid'], nut, uRDI, date.today())
 
-    return render_template('recommend.html', uRDI = round(uRDI, 3), nut = nut , menu_list=len(menu_list), menu1 = menu1, menu2 = menu2, menu3 = menu3)
+    return render_template('recommend.html', uRDI = round(uRDI, 3), nut = nut , menu_list=len(menu_list), menu1 = menu1, menu2 = menu2, menu3 = menu3, t_rate=t_rate, rate= rate)
 
 
 @app.route('/search', methods = ['GET','POST']) # search 기본페이지

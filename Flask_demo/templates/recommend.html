@@ -24,7 +24,7 @@
         <li><a href="{{url_for('diary')}}">DIARY</a></li>
         <li><a href="{{url_for('write')}}">WRITE</a></li>
         <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
-        <li><a href="{{url_for('search-info')}}">SEARCH</a></li>
+        <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
         <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
         <li><a href="#"><img src="../static/images/user.png" width="35px", height="35px"></a></li>
     </ul>   
@@ -37,11 +37,6 @@
         <div class="radar">
           <canvas id="marksChart">
           </canvas>
-        </div>
-        <div class="radar_text">
-          </br>
-          <span class="today">일일 달성률: 30%</span>
-          <span>전체 달성률: 80%</span>
         </div>
       </div>
       <div class="right_content">
@@ -77,29 +72,29 @@
       var marksData = {
         labels: ["열량", "탄수화물", "단백질", "지방", "나트륨"],
         datasets: [{
-          label: "가 음식",
-          fill: true,
-          backgroundColor: "rgba(179,181,198,0.2)",
-          borderColor: "rgba(179,181,198,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(179,181,198,1)",
-          data: [78.77, 55.61, 71.69, 86.62, 69.82]
-        }, {
-          label: "나 음식",
-          fill: true,
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          data: [75.48, 54.16, 74.61, 81.06, 61.45]
-        }]
+                  label: "섭취 영양성분 달성량(100% 기준)",
+                  fill: true,
+                  backgroundColor: "rgba(179,181,198,0.2)",
+                  borderColor: "rgba(179,181,198,1)",
+                  pointBorderColor: "#fff",
+                  pointBackgroundColor: "rgba(179,181,198,1)",
+                  data: ['{{rate[0]}}', '{{rate[1]}}', '{{rate[2]}}', '{{rate[3]}}', '{{rate[4]}}']
+                }, {
+                  label: "섭취 영양성분 달성량(100% 기준)",
+                  fill: true,
+                  backgroundColor: "rgba(255,99,132,0.2)",
+                  borderColor: "rgba(255,99,132,1)",
+                  pointBorderColor: "#fff",
+                  pointBackgroundColor: "rgba(255,99,132,1)",
+                  pointBorderColor: "#fff",
+                  data: ['{{t_rate[0]}}', '{{t_rate[1]}}', '{{t_rate[2]}}', '{{t_rate[3]}}', '{{t_rate[4]}}']
+                }]
       };
 
       var chartOptions = {
         title: {
           display: true,
-          text: '가 음식 vs 나 음식'
+          text: '일일 섭취량 달성률 vs 전체 섭취량 달성률'
         },
         scale: {
           angleLines: {
@@ -108,8 +103,8 @@
           ticks: {
             beginAtZero: true,
             min: 0,
-            max: 100,
-            stepSize: 10
+            max: 150,
+            stepSize: 30
           },
         },
       };
