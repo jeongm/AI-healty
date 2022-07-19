@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from tkinter import N
 from flask import Flask, session, render_template, redirect, request, url_for, flash
+from pandas import to_datetime
 from werkzeug.utils import secure_filename
 from db_models import db
 import os
@@ -25,11 +26,11 @@ checkbox_dic = {'0':'15', '1':'8','2':'1','3':'10','4':'8','5':'5','6':'12','7':
 @app.route('/')  # main페이지 -logout 상태
 def index():
     if "userid" in session: # 로그인 여부 확인
-        return redirect(url_for('diary'))
+        return render_template('indexout.html')
     return render_template('index2_copy.html')
 
 # GET => 페이지가 나오도록 요청. POST = 버튼을 눌렀을 때 데이터를 가지고오는 요청, 요청정보를 확인하기 위해 request 모듈 사용
-@app.route('/join',methods = ['GET','POST']) # 회원가입 - 미완
+@app.route('/join',methods = ['GET','POST']) # 회원가입
 def join():
     if request.method == 'GET':
         return render_template('join_copy.html')
@@ -94,12 +95,12 @@ def signout():
     session.clear()
     return redirect(url_for('index'))
 
-@app.route('/mypage', methods=['GET']) # 회원정보
+@app.route('/mypage') # 회원정보
 def mypage():
-    return render_template("mypage.html")
+    userinfo = User.query.filter_by(userid=session['userid']).first()
+    return render_template("mypage.html",userInfo = userinfo)
 
-# 만들어야 하는 부분 - 경민
-@app.route('/diary', methods = ['GET', 'POST']) # 오늘 먹은 음식 확인, 로그인하면 diary가 기본페이지
+@app.route('/diary', methods = ['GET', 'POST']) # 오늘 먹은 음식 확인, 로그인하면 
 def diary(): # db 불러오자
     if request.method == "POST":
         
@@ -117,7 +118,6 @@ def diary(): # db 불러오자
             nut = rec.getNut(uRDI)
             rate = rec.getRate(session['userid'], nut, uRDI, diarydate)
 
-
             return render_template('diary_chart.html', day = diarydate, Meal=Mealtime, rate=rate, nut=nut, menu= menu)
         
     return render_template('diary_copy.html')
@@ -133,6 +133,7 @@ def write(): # db식단 기록
         if action == "SUBMIT":
             dict = m_dict.to_dict(flat=False)
             writedate = date.fromisoformat(m_dict['date/'])
+            
             if 'name' not in dict:
                 flash('아침, 점심, 저녁을 선택해주세요')
                 return render_template("write_copy.html")
