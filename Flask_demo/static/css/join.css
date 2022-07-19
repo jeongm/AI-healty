@@ -46,7 +46,7 @@ h4 {
     text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 * {
     margin: 0;
@@ -252,6 +252,8 @@ body::before {
     margin-top: 5px;
 }
 
+
+
 /* Customize the label (the container) */
 .circle_txt {
     display: block;
@@ -259,9 +261,11 @@ body::before {
     cursor: pointer;
     font-size: 17px;
     width:160px;
-    height: 203px;
+    height: 180px;
     text-align: center;
+    margin-bottom: 30px;
   }
+
   /* Hide the browser's default checkbox */
   .circle_txt input {
     position: absolute;
@@ -270,10 +274,15 @@ body::before {
     height: 0;
     width: 0;
   }
+
+  .circle_txt > p{
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
    
   /* Create a custom checkbox */
   .checkmark {
-    position: absolute;
+    /* position: absolute; */
     top: 157px;
     left: 9px;
     height: 20px;
@@ -301,20 +310,22 @@ body::before {
   /* Show the checkmark when checked */
   .circle_txt input:checked ~ .checkmark:after {
     display: block;
+    
   }
    
   /* Style the checkmark/indicator */
   .circle_txt .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
+    left: 65px;
+    top: 38px;
+    width: 35px;
+    height: 60px;
+    border: 50px solid #abf764;
+    border-width: 0 15px 15px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   } 
+
 
    
 
