@@ -1,8 +1,4 @@
-@media all and (min-width:1024px) { /*computer*/
-    #wrap {
-      width: 20%;
-    }
-    #wrap div:nth-child(5){width:20%;}
+/* a-style */
 
 * {
     margin: 0px;
@@ -11,11 +7,10 @@
     text-decoration: none;
     color: black;
 }
-
 .header {
-    padding-left: 45px;
+    display:flex;
+    align-items: stretch;
     height: 130px;
-    text-align: left;
     box-sizing: border-box;
     border-bottom: 1px solid #999;
 }
@@ -24,31 +19,24 @@
     padding-top: 0px;
     letter-spacing: 2px;
 }
-
-.header__logo p {
-    font: bold 12px 'arial';
-    margin-top: -1px;
-    letter-spacing: 2px;
+.header__menu{
+    display:flex;
+    flex:1 1 auto;
+    justify-content: flex-end;
 }
-
-.header__gnb ul {
-    margin-top: -80px;
-    text-align: right;
-    margin-right: 50px;
+.header__menu>ul{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-right:2rem;
 }
-
-.header__gnb ul li {
-    display: inline-block;
+.header__menu>ul>li{
+    padding-left:1rem;
 }
-
-.header__gnb ul li a {
-    display: block;
+.header__menu a {
     font: bold 14px 'arial';
     color: #999;
-    margin: 0px 16px;
-    letter-spacing: 1px;
 }
-
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
 * {
@@ -58,9 +46,7 @@
 }
 
 body {
-    text-align: center;
     background: whitesmoke;
-    display: table-cell;
 }
 
 button {
@@ -171,5 +157,4 @@ button {
 
 .main .ftcl {
     color: white;
-}
 }
