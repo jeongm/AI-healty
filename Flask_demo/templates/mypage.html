@@ -40,49 +40,49 @@
                         <label for="id" id="id1">ID</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="id2" id="id2" style="color:black;">cat</label>
+                        <label for="id2" id="id2" style="color:black;">{{userInfo.userid}}</label>
                     </div>
                     <div class="int-area">
                         <label for="pw">PASSWORD</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="pw2" id="pw2" style="color:black">cat123</label>
+                        <label for="pw2" id="pw2" style="color:black">{{userInfo.password}}</label>
                     </div>
                     <div class="int-area">
                         <label for="user_name">USER NAME</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="user_name2" id="user_name2" style="color:black">김애용</label>
+                        <label for="user_name2" id="user_name2" style="color:black">{{userInfo.username}}</label>
                     </div>
                     <div class="int-area">
                         <label for="phone_num">PHONE NUMBER</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="phone_num2" id="phone_num2" style="color:black">010-1234-5678</label>
+                        <label for="phone_num2" id="phone_num2" style="color:black">{{userInfo.phone}}</label>
                     </div>
                     <div class="int-area">
                         <label for="age">AGE</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="age2" style="color:black">3</label>
+                        <label for="age2" style="color:black">{{userInfo.age}}</label>
                     </div>
                     <div class="int-area">
                         <label for="height">SEX(M or F)</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="height2" style="color:black">M</label>
+                        <label for="height2" style="color:black">{{userInfo.sex}}</label>
                     </div>
                     <div class="int-area">
                         <label for="weight">WEIGHT</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="weight2" style="color:black">6</label>
+                        <label for="weight2" style="color:black">{{userInfo.weight}}</label>
                     </div>
                     <div class="int-area">
                         <label for="activity">ACTIVITY</label>
                     </div>
                     <div class="int-area" style="border-bottom: 1px solid #999; line-height: 7px;">
-                        <label for="activity2" style="color:black;">안 움직임</label>
+                        <label for="activity2" style="color:black;">{{userInfo.acti}}</label>
                     </div>
                     <div class="btn-area">
                         <button type="button" onclick="location.href='{{ url_for('index')}}'">Check</button>
