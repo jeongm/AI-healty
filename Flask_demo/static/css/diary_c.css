@@ -1,15 +1,5 @@
- @font-face {
-    font-family: 'Bitter';
-    src: url('../fonts/Bitter-Bold.ttf') format("truetype");
-    unicode-range: U+0020-007E;
-    /* font-weight: bold; */
-  }
-  @font-face {
-    font-family: 'Bitter';
-    font-style: normal;
-    src: url('../fonts/NotoSansKR-Bold.otf') format('opentype');
-    unicode-range:U+AC00-U+D7A3;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=Noto+Sans+KR:wght@300&display=swap');
 
 * {
     margin: 0px;
@@ -17,7 +7,7 @@
     list-style: none;
     text-decoration: none;
     color: black;
-    font-family: 'Bitter';
+    font-family: 'Bitter', serif;
 }
 .header {
     display:flex;
@@ -52,6 +42,7 @@
 .header__menu a {
     font-size: 20px;
     color: #1d3b2a;
+    font-family: 'Bitter', serif;
 }
 
 body {
@@ -107,7 +98,8 @@ body {
   .left_content {
     width:500px;
     height: 700px;
-    float:left
+    float:left;
+    
   }
   .right_content {
     width:700px;
@@ -137,16 +129,16 @@ body {
 
 
   .footer-basic {
-    margin-top: 0;
-    padding: 10px 0;
-    height: 130px;
+    margin-top: 20px;
+    padding: 30px 0;
+    height: 151px;
     background-color:#1d3b2a;
     color:#fff;
     z-index: -2;
   }
   
   .footer-basic ul {
-    padding:0;
+    padding-top:15px;
     list-style:none;
     text-align:center;
     font-size:18px;
@@ -238,6 +230,7 @@ body {
   
   .card-title {
     text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
   }
   
   .policy-table {
@@ -259,6 +252,8 @@ body {
     .heading {
       flex-basis: 33.333%;
       font-weight: bold;
+      
+      font-family: 'Noto Sans KR', sans-serif;
     }
     
     .policy {
@@ -274,6 +269,8 @@ body {
     
     span {
       flex-basis: 33.333%;
+      
+      font-family: 'Noto Sans KR', sans-serif;
     }
     
     a {

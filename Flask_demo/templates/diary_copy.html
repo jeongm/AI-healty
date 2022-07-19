@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Food Table</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/diary_chart.css">
+  <link rel="stylesheet" href="../static/css/diary_c.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -31,63 +31,198 @@
 </SCRIPT>
 
 <body>
-  <header class="header">
-    <div class="header__logo">
-      <a href="{{url_for('index')}}">
-        <h1><img src="../static/images/logo.png" width="450px" , height="130px"></h1>
-      </a>
-    </div>
-    <div class="header__gnb">
-      <ul>
-        <li><a href="{{url_for('diary')}}">DIARY</a></li>
-        <li><a href="{{url_for('write')}}">WRITE</a></li>
-        <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
-        <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
-        <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
-        <li><a href="#" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
-      </ul>
-    </div>
+  <header>
+    <nav class="header">
+      <div class="header__logo">
+        <a href="{{url_for('index')}}">
+          <h1><img src="../static/images/logo.png" width="333px" , height="81px"></h1>
+        </a>
+      </div>
+      <div class="header__menu">
+        <ul>
+          <li><a href="{{url_for('diary')}}">DIARY</a></li>
+          <li><a href="{{url_for('write')}}">WRITE</a></li>
+          <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
+          <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
+          <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
+          <li><a href="#" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
   <div class="content_up">
     <form action ="{{url_for('diary')}}" method=post enctype=multipart/form-data>
-      <div class="datebox">
-        <input type='date' id='currentDate' name="date"/>
-        <input type=submit name =current value="확인">
-      </div>
-      <script>
-        document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
-      </script>
-      <div class="meal">
-        <div class="morning">
-          <div class="mealtime">
-            <input name="name" id="id1" type="radio" class = "radiobtn" name = "mealtime" value="1" ><label for="id1" class="texth1">&nbsp;Morning</label>
-            <input name="name" id="id2" type="radio" class = "radiobtn" name = "mealtime" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
-            <input name="name" id="id3" type="radio" class = "radiobtn" name = "mealtime" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
-          </div>
-          <script>
-            var text = document.querySelector('.texth1');
-            var text2 = document.querySelector('.texth2');
-            var text3 = document.querySelector('.texth3');
-            text.onclick = function () {
-              text.style.color = '#81c147';
-              text2.style.color = 'black';
-              text3.style.color = 'black';
-            }
-            text2.onclick = function () {
-              text.style.color = 'black';
-              text2.style.color = '#81c147';
-              text3.style.color = 'black';
-            }
-            text3.onclick = function () {
-              text.style.color = 'black';
-              text2.style.color = 'black';
-              text3.style.color = '#81c147';
-            }
-          </script>
-          <br>
-          <br>
+        <div class="datebox">
+          <input type='date' id='currentDate' name="date"/>
+          <input type=submit name =current value="확인">
         </div>
-      </div>
+        <script>
+          document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+        </script>
+        <div class="meal">
+          <div class="morning">
+            <div class="mealtime">
+              <input name="name" id="id1" type="radio" class = "radiobtn" name = "mealtime" value="1" ><label for="id1" class="texth1">&nbsp;Morning</label>
+              <input name="name" id="id2" type="radio" class = "radiobtn" name = "mealtime" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
+              <input name="name" id="id3" type="radio" class = "radiobtn" name = "mealtime" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
+            </div>
+            <script>
+              var text = document.querySelector('.texth1');
+              var text2 = document.querySelector('.texth2');
+              var text3 = document.querySelector('.texth3');
+              text.onclick = function () {
+                text.style.color = '#81c147';
+                text2.style.color = 'black';
+                text3.style.color = 'black';
+              }
+              text2.onclick = function () {
+                text.style.color = 'black';
+                text2.style.color = '#81c147';
+                text3.style.color = 'black';
+              }
+              text3.onclick = function () {
+                text.style.color = 'black';
+                text2.style.color = 'black';
+                text3.style.color = '#81c147';
+              }
+            </script>
+            <br>
+            <br>
+          </div>
+          <div class="left_content">
+            <div type="button" class="left-arrow" style="cursor:pointer" onclick="cleft()">
+              <span></span>
+            </div>
+            <div class="card-columns">
+              <div class="card" style='width: 400px;'>
+                <img class="card-img-top" src="../static/images/meal.PNG" alt="Card image cap" width="400px"
+                  height="260px">
+                <div class="card-body">
+                  <h5 class="card-title">-</h5>
+                  <p class="card-text">
+                  <div class="policy-container">
+                    <div class="policy-table">
+                      <div class="headings">
+                        <span class="heading">1회제공량</span>
+                        <span class="heading">에너지(kcal)</span>
+                        <span class="heading">단백질(g)</span>
+                      </div>
+                      <div class="policy">
+                        <span>-</span>
+                        <span>-</span>
+                        <span>-</span>
+                      </div>
+                    </div>
+                    <div class="policy-table">
+                      <div class="headings">
+                        <span class="heading">지방(g)</span>
+                        <span class="heading">탄수화물(g)</span>
+                        <span class="heading">나트륨(mg)</span>
+                      </div>
+                      <div class="policy"> 
+                        <span>-</span>
+                        <span>-</span>
+                        <span>-</span>
+                      </div>
+                    </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div type="button" class="right-arrow" style="cursor:pointer"  onclick="cright()">
+              <span></span>
+            </div>
+            <script>
+              var count = 0;
+              function cleft(){
+                if(count>0){
+                  count -=1;
+                }
+              }
+              function cright(){
+                if(count<"{{max}}"){
+                  count +=1;
+                }
+              }
+            </script>
+          </div>
+          <div class="right_content">
+            <div class="up_content">
+              <div class="radar">
+                <canvas id="marksChart">
+                </canvas>
+              </div>
+            
+            </div>
+            <div class="down_content">
+              <div class="policy-container">
+                <div class="policy-table">
+                  <div class="policy">
+                    <span>섭취 칼로리</span>
+                    <span>- kcal</span>
+                  </div>
+                  <div class="policy">
+                    <span>섭취 탄수화물</span>
+                    <span>- g</span>
+                  </div>
+                  <div class="policy">
+                    <span>섭취 단백질</span>
+                    <span>- g</span>
+                  </div>
+                  <div class="policy">
+                    <span>섭취 지방</span>
+                    <span>- g</span>
+                  </div>
+                  <div class="policy">
+                    <span>섭취 나트륨</span>
+                    <span>- mg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+              var marksCanvas = document.getElementById("marksChart");
+
+              var marksData = {
+                labels: ["열량", "탄수화물", "단백질", "지방", "나트륨"],
+                datasets: [{
+                  label: "섭취 영양성분 달성량(100% 기준)",
+                  fill: true,
+                  backgroundColor: "rgba(179,181,198,0.2)",
+                  borderColor: "rgba(179,181,198,1)",
+                  pointBorderColor: "#fff",
+                  pointBackgroundColor: "rgba(179,181,198,1)",
+                  data: ['0', '0', '0', '0', '0']
+                }]
+              };
+
+              var chartOptions = {
+                title: {
+                  display: true,
+                  text: '일일 권장 섭취량 대비 섭취량'
+                },
+                scale: {
+                  angleLines: {
+                    display: false
+                  },
+                  ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 200,
+                    stepSize: 40
+                  },
+                },
+              };
+
+              var radarChart = new Chart(marksCanvas, {
+                type: 'radar',
+                data: marksData,
+                options: chartOptions
+              });
+            </script>
+          </div>
+        </div>
     </form>
   </div>
     <div class="footer-basic">
