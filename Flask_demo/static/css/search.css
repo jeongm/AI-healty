@@ -26,7 +26,7 @@
 
 .header__logo h1 {
 /* letter-spacing: 2px; */
-margin-left:2rem;
+  margin-left:2rem;
 }
 
 .header__menu{
@@ -107,17 +107,6 @@ Search - left-content
 /* .left_content {
   
 } */
-
-.search-form {
-  position: relative;
-  width: 350px;
-  height: 40px;
-  margin: auto;
-  border-radius: 40px;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  background: #fff;
-  transition: all 0.3s ease;
-} 
 
 .search-div
 {
@@ -343,7 +332,8 @@ Right-content
 
 .policy span {
   font-family: 'Noto Sans KR', sans-serif;
-  flex-basis: 33.333%
+  flex-basis: 33.333%;
+  font-size: 17px;
 }
 
 

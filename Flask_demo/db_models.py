@@ -116,3 +116,8 @@ class AttainmentRate(db.Model) : # 달성률 테이블
     sodium = db.Column(db.Float(150),  nullable = False)
     
     # user = db.relationship("User", backref=db.backref('rate_user', order_by=user_id))
+    
+class Image_file(db.Model) : # 달성률 테이블
+    __tablename__ = 'image_file' # table 이름
+    image_index = db.Column(db.Integer, primary_key=True) 
+    image_binary = db.Column(db.BLOB)

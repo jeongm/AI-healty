@@ -5,7 +5,7 @@ from pandas import to_datetime
 from werkzeug.utils import secure_filename
 from db_models import db
 import os
-from db_models import User, Nutrition, DietTable, Menu, AttainmentRate # db_models.py에 있는 User 클래스
+from db_models import User, Nutrition, DietTable, Menu, AttainmentRate, Image_file # db_models.py에 있는 User 클래스
 import rec 
 from datetime import date
 
@@ -122,14 +122,12 @@ def diary(): # db 불러오자
         
     return render_template('diary_copy.html')
 
-
 @app.route('/write', methods = ['GET', 'POST']) 
 def write(): # db식단 기록
     if request.method == "POST":
         m_dict = request.form
         data_key = list(m_dict.keys())
         action = request.form['write']
-        
         if action == "SUBMIT":
             dict = m_dict.to_dict(flat=False)
             writedate = date.fromisoformat(m_dict['date/'])
@@ -142,22 +140,23 @@ def write(): # db식단 기록
             elif 'foodname' in dict:
                 menu_list = dict['foodname']
             
-            sql_data=[]
             for foodname in menu_list:
                 menu = Menu()
+                img = Image_file.query.order_by(Image_file.image_index.desc()).first()
                 menu_id = Nutrition.query.filter_by(foodname=foodname).first()
                 menu.user_id = session['userid']
                 menu.food_id = menu_id.food_seq
                 menu.date = writedate
                 menu.meal_time = m_dict['name']
-                sql_data.append(menu)
+                menu.image = img.image_binary
                 db.session.add(menu)
+                db.session.delete(img)
             db.session.commit()   
             flash("저장되었습니다.")
             
         else: 
             if action == "search":
-                predict_data = predict()
+                predict_data= predict()
                 return render_template("write_copy.html", predict_data = predict_data)
             if "text-search" in data_key and m_dict['text-search'] != '':
                 data = request.form["text-search"]
@@ -166,6 +165,7 @@ def write(): # db식단 기록
             food = Nutrition.query.filter_by(foodname=data).first()
             return render_template("write_copy.html", food = food)
     return render_template("write_copy.html")
+
 
 
 
@@ -198,17 +198,21 @@ def search_info():
         key_dict = request.form
         if not key_dict :
             return render_template("search_copy.html",se= se)
-        data_key = list(key_dict.keys())[0]
-        return render_template("test.html",data = key_dict)
+        data_key = list(key_dict.keys())
+        # 텍스트 => text-search
+        # 이미지 => ['text-search', 'file']
+        # return render_template("test.html",data = key_dict)
         
-        if data_key == "text-search":
-            data = request.form["text-search"]
-        elif data_key == "chck":
-            data = request.form['chck']
-        else :
+        if "file" in data_key :
             predict_data = predict()
             return render_template("search_copy.html", predict_data = predict_data)
-        food = Nutrition.query.filter_by(foodname=data).first()
+        if "chck" in data_key:
+            data = request.form['chck']
+        else:
+            data = request.form["text-search"]
+        
+        food = Nutrition.query.filter(Nutrition.foodname.like("%"+data+"%")).first()
+        # food = Nutrition.query.filter_by(foodname=data).first()
         
         return render_template("search_copy.html",se=se, food = food)
     return render_template("search_copy.html",se= se)
@@ -222,12 +226,15 @@ def predict():
         file = request.files["file"]
         if not file:
             return
-
+        image_file = Image_file()
         img_bytes = file.read() # yolo detction
         img = Image.open(io.BytesIO(img_bytes))
         results = model(img, size=640)
-
         #dataframe으로 가져옴
+        image_file.image_binary = img_bytes
+        db.session.add(image_file)
+        db.session.commit()
+
         data = results.pandas().xyxy[0]["name"]
         data_list = data.tolist()
         data_value = []
