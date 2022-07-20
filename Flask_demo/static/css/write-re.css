@@ -1,13 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=Noto+Sans+KR:wght@300&display=swap');
 
 * {
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-  text-decoration: none;
-  color: black;
-  font-family: 'Open Sans', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-family: 'Bitter', serif;
 }
+
+/* div {
+  display: block;
+} */
 
 html {
   min-height: 100%;
@@ -15,18 +20,16 @@ html {
 }
 
 .header {
-  display:flex;
-  /* align-items: stretch; */
-  align-items: center;
-  height: 120px;
-  box-sizing: border-box;
-  background-color: #fff;
-  z-index: 1;
-  /* width: 80%; */
-  width: 100%;
-  margin: auto;
-  border-bottom: 1px solid #999; 
-  /* border 수정필요 */
+    display:flex;
+    /* align-items: stretch; */
+    align-items: center;
+    height: 120px;
+    box-sizing: border-box;
+    background-color: #fff;
+    z-index: 1;
+    /* width: 80%; */
+    width: 100%;
+    margin: auto;
 }
 
 .header__logo h1 {
@@ -35,31 +38,29 @@ html {
 }
 
 .header__menu{
-  /* padding-top: 30px; */
-  display:flex;
-  flex:1 1 auto;
-  justify-content: flex-end;
-  
+    /* padding-top: 30px; */
+    display:flex;
+    flex:1 1 auto;
+    justify-content: flex-end;
+    
 }
 .header__menu>ul{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  margin-right:2rem;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-right:2rem;
 }
 .header__menu>ul>li{
-  padding-left:1.5rem;
-  align-items:center;
-  margin-top: 1rem;
-  
+    padding-left:1.5rem;
+    align-items:center;
+    margin-top: 1rem;
+}
+.header__menu a {
+    font-size: 15px;
+    color: #1d3b2a;
+    font-family: 'Bitter', serif;
 }
 
-.header__menu a {
-  font-size: 20px;
-  font: bold 14px 'arial';
-  color: #999;
-  
-}
 .header__menu a:hover {
   color: rgb(114, 114, 114);
   text-decoration: none;
@@ -68,33 +69,33 @@ html {
 body {
   background: whitesmoke;
   background: #2c3e50;
-  font-family: 'Open Sans', sans-serif;
   /* width: 80%; */
 }
-
 
 .content_up{
   position: relative;
   display:flex;
   flex:1 1 auto;
   justify-content: center;
-  /* width: 80%; */
-  width: 100%;
+  width: 80%;
   height: auto;
-  min-height: 100%;
+  /* min-height: 80%; */
   background-size: auto;
   margin: auto;
+  /* background-color:#fff; */
+  /* padding-bottom: 151px; */
 }
 
 .meal {
   text-align: center;
   font-size: large;
   width: auto;
-  height: 500px;
+  height: 561px;
 }
 
 .datebox {
   margin-top: 40px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -103,13 +104,19 @@ body {
 }
 
 .texth1, .texth2, .texth3{
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 25px;
+  color: #1d3b2a;
   cursor: pointer;
   margin-right: 2rem;
+
 }
 
-/* search */
+.search-div
+{
+  position: relative;
+  padding: 1.5rem;
+}
+
 
 .search-form {
   position: relative;
@@ -298,38 +305,46 @@ transform:translate3d(-6px,6px,0)
 
 /* footer */
 .footer-basic {
-  padding:50px 0;
-  background-color:#ffffff;
-  color:#4b4c4d;
+  position : relative;
+  /* margin-top: 20px; */
+  padding: 30px 0;
+  height: 120px;
+  background-color:#1d3b2a;
+  color:#fff;
+  z-index: -2;
+  /* transform : translateY(-100%); */
+  
+
 }
-    
+
 .footer-basic ul {
-  padding:0;
+  /* padding-top:15px; */
   list-style:none;
   text-align:center;
-  font-size:18px;
+  font-size:15px;
   line-height:1.6;
-  margin-bottom:0;
+  /* margin-bottom:0; */
+  margin: auto;
 }
-    
+
 .footer-basic li {
     padding:0 10px;
 }
-    
+
 .footer-basic ul a {
-    color:inherit;
     text-decoration:none;
     opacity:0.8;
+    color:#fff;
 }
-    
+
 .footer-basic ul a:hover {
     opacity:1;
 }
-  
+
 .footer-basic .copyright {
   margin-top:15px;
   text-align:center;
   font-size:13px;
   color:#aaa;
-  margin-bottom:0;
+  /* margin-bottom:0; */
 }
