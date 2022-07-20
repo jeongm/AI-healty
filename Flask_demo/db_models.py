@@ -98,6 +98,7 @@ class Menu(db.Model) : # 식단 정보 테이블
     food_id = db.Column(db.Integer, db.ForeignKey('nutrition.food_seq'))
     date = db.Column(db.DateTime, default=datetime.utcnow)
     meal_time = db.Column(db.Integer)
+    image = db.Column(db.BLOB)
     
     # user = db.relationship("User", backref=db.backref('menu_user', order_by=user_id))
     # menu_nut = db.relationship("Nutrition", backref=db.backref('menu_Table', order_by=food_id))

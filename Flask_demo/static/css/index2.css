@@ -1,4 +1,6 @@
 /* a-style */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=Noto+Sans+KR:wght@300&display=swap');
 
 * {
     margin: 0px;
@@ -9,20 +11,28 @@
 }
 .header {
     display:flex;
-    align-items: stretch;
-    height: 130px;
+    /* align-items: stretch; */
+    align-items: center;
+    height: 120px;
     box-sizing: border-box;
-    border-bottom: 1px solid #999;
+    background-color: #fff;
+    z-index: 1;
+    /* width: 80%; */
+    width: 100%;
+    margin: auto;
 }
 
 .header__logo h1 {
-    padding-top: 0px;
-    letter-spacing: 2px;
+  /* letter-spacing: 2px; */
+  margin-left:2rem;
 }
+
 .header__menu{
+    /* padding-top: 30px; */
     display:flex;
     flex:1 1 auto;
     justify-content: flex-end;
+    
 }
 .header__menu>ul{
     display:flex;
@@ -31,11 +41,19 @@
     margin-right:2rem;
 }
 .header__menu>ul>li{
-    padding-left:1rem;
+    padding-left:1.5rem;
+    align-items:center;
+    margin-top: 1rem;
 }
 .header__menu a {
-    font: bold 14px 'arial';
-    color: #999;
+    font-size: 15px;
+    color: #1d3b2a;
+    font-family: 'Bitter', serif;
+}
+
+.header__menu a:hover {
+  color: rgb(114, 114, 114);
+  text-decoration: none;
 }
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
@@ -62,6 +80,7 @@ button {
     text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
+    cursor: pointer;
 }
 
 .w-btn-green-outline {
@@ -69,28 +88,22 @@ button {
     color: black;
 }
 
-.w-btn-green-outline:hover {
-    background-color: #81C147;
-    color: #d7fff1;
-}
-
-.w-btn-outline:hover {
-    letter-spacing: 2px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.w-btn-outline:active {
-    transform: scale(1.5);
-}
 
 .content_up{
     position: relative;
-    overflow: hidden;   
-    width: 1920px;                                                               
-    height: 700px;
+    display:flex;
+    flex:1 1 auto;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    min-height: 600px;
+    background-size: auto;
+    background-image: url("../images/main.jpg");
     background-size: cover;
-}
+    margin: auto;
+    /* background-color:#fff; */
+    /* padding-bottom: 120px; */
+  }
 
 .content_up-cover{
      position: absolute;
@@ -101,60 +114,68 @@ button {
 }
 
 .content_up .content{
-     position: absolute;
-     top:50%;
-     left:50%;
-     transform: translate(-50%, -50%);                                                                   
-     font-size:5rem;
-     color: white;
-     z-index: 2;
-     text-align: center;
-}
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);                                                                   
+    font-size:5rem;
+    color: white;
+    z-index: 2;
+    text-align: center;
+    }
 
 .footer-basic {
+  position : relative;
+  height: 120px;
   padding:30px 0;
-  background-color:#ffffff;
-  color:#4b4c4d;
+  color: #1d3b2a;
+  background-color:fff;
+  z-index: -2;
 }
 
 .footer-basic ul {
-  padding:0;
-  list-style:none;
-  text-align:center;
-  font-size:18px;
-  line-height:1.6;
-  margin-bottom:0;
-}
-
-.footer-basic li {
-    padding:0 10px;
-}
-
-.footer-basic ul a {
-    color:inherit;
-    text-decoration:none;
-    opacity:0.8;
-}
-
-.footer-basic ul a:hover {
-    opacity:1;
-}
-
-.footer-basic .copyright {
-  margin-top:15px;
-  text-align:center;
-  font-size:13px;
-  color:#aaa;
-  margin-bottom:0;
-}
+    /* padding-top:15px; */
+    list-style:none;
+    text-align:center;
+    font-size:15px;
+    line-height:1.6;
+    /* margin-bottom:0; */
+    margin: auto;
+  }
+  
+  .footer-basic li {
+      padding:0 10px;
+  }
+  
+  .footer-basic ul a {
+      text-decoration:none;
+      opacity:0.8;
+      color:#1d3b2a;
+  }
+  
+  .footer-basic ul a:hover {
+      opacity:1;
+  }
+  
+  .footer-basic .copyright {
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#aaa;
+    /* margin-bottom:0; */
+  }
 
 .main {
     color: white;
     position: absolute;
-    top: 250px;
-    left: 100px;
+    top: 0px;
+    left: 300px;
+    height: 250px;
+    padding: 300px 50px;
+    background-color: white;
+    opacity: 0.8;
 }
 
 .main .ftcl {
-    color: white;
+    color: #1d3b2a;
 }

@@ -13,33 +13,34 @@
 
 
 <body>
-    <nav class="header">
-        <div class="header__logo">
+    <header>
+        <nav class="header">
+          <div class="header__logo">
             <a href="{{url_for('index')}}">
-                <h1><img src="../static/images/logo.png" width="450px", height="130px"></h1>
+              <!--<h1><img src="../static/images/logo2.png" width="280px" , height="45px"></h1>-->
+              <h1><img src="../static/images/logo.png" width="269px" , height="65px"></h1>
             </a>
-        </div>
-        <div class="header__menu">
+          </div>
+          <div class="header__menu">
             <ul>
-                <li><a href="{{url_for('diary')}}">DIARY</a></li>
-                <li><a href="{{url_for('write')}}">WRITE</a></li>
-                <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
-                <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
-                <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
-                <li><a href="{{url_for('mypage')}}" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
-                </ul>
-            </div>
+              <li><a href="{{url_for('diary')}}">DIARY</a></li>
+              <li><a href="{{url_for('write')}}">WRITE</a></li>
+              <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
+              <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
+              <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
+              <li><a href="{{url_for('mypage')}}" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+            </ul>
+          </div>
         </nav>
-    </header>
+      </header>
     <div id = "main">
         <div class = "content_up">
-                <img src="../static/images/tomato.jpg">
+                <img src="../static/images/main.jpg" width="2000px">
                 <div class = "main">
                     <div class = "hero">
-                <h2 class="ftcl">DESIGN YOUR FOOD</h2>
-                <p class="ftcl">Subscribe Easy Youtube Channel to watch more videos,<br>press the bell icon to get
-                    latest updates.</p>
-            </div>
+                        <h2 class = "ftcl">DESIGN YOUR FOOD</h2>
+                        <p class = "ftcl">Our Food Should Be Our Medicine & Our Medicine Should Be Our Food.<br>Click Join to view your custom recommended diet.</p> 
+        </div>
         </div>
     </div>
     <div class="footer-basic">
@@ -54,7 +55,5 @@
             <p class="copyright">Company Name © 2022</p>
         </footer>
     </div>
-
 </body>
-
 </html>

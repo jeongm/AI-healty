@@ -80,7 +80,7 @@ body {
   background-size: auto;
   margin: auto;
   /* background-color:#fff; */
-  padding-bottom: 120px;
+  /* padding-bottom: 120px; */
 }
 
 .meal {
@@ -310,6 +310,7 @@ transform:translate3d(-6px,6px,0)
 /*--------------------
 Footer
 --------------------*/
+
 .footer-basic {
   position : relative;
   /* margin-top: 20px; */
