@@ -49,19 +49,19 @@ body {
     background: whitesmoke;
     background: #2c3e50;
     
-  }
+}
 
-  .content_up{
-    position: relative;
-    display:flex;
-    flex:1 1 auto;
-    justify-content: center;
-    width: 100%;                                                               
-    height: 100%;
-    background-size: auto;
-    background-color:#fff;
-    /* z-index: -2; */
-  }
+.content_up{
+  position: relative;
+  display:flex;
+  flex:1 1 auto;
+  justify-content: center;
+  width: 100%;                                                               
+  height: 100%;
+  background-size: auto;
+  background-color:#fff;
+  /* z-index: -2; */
+}
   .diary_form{
     background-color: #fff;
     /* box-shadow: -10px 0px 27px -20px #000, 10px 0px 27px -20px #000; */
