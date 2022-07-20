@@ -8,8 +8,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <title>Food Table</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/sign.css">
@@ -18,9 +19,13 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="jquery-3.4.1.js"></script>
 </head>
+
 <body>
-    <section class = "login-form">
-        <h1><img src="../static/images/logo.png" width="330px", height="100px"></h1>
+    <section class="login-form">
+        <div class="logo-area">
+        <h1><img src="../static/images/logo.png" width="330px" , height="100px"></h1>
+        <p>All food information services are available with one ID.</p>
+        </div>
         <form action="" method="POST">
             <div class="int-area">
                 <input type="text" name="id" id="id" autocomplete="off" required>
@@ -43,20 +48,21 @@
         let pw = $('#pw');
         let btn = $('#btn');
 
-        $(btn).on('click', function() {
-            if($(id).val() == "") {
+        $(btn).on('click', function () {
+            if ($(id).val() == "") {
                 $(id).next('label').addClass('warning');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('label').removeClass('warning');
-                },1500);
+                }, 1500);
             }
-            else if($(pw).val() == "") {
+            else if ($(pw).val() == "") {
                 $(pw).next('label').addClass('warning');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('label').removeClass('warning');
-                },1500);
+                }, 1500);
             }
         });
     </script>
 </body>
+
 </html>

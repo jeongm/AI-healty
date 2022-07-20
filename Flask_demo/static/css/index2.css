@@ -76,7 +76,6 @@ button {
     padding: 15px 30px;
     border-radius: 15px;
     font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
@@ -84,9 +83,18 @@ button {
 }
 
 .w-btn-green-outline {
-    border: 3px solid #81C147;
-    color: black;
+    border: none;
+    color: white;
+    background-color: #527c5c;
 }
+
+.w-btn-green-outline:focus, .w-btn-green-outline:active {
+    border: none;
+    color: white;
+    background-color: #527c5c;
+}
+
+
 
 
 .content_up{
@@ -169,11 +177,12 @@ button {
     color: white;
     position: absolute;
     top: 0px;
-    left: 300px;
-    height: 250px;
-    padding: 300px 50px;
-    background-color: white;
-    opacity: 0.8;
+    left: 200px;
+    height: 600px;
+    width: 600px;
+    padding: 200px 30px 30px;
+    background-color: rgba( 255, 255, 255, 0.8 );
+  
 }
 
 .main .ftcl {

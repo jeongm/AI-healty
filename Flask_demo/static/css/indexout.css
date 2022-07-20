@@ -10,9 +10,6 @@
     font-family: 'Bitter', serif;
 }
 
-/* div {
-  display: block;
-} */
 
 .header {
   display:flex;
@@ -25,7 +22,7 @@
   /* width: 80%; */
   width: 100%;
   margin: auto;
-  border-bottom: 1px solid #1d3b2a;
+  /* border-bottom: 1px solid #1d3b2a; */
 }
 
 .header__logo h1 {
@@ -63,41 +60,77 @@
 }
 
 
-
 .content_up{
     position: relative;
     display:flex;
     flex:1 1 auto;
     justify-content: center;
     width: 100%;
-    height: auto;
-    min-height: 600px;
+    height: 600px;
     background-size: auto;
-    margin: auto;
-    /* background-color:#fff; */
-    padding-bottom: 120px;
+    margin: 0px auto;
+    background-color:rgb(255, 177, 177);
+    flex-direction: column;
   }
 
-.content_up-cover{
-     position: absolute;
-     height: 100%;
-     width: 100%;
-     background-color: rgba(0, 0, 0, 0.7);                                                                 
-     z-index:1;
+.sec1 {
+  height:25%;
+  width:100%;
+  /* text-align: center; */
+  display:flex;
+  justify-content: center;
+  background-color: rgb(201 216 191);
+}  
+
+.about {
+  display: flex;
+  --bg-overlay-color: rgb(var(--color_21));
+  background-color: rgb(201 216 191);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-.content_up .content{
-     position: absolute;
-     top:50%;
-     left:50%;
-     transform: translate(-50%, -50%);                                                                   
-     font-size:5rem;
-     color: white;
-     z-index: 2;
-     text-align: center;
+
+.sec2 {
+  height:75%;
+  display: flex;
+  /* justify-content: center; */
+}
+.content1 {
+  height:100%;
+  width:50%;
+  background-color: #1d3b2a;
+  text-align: center;
+
 }
 
+.content1 img {
+  /* margin: 3rem; */
+}
 
+.content2 {
+  /* display: list-item; */
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  height:100%;
+  width:50%;
+  font-family: 'Noto Sans KR', sans-serif;
+  flex-direction: column;
+}
+
+.service_info {
+  margin: auto;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.service_info h4 {
+  font-weight: bold;
+}
+.service_info li {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: large;
+}
 /*--------------------
 Footer
 --------------------*/

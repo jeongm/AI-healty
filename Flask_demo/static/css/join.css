@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=Noto+Sans+KR:wght@300&display=swap');
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -60,8 +64,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url("../images/tomato.jpg") no-repeat center;
+    /* background: url("../images/tomato.jpg") no-repeat center; */
     background-size: cover;
+
 }
 
 body::before {
@@ -153,10 +158,12 @@ body::before {
 .left_cont {
     width: 600px;
     height: 800px;
-    background-image: url("../images/sign_green.jpg");
+    background-color: rgb(164 203 83);
     background-repeat: no-repeat;
     border-radius: 15px;
     color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
 }
     .left_cont .left_c_text {
         padding:60px 20px 0 25px;
@@ -166,6 +173,10 @@ body::before {
         width: 550px;
         height: 3px;
     }
+
+.left_c_text h4 {
+    font-weight: bold;
+}    
 
 
 @keyframes warning {
@@ -189,7 +200,7 @@ body::before {
 .btn-area button {
     width: 200px;
     height: 50px;
-    background: #81C147;
+    background: rgb(164 203 83);
     color: #fff;
     font-size: 20px;
     border: none;
@@ -213,7 +224,7 @@ body::before {
     height: 800px;
     background-color: white;
     border-radius: 15px;
-    border: none;
+    border: 1px solid rgb(163, 163, 163);
     float: left;
    
 }
