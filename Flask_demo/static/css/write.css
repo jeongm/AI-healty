@@ -25,6 +25,7 @@
     /* width: 80%; */
     width: 100%;
     margin: auto;
+    border-bottom: 1px solid #1d3b2a;
 }
 
 .header__logo h1 {
@@ -65,7 +66,7 @@ body {
   background: whitesmoke;
   background: #2c3e50;
   /* width: 80%; */
-  height: 841px;
+  /* height: 841px; */
 }
 
 .content_up{
@@ -75,7 +76,7 @@ body {
   justify-content: center;
   width: 100%;
   height: auto;
-  /* min-height: 80%; */
+  min-height: 600px;
   background-size: auto;
   margin: auto;
   /* background-color:#fff; */
@@ -87,7 +88,7 @@ body {
   font-size: large;
   width: auto;
   height: 100%;
-  min-height: 561px;
+  /* min-height: 561px; */
 }
 
 .datebox {
@@ -114,6 +115,9 @@ body {
   padding: 1.5rem;
 }
 
+/*--------------------
+Search
+--------------------*/
 
 .search-form {
   position: relative;
@@ -256,6 +260,9 @@ body {
 /* .search-list p {
   font-family: 'Noto Sans KR', sans-serif;
 } */
+/*--------------------
+Submit 
+--------------------*/
 /* submit 버튼 */
 .submit-btn {
   margin: auto;
@@ -309,7 +316,7 @@ transform:translate3d(-6px,6px,0)
   background-color:#1d3b2a;
   color:#fff;
   z-index: -2;
-  transform : translateY(-100%);
+  /* transform : translateY(-100%); */
   
 
 }

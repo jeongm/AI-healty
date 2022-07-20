@@ -196,8 +196,11 @@ def search_info():
         se = None
     if request.method == "POST":
         key_dict = request.form
+        if not key_dict :
+            return render_template("search_copy.html",se= se)
         data_key = list(key_dict.keys())[0]
-            
+        return render_template("test.html",data = key_dict)
+        
         if data_key == "text-search":
             data = request.form["text-search"]
         elif data_key == "chck":
