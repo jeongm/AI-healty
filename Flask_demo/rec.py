@@ -1,6 +1,7 @@
 import pandas as pd
 import sqlite3
 import datetime
+import numpy as np
 
 # 일일 섭취 에너지 권장량 계산 BMR = 기초대사량 // RDI 일일권장섭취량
 def getRDI(age,stat,weight,sex,acti):
@@ -84,7 +85,7 @@ def getRate(userID, nut, uRDI, date):
 
 def getTotalRate(userID, nut, uRDI):
     con = sqlite3.connect("test3.db" , check_same_thread=False)
-    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.user_id="+str(userID),con)
+    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.user_id="+str(userID),con)
     con.close()
     
     result = [0,0,0,0,0]
@@ -104,5 +105,8 @@ def getTotalRate(userID, nut, uRDI):
     rate = []
     for i in range(5):
         rate.append(round(result[i]/nut[i]*100,3))
+    rate = np.array(rate)
+    rate = rate/len(df['date'].value_counts())
+    rate = list(rate)
     rate = rate+result
     return rate

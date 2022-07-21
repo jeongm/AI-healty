@@ -6,7 +6,7 @@
   <title>Food Table</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/result.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -26,13 +26,12 @@
         <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
         <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
         <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
-        <li><a href="#"><img src="../static/images/user.png" width="35px", height="35px"></a></li>
+        <li><a href="{{url_for('mypage')}}"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
     </ul>   
     </div>
   </header>
-  <div id="warp">
+  <div id="warp" class="wrap">
     <div class="content_up">
-      </br>
       <div class="left_content">
         <div class="radar">
           <canvas id="marksChart">
@@ -42,24 +41,25 @@
       <div class="right_content">
         <div class="policy-container">
           <div class="policy-table">
+            <h4>일일 권장 섭취량</h4>
             <div class="policy">
-              <span>권장 칼로리 섭취량</span>
+              <span> 칼로리</span>
               <span>{{uRDI}} kcal</span>
             </div>
             <div class="policy">
-              <span>권장 탄수화물 섭취량</span>
+              <span> 탄수화물</span>
               <span>{{nut[0]}} g</span>
             </div>
             <div class="policy">
-              <span>권장 단백질 섭취량</span>
+              <span> 단백질</span>
               <span>{{nut[1]}} g</span>
             </div>
             <div class="policy">
-              <span>권장 지방 섭취량</span>
+              <span> 지방</span>
               <span>{{nut[2]}} g</span>
             </div>
             <div class="policy">
-              <span>권장 나트륨 섭취량</span>
+              <span> 나트륨</span>
               <span>2300 mg</span>
             </div>
           </div>
@@ -115,13 +115,10 @@
         options: chartOptions
       });
     </script>
-  </div>
-  <div class="card-columns">
-    <div class="card" style='width: 400px;'>
-      <img class="card-img-top" src="../static/images/매운갈비찜.PNG" alt="Card image cap" width="400px" height="260px">
+    <div class="card-columns">
       <div class="card-body">
         <h5 class="card-title">{{menu1.foodname}}</h5>
-        <p class="card-text">
+  
         <div class="policy-container">
           <div class="policy-table">
             <div class="headings">
@@ -147,15 +144,13 @@
               <span>{{menu1.sodium}}</span>
             </div>
           </div>
-          </p>
+  
         </div>
       </div>
-    </div>
-    <div class="card" style='width: 400px;'>
-      <img class="card-img-top" src="../static/images/치킨데리야끼.PNG" alt="Card image cap" width="400px" height="260px">
+      
       <div class="card-body">
         <h5 class="card-title">{{menu2.foodname}}</h5>
-        <p class="card-text">
+  
         <div class="policy-container">
           <div class="policy-table">
             <div class="headings">
@@ -181,15 +176,11 @@
               <span>{{menu2.sodium}}</span>
             </div>
           </div>
-          </p>
         </div>
       </div>
-    </div>
-    <div class="card" style='width: 400px;'>
-      <img class="card-img-top" src="../static/images/짜장밥.jpg" alt="Card image cap" width="400px" height="260px">
+  
       <div class="card-body">
         <h5 class="card-title">{{menu3.foodname}}</h5>
-        <p class="card-text">
         <div class="policy-container">
           <div class="policy-table">
             <div class="headings">
@@ -215,11 +206,11 @@
               <span>{{menu3.sodium}}</span>
             </div>
           </div>
-          </p>
         </div>
       </div>
     </div>
   </div>
+
   <div class="footer-basic">
     <footer>
       <ul class="list-inline">

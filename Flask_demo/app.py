@@ -84,7 +84,7 @@ def signin():
         
         if data is not None: # 쿼리 데이터 존재시
             session['userid'] = userid # userid를 session에 저장
-            return redirect(url_for('diary'))
+            return redirect(url_for('index'))
         else:
             flash("로그인 실패.")
             return render_template('signin.html')
