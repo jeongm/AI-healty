@@ -7,7 +7,7 @@ from db_models import db
 import os
 from db_models import User, Nutrition, DietTable, Menu, AttainmentRate, Image_file # db_models.py에 있는 User 클래스
 import rec 
-from datetime import date
+from datetime import date, datetime
 
 #import argparse
 import io
@@ -84,7 +84,7 @@ def signin():
         
         if data is not None: # 쿼리 데이터 존재시
             session['userid'] = userid # userid를 session에 저장
-            return redirect(url_for('index'))
+            return redirect(url_for('diary'))
         else:
             flash("로그인 실패.")
             return render_template('signin.html')
@@ -109,16 +109,18 @@ def diary(): # db 불러오자
         action = request.form["current"]
 
         if action == "확인":
-            diarydate = date.fromisoformat(m_dict['date'])
+            diarydate = m_dict['date']
             Mealtime = m_dict['name']
             menu = rec.getMealtime(session['userid'], diarydate, m_dict['name'])
-
+            if len(menu) <1:
+                return render_template('diary_copy.html')
             data = User.query.filter_by(userid=session['userid']).first()
             uRDI = rec.getRDI(data.age, data.height, data.weight, data.sex, data.acti)
             nut = rec.getNut(uRDI)
             rate = rec.getRate(session['userid'], nut, uRDI, diarydate)
-
-            return render_template('diary_chart.html', day = diarydate, Meal=Mealtime, rate=rate, nut=nut, menu= menu)
+            img_path = Menu.query.filter_by(user_id=session['userid'], date=diarydate, meal_time=Mealtime).first().image_path
+            
+            return render_template('diary_chart.html', day = diarydate, Meal=Mealtime, rate=rate, nut=nut, menu= menu, img_path=img_path)
         
     return render_template('diary_copy.html')
 
@@ -130,7 +132,7 @@ def write(): # db식단 기록
         action = request.form['write']
         if action == "SUBMIT":
             dict = m_dict.to_dict(flat=False)
-            writedate = date.fromisoformat(m_dict['date/'])
+            writedate = m_dict['date/']
             
             if 'name' not in dict:
                 flash('아침, 점심, 저녁을 선택해주세요')
@@ -148,7 +150,7 @@ def write(): # db식단 기록
                 menu.food_id = menu_id.food_seq
                 menu.date = writedate
                 menu.meal_time = m_dict['name']
-                menu.image = img.image_binary
+                menu.image_path = img.image_path
                 db.session.add(menu)
                 db.session.delete(img)
             db.session.commit()   
@@ -183,7 +185,7 @@ def recommend():
     menu3 = Nutrition.query.filter_by(food_seq=menu_list[2]).first()
     
     t_rate = rec.getTotalRate(session['userid'], nut, uRDI)
-    rate = rec.getRate(session['userid'], nut, uRDI, date.today())
+    rate = rec.getRate(session['userid'], nut, uRDI, str(date.today()))
 
     return render_template('recommend.html', uRDI = round(uRDI, 3), nut = nut , menu_list=len(menu_list), menu1 = menu1, menu2 = menu2, menu3 = menu3, t_rate=t_rate, rate= rate)
 
@@ -231,7 +233,10 @@ def predict():
         img = Image.open(io.BytesIO(img_bytes))
         results = model(img, size=640)
         #dataframe으로 가져옴
-        image_file.image_binary = img_bytes
+        now = datetime.now()
+        save_to = 'static/images/menu_img/'+str(now.microsecond)+".png"
+        img.save(save_to)
+        image_file.image_path = save_to
         db.session.add(image_file)
         db.session.commit()
 

@@ -96,9 +96,9 @@ class Menu(db.Model) : # 식단 정보 테이블
     menu_seq = db.Column(db.Integer, primary_key=True) 
     user_id = db.Column(db.String(200), db.ForeignKey('user.userid'))
     food_id = db.Column(db.Integer, db.ForeignKey('nutrition.food_seq'))
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.String(200), default=datetime.utcnow)
     meal_time = db.Column(db.Integer)
-    image = db.Column(db.BLOB)
+    image_path = db.Column(db.String(200))
     
     # user = db.relationship("User", backref=db.backref('menu_user', order_by=user_id))
     # menu_nut = db.relationship("Nutrition", backref=db.backref('menu_Table', order_by=food_id))
@@ -108,7 +108,7 @@ class AttainmentRate(db.Model) : # 달성률 테이블
     __tablename__ = 'rate' # table 이름
     rate_seq = db.Column(db.Integer, primary_key=True) 
     user_id = db.Column(db.String(200), db.ForeignKey('user.userid'))
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.String(200), default=datetime.utcnow)
     A_rate = db.Column(db.Float(150),  nullable = False)
     kcal = db.Column(db.Float(150), unique=True, nullable = False)
     protein = db.Column(db.Float(150), nullable = False)
@@ -121,4 +121,4 @@ class AttainmentRate(db.Model) : # 달성률 테이블
 class Image_file(db.Model) : # 달성률 테이블
     __tablename__ = 'image_file' # table 이름
     image_index = db.Column(db.Integer, primary_key=True) 
-    image_binary = db.Column(db.BLOB)
+    image_path = db.Column(db.String(200))
