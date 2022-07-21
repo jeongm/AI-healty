@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Food Table</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/result.css">
+  <link rel="stylesheet" href="../static/css/recommend.css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -15,7 +15,7 @@
 <body>
   <header class="header">
     <div class="header__logo">
-      <a href="{{url_for('diary')}}">
+      <a href="{{url_for('index')}}">
         <h1><img src="../static/images/logo.png" width="269px" , height="65px"></h1>
       </a>
     </div>
@@ -31,6 +31,7 @@
     </div>
   </header>
   <div id="warp" class="wrap">
+    <h3 class="service_name">사용자 정보 분석</h3>
     <div class="content_up">
       <div class="left_content">
         <div class="radar">
@@ -115,10 +116,10 @@
         options: chartOptions
       });
     </script>
+    <h4 class = "service_name">일일 추천 식단</h4>
     <div class="card-columns">
       <div class="card-body">
         <h5 class="card-title">{{menu1.foodname}}</h5>
-  
         <div class="policy-container">
           <div class="policy-table">
             <div class="headings">

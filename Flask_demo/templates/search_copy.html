@@ -165,23 +165,23 @@
               {% if food %}
                 <div class="policy">
                   <span>권장 칼로리</span>
-                  <span> (kcal)</span>
+                  <span>{{food.kcal}}&nbsp;&nbsp;&nbsp;kcal</span>
                 </div>
                 <div class="policy">
                   <span>탄수화물</span>
-                  <span> (kcal)</span>
+                  <span>{{food.carbohydrate}}&nbsp;&nbsp;&nbsp;kcal</span>
                 </div>
                 <div class="policy">
                   <span>단백질</span>
-                  <span> (g)</span>
+                  <span>{{food.protein}}&nbsp;&nbsp;&nbsp;g</span>
                 </div>
                 <div class="policy">
                   <span>지방</span>
-                  <span> (g)</span>
+                  <span>{{food.fat}}&nbsp;&nbsp;&nbsp;g</span>
                 </div>
                 <div class="policy">
                   <span>나트륨</span>
-                  <span> (mg)</span>
+                  <span>{{food.sodium}}&nbsp;&nbsp;&nbsp;mg</span>
                 </div>
               {% else %}
                 <div class="policy">

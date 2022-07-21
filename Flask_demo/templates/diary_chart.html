@@ -45,55 +45,49 @@
           <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
           <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
           <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
-          <li><a href="#" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+          <li><a href="{{url_for('mypage')}}" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
         </ul>
       </div>
     </nav>
   </header>
   <div class="content_up">
-    <form action ="{{url_for('diary')}}" method=post enctype=multipart/form-data class="diary_form">
+    <form action ="{{url_for('diary')}}" method=post enctype=multipart/form-data>
       <div class="datebox">
         <input type='date' id='currentDate' name="date">
-        <input type=submit name =current value="확인">
+        <input type=submit name =current value="조회">
       </div>
       <script>
         document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
       </script>
+      <div class="mealtime">
+        <input name="name" id="id1" type="radio" class = "radiobtn" name = "mealtime" value="1" checked="checked"><label for="id1" class="texth1">&nbsp;Morning</label>
+        <input name="name" id="id2" type="radio" class = "radiobtn" name = "mealtime" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
+        <input name="name" id="id3" type="radio" class = "radiobtn" name = "mealtime" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
+      </div>
+      <script>
+        var text = document.querySelector('.texth1');
+        var text2 = document.querySelector('.texth2');
+        var text3 = document.querySelector('.texth3');
+        text.onclick = function () {
+          text.style.color = '#81c147';
+          text2.style.color = 'black';
+          text3.style.color = 'black';
+        }
+        text2.onclick = function () {
+          text.style.color = 'black';
+          text2.style.color = '#81c147';
+          text3.style.color = 'black';
+        }
+        text3.onclick = function () {
+          text.style.color = 'black';
+          text2.style.color = 'black';
+          text3.style.color = '#81c147';
+        }
+      </script>
       <div class="meal">
-        <div class="morning">
-          <div class="mealtime">
-            <input name="name" id="id1" type="radio" class = "radiobtn" name = "mealtime" value="1" checked="checked"><label for="id1" class="texth1">&nbsp;Morning</label>
-            <input name="name" id="id2" type="radio" class = "radiobtn" name = "mealtime" value="2" ><label for="id2" class="texth2">&nbsp;Lunch</label>
-            <input name="name" id="id3" type="radio" class = "radiobtn" name = "mealtime" value="3" ><label for="id3" class="texth3">&nbsp;Dinner</label>
-          </div>
-          <script>
-            var text = document.querySelector('.texth1');
-            var text2 = document.querySelector('.texth2');
-            var text3 = document.querySelector('.texth3');
-            text.onclick = function () {
-              text.style.color = '#81c147';
-              text2.style.color = 'black';
-              text3.style.color = 'black';
-            }
-            text2.onclick = function () {
-              text.style.color = 'black';
-              text2.style.color = '#81c147';
-              text3.style.color = 'black';
-            }
-            text3.onclick = function () {
-              text.style.color = 'black';
-              text2.style.color = 'black';
-              text3.style.color = '#81c147';
-            }
-          </script>
-
-          </div>
           <div class="left_content">
-            <div type="button" class="left-arrow" style="cursor:pointer" onclick="cleft()">
-              <span></span>
-            </div>
             <div class="card-columns">
-              <div class="card" style='width: 400px;'>
+              <div class="card" >
                 {% if img_path %}
                 <img class="card-img-top" src="../{{img_path}}" alt="Card image cap" width="400px"
                   height="260px">
@@ -133,9 +127,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div type="button" class="right-arrow" style="cursor:pointer"  onclick="cright()">
-              <span></span>
             </div>
             <script>
               var count = 0;
@@ -229,18 +220,18 @@
         </div>
     </form>
   </div>
-    <div class="footer-basic">
-      <footer>
-          <ul class="list-inline">
-              <li class="list-inline-item"><a href="#">Home</a></li>
-              <li class="list-inline-item"><a href="#">Services</a></li>
-              <li class="list-inline-item"><a href="#">About</a></li>
-              <li class="list-inline-item"><a href="#">Terms</a></li>
-              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-          </ul>
-          <p class="copyright">Company Name © 2022</p>
-      </footer>
-      </div>
+
+  <div class="footer-basic">
+    <footer>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright">Company Name © 2022</p>
+    </footer>
   </div>
 </body>
 

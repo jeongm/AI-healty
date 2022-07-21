@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=Noto+Sans+KR:wght@300&display=swap');
 
+::-webkit-scrollbar {
+	display:none /* Chrome , Safari , Opera */
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -63,81 +67,177 @@ html,body {
   text-decoration: none;
 }
 
-
 .content_up{
   position: relative;
   display:flex;
   flex:1 1 auto;
   justify-content: center;
-  width: 100%;  
+  /* width: 80%;   */
   height:auto;                                                             
   min-height: calc(100% - 240px);
-  background-size: auto;
-  /* background-color:#fff; */
-  /* z-index: -2; */
+  flex-direction: column;
+  margin: 0 auto;
+  align-content: space-around;
 }
-.diary_form{
-  /* background-color: #fff; */
-  /* box-shadow: -10px 0px 27px -20px #000, 10px 0px 27px -20px #000; */
-  /* z-index: -1; */
-}
+
 .datebox {
-  margin-top: 40px;
+  margin: 35px;
   font-size: 15px;
   text-align: center;
 }
-  
-.meal {
+
+.mealtime {
   text-align: center;
-  font-size: large;
-  width: auto;
-  height: 100%;
-  /* min-height: 561px; */
+  margin-bottom: 0.8rem;
 }
-  
-  .morning {
-    padding-top: 30px;
-    height: 100px;
-    /* padding-bottom: 40px; */
+
+.texth1, .texth2, .texth3{
+  font-size: 25px;
+  color: #1d3b2a;
+  cursor: pointer;
+  margin-right: 2rem;
+
+}
+.meal {
+  width: 950px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.left_content, .right_content {
+  width: 50%;
+  margin: 1rem;
+}
+
+
+
+.radar{
+  width: 325px;
+  height: 325px;
+  margin: 0 auto;
+}
+
+.up_content{
+  border: 1px solid rgba(179,181,198,1);
+  border-radius: 2em;
+}
+
+.down_content{
+  margin-top: 10px;
+}
+
+
+
+fieldset{
+  text-align: center;
+}
+
+.btn1{
+  float: left;
+  width:500px;
+  height:50px;
+  /* margin-top: 30px;
+  margin-left:730px; */
   }
-  .texth1, .texth2, .texth3{
-    font-size: 25px;
-    color: #1d3b2a;
-    cursor: pointer;
-    margin-right: 2rem;
-  
+  .button3{ 
+  color:black;
+  padding:10px 30px;
+  border:1.5px solid gray;
+  outline:none;
+  font-size:15px;
+  font-weight:400;
+  transition:all .1s linear;
+  border-radius: 100px;
+  background: white;
+  margin-right: 30px;
   }
-  .left_content {
-    width:500px;
-    height: 700px;
-    float:left;
-    
+  .button3:active{
+  box-shadow:none;
+  -moz-transform:translate3d(-6px,6px,0);
+  -ms-transform:translate3d(-6px,6px,0);
+  -webkit-transform:translate3d(-6px,6px,0);
+  transform:translate3d(-6px,6px,0)
   }
-  .right_content {
-    width:700px;
-    height: 700px;
-    float:left;
-    padding-left: 3%;
+  .button4{
+    color:black;
+    padding:10px 30px;
+    border:1.5px solid gray;
+    outline:none;
+    font-size:15px;
+    font-weight:400;
+    transition:all .1s linear;
+    border-radius: 100px;
+    background: white;
+    margin-right: 30px;
   }
-  .radar{
-    width: 350px;
-    height: 350px;
-    margin-left: 15%;
+  .button4:active{
+  box-shadow:none;
+  -moz-transform:translate3d(-6px,6px,0);
+  -ms-transform:translate3d(-6px,6px,0);
+  -webkit-transform:translate3d(-6px,6px,0);
+  transform:translate3d(-6px,6px,0)
   }
 
-  .up_content{
-    width: 500px;
-    height: 350px;
-    border: 1px solid rgba(179,181,198,1);
-    border-radius: 2em;
-  }
+.card-columns {
+  display: flex;
+}
+.card {
+/* height: 650px; */
+}
+
+.card-title {
+text-align: center;
+font-family: 'Noto Sans KR', sans-serif;
+}
+
+.policy-table {
+  color: grey;
+  text-align: center;
+}
+
+.headings, .policy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.heading {
+  flex-basis: 33.333%;
+  font-weight: bold;
   
-  .down_content{
-    width: 500px;
-    height: 200px;
-    float: left;
-    margin-top: 10px;
-  }
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.policy {
+  height: 50px;
+  font-size: medium;
+  border-radius: 2em;
+  background-color: white;
+  margin-bottom: 15px;
+  -moz-box-shadow: 0 0 3px grey;
+  -webkit-box-shadow: 0 0 3px grey;
+  box-shadow: 0 0 5px grey;
+}
+
+span {
+  flex-basis: 33.333%;
+  
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #4c4c4c;
+}
+
+
+
 
 /*--------------------
 Footer
@@ -184,114 +284,3 @@ Footer
   color:#aaa;
   /* margin-bottom:0; */
 }
-
-
-  fieldset{
-    text-align: center;
-  }
-
-  .btn1{
-    float: left;
-    width:500px;
-    height:50px;
-    /* margin-top: 30px;
-    margin-left:730px; */
-    }
-    .button3{ 
-    color:black;
-    padding:10px 30px;
-    border:1.5px solid gray;
-    outline:none;
-    font-size:15px;
-    font-weight:400;
-    transition:all .1s linear;
-    border-radius: 100px;
-    background: white;
-    margin-right: 30px;
-    }
-    .button3:active{
-    box-shadow:none;
-    -moz-transform:translate3d(-6px,6px,0);
-    -ms-transform:translate3d(-6px,6px,0);
-    -webkit-transform:translate3d(-6px,6px,0);
-    transform:translate3d(-6px,6px,0)
-    }
-    .button4{
-      color:black;
-      padding:10px 30px;
-      border:1.5px solid gray;
-      outline:none;
-      font-size:15px;
-      font-weight:400;
-      transition:all .1s linear;
-      border-radius: 100px;
-      background: white;
-      margin-right: 30px;
-    }
-    .button4:active{
-    box-shadow:none;
-    -moz-transform:translate3d(-6px,6px,0);
-    -ms-transform:translate3d(-6px,6px,0);
-    -webkit-transform:translate3d(-6px,6px,0);
-    transform:translate3d(-6px,6px,0)
-    }
-
-    .card-columns {
-      width:400px;
-      height: 700px;
-      float: right;
-  }
-  .card {
-    height: 650px;
-  }
-  
-  .card-title {
-    text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-  
-  .policy-table {
-      color: grey;
-      text-align: center;
-    }
-    
-    .headings, .policy {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      margin-bottom: 1em;
-      padding: 1em;
-    }
-    
-    .heading {
-      flex-basis: 33.333%;
-      font-weight: bold;
-      
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    
-    .policy {
-      height: 50px;
-      font-size: medium;
-      border-radius: 2em;
-      background-color: white;
-      margin-bottom: 15px;
-      -moz-box-shadow: 0 0 3px grey;
-      -webkit-box-shadow: 0 0 3px grey;
-      box-shadow: 0 0 5px grey;
-    }
-    
-    span {
-      flex-basis: 33.333%;
-      
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    
-    a {
-      text-decoration: none;
-      color: #4c4c4c;
-    }
-  
