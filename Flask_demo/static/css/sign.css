@@ -60,6 +60,7 @@ body::before {
     border: none;
     border-bottom: 1px solid #999;
     font-size: 18px;
+    color: black;
     outline: none;
 }
 
@@ -90,9 +91,12 @@ body::before {
     color: rgb(201 216 191);
 }
 
+.int-area-class{
+    margin: 50px 0;
+}
+
 .btn-area {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 1rem;
 }
 
 .btn-area button {

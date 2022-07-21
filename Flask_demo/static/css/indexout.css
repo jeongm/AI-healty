@@ -10,6 +10,11 @@
     font-family: 'Bitter', serif;
 }
 
+body {
+  width: 80%;
+  margin: 0 auto !important;
+}
+
 
 .header {
   display:flex;

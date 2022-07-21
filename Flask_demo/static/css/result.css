@@ -29,7 +29,7 @@
 }
 
 .header__logo h1 {
-  /* letter-spacing: 2px; */
+/* letter-spacing: 2px; */
   margin-left:2rem;
 }
 
@@ -38,29 +38,32 @@
   display:flex;
   flex:1 1 auto;
   justify-content: flex-end;
-    
+  
 }
 .header__menu>ul{
   display:flex;
   align-items:center;
   justify-content: space-between;
   margin-right:2rem;
+  /* margin-bottom: 1rem; */
 }
 .header__menu>ul>li{
   padding-left:1.5rem;
   align-items:center;
-  margin-top: 1rem;
+  
 }
 .header__menu a {
   font-size: 15px;
   color: #1d3b2a;
   font-family: 'Bitter', serif;
+  text-align: center;
 }
 
 .header__menu a:hover {
-  color: rgb(114, 114, 114);
-  text-decoration: none;
+color: rgb(114, 114, 114);
+text-decoration: none;
 }
+
 
 body {
   background: white;

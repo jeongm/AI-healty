@@ -26,7 +26,7 @@
         <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
         <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
         <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
-        <li><a href="#"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+        <li><a href="{{url_for('mypage')}}"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
       </ul>
     </div>
   </header>
@@ -41,7 +41,7 @@
       <div class="right_content">
         <div class="policy-container">
           <div class="policy-table">
-            <h4>권장 섭취량</h4>
+            <h4>일일 권장 섭취량</h4>
             <div class="policy">
               <span>칼로리</span>
               <span>{{uRDI}} kcal</span>

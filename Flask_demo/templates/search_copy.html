@@ -73,16 +73,18 @@
             <li><a href="{{url_for('recommend')}}">RECOMMEND</a></li>
             <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
             <li><a href="{{url_for('signout')}}">SIGN OUT</a></li>
+            <li><a href="{{url_for('mypage')}}" style="width:40px"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
           {% else %}
             <li><a href="{{url_for('search_info')}}">SEARCH</a></li>
             <li><a href="{{url_for('signin')}}">SIGN IN</a></li>
           {% endif %}
-          <li><a href="{{url_for('mypage')}}"><img src="../static/images/user.png" width="35px" , height="35px"></a></li>
+          
         </ul>
       </div>
     </nav>
   </header>
-  <h3 class="service_name">Food Nutrition Facts</h3>
+  <div class = "wrap">
+    <h3 class="service_name">Food Nutrition Facts</h3>
   <div class="content_up">
     <div class="left_content">
         <form action="{{url_for('search_info')}}" method="post"enctype=multipart/form-data>
@@ -163,32 +165,55 @@
               {% if food %}
                 <div class="policy">
                   <span>권장 칼로리</span>
-                  <span>{{food.kcal}} (kcal)</span>
+                  <span> (kcal)</span>
                 </div>
                 <div class="policy">
                   <span>탄수화물</span>
-                  <span>{{food.carbohydrate}} (kcal)</span>
+                  <span> (kcal)</span>
                 </div>
                 <div class="policy">
                   <span>단백질</span>
-                  <span>{{food.protein}} (g)</span>
+                  <span> (g)</span>
                 </div>
                 <div class="policy">
                   <span>지방</span>
-                  <span>{{food.fat}} (g)</span>
+                  <span> (g)</span>
                 </div>
                 <div class="policy">
                   <span>나트륨</span>
-                  <span>{{food.sodium}} (mg)</span>
+                  <span> (mg)</span>
+                </div>
+              {% else %}
+                <div class="policy">
+                  <span>권장 칼로리</span>
+                  <span> (kcal)</span>
+                </div>
+                <div class="policy">
+                  <span>탄수화물</span>
+                  <span> (kcal)</span>
+                </div>
+                <div class="policy">
+                  <span>단백질</span>
+                  <span> (g)</span>
+                </div>
+                <div class="policy">
+                  <span>지방</span>
+                  <span> (g)</span>
+                </div>
+                <div class="policy">
+                  <span>나트륨</span>
+                  <span> (mg)</span>
                 </div>
               {% endif %}
+
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
+  </div>
+  
   <div class="footer-basic">
     <footer>
       <ul class="list-inline">
