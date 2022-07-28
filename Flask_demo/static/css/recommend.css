@@ -85,6 +85,8 @@ text-decoration: none;
 
 }
 
+
+
 .content_up{
   position: relative;
   display:flex;
@@ -150,6 +152,25 @@ text-decoration: none;
     
 }
   
+
+.service_recommend {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.service_name_bottom {
+  /* text-align: center; */
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 35px;
+  color: #1d3b2a;
+  /* font-family: 'Bitter', serif; */
+  font-weight: bold;
+  font-size: 1.75rem;
+
+}
+
   .policy-table {
     color: grey;
     text-align: center;

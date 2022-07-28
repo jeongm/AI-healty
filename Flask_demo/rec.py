@@ -24,17 +24,19 @@ def getRDI(age,stat,weight,sex,acti):
 
 def getNut(uRDI):
     result = []
-    result.append(round((uRDI*0.4)/4, 3))
-    result.append(round((uRDI*0.4)/4, 3))
-    result.append(round((uRDI*0.4)/9, 3))
+    result.append(round((uRDI*0.32)/4, 3))
+    result.append(round((uRDI*0.32)/4, 3))
+    result.append(round((uRDI*0.36)/9, 3))
     
     return result
 
-def getMenu(uRDI, user_id):
+def getMenu(uRDI, user_id, mode):
     con = sqlite3.connect("test3.db" , check_same_thread=False)
-
+    
+    if mode == 'on':
+        uRDI= uRDI-200
     df = pd.read_sql("SELECT * FROM dietTable WHERE kcal BETWEEN "+str(uRDI*0.98)+" AND "+str(uRDI*1.02),con, index_col='diet_seq')
-    user_W =  pd.read_sql("SELECT * FROM user WHERE userid="+ user_id,con, index_col='user_seq')
+    user_W =  pd.read_sql("SELECT * FROM user WHERE userid=\'"+str(user_id)+"\'",con, index_col='user_seq')
     for i in range(15):
         df[user_W.columns[i+9]]= df[user_W.columns[i+9]]*user_W.iloc[0][i+9]
     df['W'] = df.drop(['food_index1', 'food_index2', 'food_index3', 'kcal', 'protein', 'fat', 'carbohydrate', 'sodium'],axis=1).sum(axis=1)
@@ -45,7 +47,7 @@ def getMenu(uRDI, user_id):
 def getMealtime(userID, date, Mealtime):
     con = sqlite3.connect("test3.db" , check_same_thread=False)
 
-    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.Meal_time="+str(Mealtime)+" AND menu.user_id="+str(userID), con)
+    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.Meal_time="+str(Mealtime)+" AND menu.user_id=\'"+str(userID)+"\'", con)
     con.close()
     df = df[df['date']==date]
     result = []
@@ -56,7 +58,7 @@ def getMealtime(userID, date, Mealtime):
 
 def getRate(userID, nut, uRDI, date):
     con = sqlite3.connect("test3.db" , check_same_thread=False)
-    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.user_id="+str(userID), con)
+    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.user_id=\'"+str(userID)+"\'", con)
     con.close()
     result = [0,0,0,0,0]
     df = df[df['date']==date]
@@ -85,7 +87,7 @@ def getRate(userID, nut, uRDI, date):
 
 def getTotalRate(userID, nut, uRDI):
     con = sqlite3.connect("test3.db" , check_same_thread=False)
-    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.user_id="+str(userID),con)
+    df = pd.read_sql("SELECT nutrition.foodname, nutrition.gram, nutrition.kcal, nutrition.protein, nutrition.fat, nutrition.carbohydrate, nutrition.sodium, menu.date FROM nutrition, menu WHERE menu.food_id=nutrition.food_seq AND menu.user_id=\'"+str(userID)+"\'",con)
     con.close()
     
     result = [0,0,0,0,0]
