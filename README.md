@@ -38,3 +38,13 @@ AI-healty
 - 2022.07.22 최종 발표
 
 ## UI
+![main1](static/images/index2.png)
+<img src="static/images/join.png"/>
+<img src="static/images/login.png"/>
+<img src="static/images/index-login.png"/>
+<img src="static/images/diary.png"/>
+<img src="static/images/write.png"/>
+<img src="static/images/recommend.png"/>
+<img src="static/images/search.png"/>
+
+
